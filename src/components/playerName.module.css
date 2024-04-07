@@ -1,0 +1,43 @@
+.containerPlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 50px; */
+  font-family: Arial, sans-serif;
+  border: black 1px solid;
+  /* background: linear-gradient(#09203F , #537895); */
+  /* height: 87vh; */
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+  
+  .h2 {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
