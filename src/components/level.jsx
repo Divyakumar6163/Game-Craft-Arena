@@ -17,15 +17,6 @@ export default function Levels({ playerAttempts, playerNameData }) {
   }
   return (
     <div className={styleLevel.mainContainer}>
-      {/* {!changeName ? (
-        <button onClick={handleClick}>Change Player Name</button>
-      ) : null}
-      {changeName ? (
-        <PlayerName
-          playerNameFinal={playerNameData}
-          changePlayerName={setChangeName}
-        />
-      ) : null} */}
       <section className={styleLevel.section}>
         {!changeName ? (
           <button onClick={handleClick}>Change Player Name</button>
