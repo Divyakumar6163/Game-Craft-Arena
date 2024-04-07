@@ -1,6 +1,6 @@
 .mainContainer{
   background: linear-gradient(#09203F , #537895);
-  height: 90vh;
+  height: 80vh;
 }
 .section {
   display: flex;
@@ -8,7 +8,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 2rem;
-  width: 60%;
+  width: 65%;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #011936FF;
@@ -39,9 +39,9 @@
   margin: 0.5rem;
 }
 
-.Button {
-  background-color: #007bff;
-  border: none;
+.button {
+  background-color: #09203F;
+  border: 5px solid #0956a9;
   color: white;
   padding: 1rem 2rem;
   text-align: center;
@@ -50,9 +50,11 @@
   font-size: 1rem;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 5px;
+  width: 20rem;
 }
 
-.Button:hover {
-  background-color: #0062cc;
+.button:hover {
+  background-color: #03142a;
 }

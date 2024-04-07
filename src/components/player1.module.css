@@ -5,7 +5,7 @@
     /* margin-top: 50px; */
     font-family: Arial, sans-serif;
     background: linear-gradient(#09203F , #537895);
-    height: 90vh;
+    height: 80vh;
   }
   .playerContainer{
     display: flex;
@@ -60,20 +60,25 @@
   }
   
   .playerButton {
-    padding: 10px;
-    background-color: #4CAF50;
+    background-color: #09203F;
+    border: 5px solid #0956a9;
     color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 4px 2px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+    width: 20rem;
   }
   
   .playerButton:hover {
-    background-color: #45a049;
-  }
+    background-color: #03142a;
+    box-shadow: 0px 0px 10px 5px;
+    }
   
-  .playerButton:active {
+  /* .playerButton:active {
     background-color: #3e8e41;
-  }
+  } */
