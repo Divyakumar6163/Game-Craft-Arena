@@ -1,0 +1,82 @@
+.playerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 50px; */
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#09203F , #537895);
+  height: 90vh;
+}
+  
+  .title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color:#F1F3FFFF;
+  }
+  
+  .innerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .attemptsLabel {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+  
+  .guessInputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .guessInput {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+    width: 300px;
+  }
+  
+  .guessInput:focus {
+    box-shadow: 0 0 5px 1px #4CAF50;
+  }
+  
+  .submitButton {
+    padding: 10px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .submitButton:hover {
+    background-color: #45a049;
+  }
+  
+  .submitButton:active {
+    background-color: #3e8e41;
+  }
+  
+  .modalMessage {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+  }

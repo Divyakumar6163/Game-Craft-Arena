@@ -1,0 +1,79 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 50px; */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#09203F , #537895);
+    height: 90vh;
+  }
+  .playerContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 50px; */
+    font-family: Arial, sans-serif;
+    background-color: #011936FF;
+    height: 70vh;
+    width: 30rem;
+    border-radius: 50px;
+    box-shadow: #09203F 0px 0px 10px 5px;
+    border: #09203F  1px solid;
+  }
+  .playerHeader {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color:#F1F3FFFF;
+  }
+  
+  .playerForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+  .playerInput {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .playerInput:focus {
+    box-shadow: 0 0 5px 1px #4CAF50;
+  }
+  
+  .playerTextarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+    resize: none;
+  }
+  
+  .playerTextarea:focus {
+    box-shadow: 0 0 5px 1px #4CAF50;
+  }
+  
+  .playerButton {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .playerButton:hover {
+    background-color: #45a049;
+  }
+  
+  .playerButton:active {
+    background-color: #3e8e41;
+  }
