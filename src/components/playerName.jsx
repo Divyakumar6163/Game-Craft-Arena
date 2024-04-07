@@ -21,8 +21,11 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
   }
   return (
     <div className={styles.containerPlayer}>
+      <h2 style={{ color: "#F1F3FFFF", fontSize: "20px" }}>
+        Enter Player Names
+      </h2>
       <div className={styles.container}>
-        <h2 className={styles.h2}>Enter Player1 name:</h2>
+        <label className={styles.h2}>Enter Player 1 Name:</label>
         <input
           type="text"
           name="player1"
@@ -32,7 +35,7 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
         />
       </div>
       <div className={styles.container}>
-        <h2 className={styles.h2}>Enter Player2 name:</h2>
+        <label className={styles.h2}>Enter Player 2 Name:</label>
         <input
           type="text"
           name="player2"

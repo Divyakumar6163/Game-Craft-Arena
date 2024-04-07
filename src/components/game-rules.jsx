@@ -19,8 +19,23 @@ export default function GameRules() {
           </li>
           <li>Click on the Next button to move to the next person</li>
         </ul>
-        <NavLink className={styles.navlink} to="/levels">
-          Start Playing
+        <NavLink
+          style={{
+            backgroundColor: "#09203F",
+            border: "4px solid #0956a9",
+            color: "white",
+            padding: "1rem 1rem",
+            textAlign: "center",
+            textDecoration: " none",
+            display: " inline-block",
+            fontSize: "1rem",
+            margin: " 30px 4px 0rem 27rem",
+            cursor: " pointer",
+            borderRadius: "25px",
+          }}
+          to="/levels"
+        >
+          Start Playing &#129054;
         </NavLink>
       </section>
     </div>
