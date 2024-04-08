@@ -19,6 +19,7 @@ export default function GameRules() {
           </li>
           <li>Click on the Next button to move to the next person</li>
         </ul>
+
         <NavLink
           style={{
             backgroundColor: "#09203F",

@@ -16,4 +16,5 @@
   
   .button:hover {
     background-color: #03142a;
+    box-shadow: none;
   }
