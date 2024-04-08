@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export default function Modal({ message, leftAttempts, onClose, finalScore }) {
   const navigate = useNavigate();
   function handleRestart() {
-    navigate("/");
+    navigate("/levels");
   }
   return (
     <dialog open className={style.modal}>
