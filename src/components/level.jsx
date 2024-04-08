@@ -15,8 +15,14 @@ export default function Levels({ playerAttempts, playerNameData }) {
   function handleClick() {
     setChangeName(true);
   }
+  function handleBack() {
+    navigate("/");
+  }
   return (
     <div className={styleLevel.mainContainer}>
+      <button className={styleLevel.backButton} onClick={handleBack}>
+        Back
+      </button>
       <section className={styleLevel.section}>
         {!changeName ? (
           <button className={styleLevel.button} onClick={handleClick}>

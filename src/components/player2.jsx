@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "./modal";
 import styles from "./player2.module.css";
 export default function Player2({ dataReceived, attempts, player2Name }) {
@@ -7,6 +8,8 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [modal, setModal] = useState(false);
   const [score, setScore] = useState("0");
+  const [shakeAttempts, setShakeAttempts] = useState(false);
+  const navigate = useNavigate();
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -15,6 +18,8 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
     if (guess !== dataReceived.object) {
       setFinalAttempts((finalAttempts) => finalAttempts - 1);
       setIsSubmitted(false);
+      setShakeAttempts(true);
+      setTimeout(() => setShakeAttempts(false), 500);
     } else if (guess === dataReceived.object) {
       setIsSubmitted(true);
       setScore(Math.round((finalAttempts * 100) / attempts));
@@ -27,16 +32,21 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
   function handleClose() {
     setModal(false);
   }
-
+  function handleBack() {
+    navigate("/player1");
+  }
   return (
     <div className={styles.mainContainer}>
+      <button className={styles.backButton} onClick={handleBack}>
+        Back
+      </button>
       <div className={styles.playerContainer}>
         <h2 className={styles.title}>Player 2-{player2Name}</h2>
         <div className={styles.innerContainer}>
           <div className={styles.descriptionContainer}>
-            <p>Guess the object:</p>
-            <p>{dataReceived.category}</p>
-            <p>{dataReceived.description}</p>
+            <p style={{ color: "#F1F3FFFF" }}>Guess the object:</p>
+            <p style={{ color: "#F1F3FFFF" }}>{dataReceived.category}</p>
+            <p style={{ color: "#F1F3FFFF" }}>{dataReceived.description}</p>
           </div>
           <form onSubmit={handleSubmit}>
             <div className={styles.guessInputContainer}>
@@ -52,7 +62,24 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
               </button>
             </div>
           </form>
-          <p className={styles.attemptsLabel}>Attempts left: {finalAttempts}</p>
+          {finalAttempts <= 3 && attempts > 3 ? (
+            <p
+              className={`${styles.attemptsLabel} ${
+                shakeAttempts ? styles.shake : ""
+              }`}
+              style={{ color: "red" }}
+            >
+              Attempts left: {finalAttempts}
+            </p>
+          ) : (
+            <p
+              className={`${styles.attemptsLabel} ${
+                shakeAttempts ? styles.shake : ""
+              }`}
+            >
+              Attempts left: {finalAttempts}
+            </p>
+          )}
         </div>
         {guess === dataReceived.object && isSubmitted && modal && (
           <Modal

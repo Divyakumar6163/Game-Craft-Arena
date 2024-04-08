@@ -36,7 +36,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.2em;
-    color: #333;
+    color:#F1F3FFFF;
   }
   
   .descriptionContainer {
@@ -80,7 +80,7 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 25px;
-    
+    align-self: center;
     width: 20rem;
   }
   
@@ -98,3 +98,26 @@
     font-weight: bold;
     color: #333;
   }
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .shake {
+    animation: shake 0.4s ease-in-out;
+  }
+
+  .backButton{
+    border-radius: 100%;
+    width: 4rem;
+    height: 4rem;
+    background-color: #09203F;
+    border: 5px solid #0956a9;
+    color: white;
+    margin: -1.18rem 2rem 0rem -86rem;
+    cursor: pointer;
+  }
+  

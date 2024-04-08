@@ -71,7 +71,8 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 25px;
-    width: 20rem;
+    width: 15rem;
+    align-self: center;
   }
   
   .playerButton:hover {
@@ -79,6 +80,13 @@
     box-shadow: 0px 0px 10px 5px;
     }
   
-  /* .playerButton:active {
-    background-color: #3e8e41;
-  } */
+    .backButton{
+      border-radius: 100%;
+      width: 4rem;
+      height: 4rem;
+      background-color: #09203F;
+      border: 5px solid #0956a9;
+      color: white;
+      margin: -1.18rem 2rem 0rem -86rem;
+      cursor: pointer;
+    }

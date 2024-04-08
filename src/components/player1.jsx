@@ -28,9 +28,15 @@ export default function Player1({ playerDetail, player1Name }) {
   useEffect(() => {
     playerDetail(player1);
   }, [playerDetail, player1]);
-  console.log(player1Name);
+  // console.log(player1Name);
+  function handleBack() {
+    navigate("/levels");
+  }
   return (
     <div className={styles.mainContainer}>
+      <button className={styles.backButton} onClick={handleBack}>
+        Back
+      </button>
       <div className={styles.playerContainer}>
         <h1 className={styles.playerHeader}>Player 1-{player1Name}</h1>
         <form className={styles.playerForm}>
