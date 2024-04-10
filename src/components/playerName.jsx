@@ -5,7 +5,7 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
     player1: "",
     player2: "",
   });
-
+  const [isSubmit, setIsSubmit] = useState(false);
   function handleName(e) {
     const { name, value } = e.target;
     setName((prevState) => ({
@@ -17,7 +17,12 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
     playerNameFinal(name);
   }, [name, playerNameFinal]);
   function handleClick() {
+    if (name.player1 === "" || name.player2 === "") {
+      setIsSubmit(true);
+      return;
+    }
     changePlayerName(false);
+    console.log(name);
   }
   return (
     <div className={styles.containerPlayer}>
@@ -27,6 +32,7 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
       <div className={styles.container}>
         <label className={styles.h2}>Enter Player 1 Name:</label>
         <input
+          className={styles.input}
           type="text"
           name="player1"
           value={name.player1}
@@ -37,15 +43,30 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
       <div className={styles.container}>
         <label className={styles.h2}>Enter Player 2 Name:</label>
         <input
+          className={styles.input}
           type="text"
           name="player2"
           value={name.player2}
           onChange={handleName}
         />
       </div>
-      <button type="submit" className={styles.button} onClick={handleClick}>
+      <button
+        // disabled={name.player1 === "" || name.player2 === ""}
+        type="submit"
+        className={styles.button}
+        onClick={handleClick}
+      >
         Save
       </button>
+      {(name.player1 === "" || name.player2 === "") && isSubmit && (
+        <p
+          className={`${styles.message} ${
+            name.player1 === "" || name.player2 === "" ? styles.shake : ""
+          }`}
+        >
+          Please Enter Valid Name!
+        </p>
+      )}
     </div>
   );
 }

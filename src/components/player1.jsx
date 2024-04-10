@@ -12,7 +12,6 @@ export default function Player1({ playerDetail, player1Name }) {
     description: "",
   });
   const navigate = useNavigate();
-
   function handleClick(event) {
     event.preventDefault();
     setPlayer1({
@@ -39,18 +38,20 @@ export default function Player1({ playerDetail, player1Name }) {
       </button>
       <div className={styles.playerContainer}>
         <h1 className={styles.playerHeader}>Player 1-{player1Name}</h1>
-        <form className={styles.playerForm}>
+        <form className={styles.playerForm} onSubmit={handleClick}>
           <input
             type="text"
             placeholder="Object"
             ref={object}
             className={styles.playerInput}
+            required
           />
           <input
             type="text"
             placeholder="Category"
             ref={category}
             className={styles.playerInput}
+            required
           />
           <textarea
             name=""
@@ -60,12 +61,9 @@ export default function Player1({ playerDetail, player1Name }) {
             placeholder="Description"
             ref={description}
             className={`${styles.playerTextarea} ${styles.playerInput}`}
+            required
           ></textarea>
-          <button
-            type="submit"
-            onClick={handleClick}
-            className={styles.playerButton}
-          >
+          <button type="submit" className={styles.playerButton}>
             Submit
           </button>
         </form>

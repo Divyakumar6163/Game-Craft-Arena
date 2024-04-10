@@ -40,7 +40,10 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
       <button className={styles.backButton} onClick={handleBack}>
         Back
       </button>
-      <div className={styles.playerContainer}>
+      <div
+        className={styles.playerContainer}
+        style={{ opacity: modal ? 0.05 : 1 }}
+      >
         <h2 className={styles.title}>Player 2-{player2Name}</h2>
         <div className={styles.innerContainer}>
           <div className={styles.descriptionContainer}>
@@ -48,20 +51,41 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
             <p style={{ color: "#F1F3FFFF" }}>{dataReceived.category}</p>
             <p style={{ color: "#F1F3FFFF" }}>{dataReceived.description}</p>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.guessInputContainer}>
-              <input
-                type="text"
-                className={styles.guessInput}
-                value={guess}
-                onChange={handleGuess}
-                placeholder="Enter your guess"
-              />
-              <button type="submit" className={styles.submitButton}>
-                Submit
-              </button>
-            </div>
-          </form>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <div className={styles.guessInputContainer}>
+                <input
+                  type="text"
+                  className={styles.guessInput}
+                  value={guess}
+                  onChange={handleGuess}
+                  placeholder="Enter your guess"
+                  required
+                />
+                <button type="submit" className={styles.submitButton}>
+                  Submit
+                </button>
+              </div>
+            </form>
+
+            {/* {attempts <= 8 && (
+              <form onSubmit={handleSubmit}>
+                <div className={styles.guessInputContainer}>
+                  <input
+                    type="text"
+                    className={styles.guessInput}
+                    value={guess}
+                    onChange={handleGuess}
+                    placeholder="Enter your guess"
+                    required
+                  />
+                  <button type="submit" className={styles.submitButton}>
+                    Submit
+                  </button>
+                </div>
+              </form>
+            )} */}
+          </div>
           {finalAttempts <= 3 && attempts > 3 ? (
             <p
               className={`${styles.attemptsLabel} ${
@@ -81,25 +105,25 @@ export default function Player2({ dataReceived, attempts, player2Name }) {
             </p>
           )}
         </div>
-        {guess === dataReceived.object && isSubmitted && modal && (
-          <Modal
-            message="You Won"
-            leftAttempts={finalAttempts}
-            className={styles.modalMessage}
-            onClose={handleClose}
-            finalScore={score}
-          />
-        )}
-        {finalAttempts === 0 && modal && (
-          <Modal
-            message="You Lost"
-            finalScore="0"
-            leftAttempts={finalAttempts}
-            className={styles.modalMessage}
-            onClose={handleClose}
-          />
-        )}
       </div>
+      {guess === dataReceived.object && isSubmitted && modal && (
+        <Modal
+          message="You Won"
+          leftAttempts={finalAttempts}
+          className={styles.modalMessage}
+          onClose={handleClose}
+          finalScore={score}
+        />
+      )}
+      {finalAttempts === 0 && modal && (
+        <Modal
+          message="You Lost"
+          finalScore="0"
+          leftAttempts={finalAttempts}
+          className={styles.modalMessage}
+          onClose={handleClose}
+        />
+      )}
     </div>
   );
 }
