@@ -1,7 +1,11 @@
 import styleButton from "./button.module.css";
-export default function Button({ children, onChange }) {
+export default function Button({ children, onChange, disable }) {
   return (
-    <button className={styleButton.button} onClick={onChange}>
+    <button
+      disabled={disable}
+      className={styleButton.button}
+      onClick={onChange}
+    >
       {children}
     </button>
   );
