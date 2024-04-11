@@ -42,6 +42,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("12")}
+              disable={changeName}
             >
               Beginner
             </Button>
@@ -50,6 +51,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("10")}
+              disable={changeName}
             >
               Easy
             </Button>
@@ -58,6 +60,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("8")}
+              disable={changeName}
             >
               Intermediate
             </Button>
@@ -66,6 +69,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("5")}
+              disable={changeName}
             >
               Hard
             </Button>
@@ -74,6 +78,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("3")}
+              disable={changeName}
             >
               Professtional
             </Button>
