@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import styles from "./playerName.module.css";
-export default function PlayerName({ playerNameFinal, changePlayerName }) {
+export default function PlayerName({
+  playerNameFinal,
+  changePlayerName,
+  checkName,
+}) {
   const [name, setName] = useState({
     player1: "",
     player2: "",
@@ -19,11 +23,18 @@ export default function PlayerName({ playerNameFinal, changePlayerName }) {
   function handleClick() {
     if (name.player1 === "" || name.player2 === "") {
       setIsSubmit(true);
+      // console.log(name);
       return;
     }
     changePlayerName(false);
-    console.log(name);
+    // console.log(name);
   }
+  if (name.player1 === "" || name.player2 === "") {
+    checkName(true);
+  } else {
+    checkName(true);
+  }
+
   return (
     <div className={styles.containerPlayer}>
       <h2 style={{ color: "#F1F3FFFF", fontSize: "20px" }}>

@@ -3,7 +3,12 @@ import styleLevel from "./level.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PlayerName from "./playerName";
-export default function Levels({ playerAttempts, playerNameData }) {
+export default function Levels({
+  playerAttempts,
+  playerNameData,
+  checkName,
+  setCheckName,
+}) {
   const navigate = useNavigate();
   const [changeName, setChangeName] = useState(false);
   function handleAttempts(attempts) {
@@ -16,8 +21,12 @@ export default function Levels({ playerAttempts, playerNameData }) {
     setChangeName(true);
   }
   function handleBack() {
+    if (changeName) {
+      setCheckName(false);
+    }
     navigate("/");
   }
+  console.log(checkName);
   return (
     <div className={styleLevel.mainContainer}>
       <button className={styleLevel.backButton} onClick={handleBack}>
@@ -33,6 +42,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
           <PlayerName
             playerNameFinal={playerNameData}
             changePlayerName={setChangeName}
+            checkName={setCheckName}
           />
         ) : null}
 
@@ -42,7 +52,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("12")}
-              disable={changeName}
+              disable={changeName || !checkName}
             >
               Beginner
             </Button>
@@ -51,7 +61,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("10")}
-              disable={changeName}
+              disable={changeName || !checkName}
             >
               Easy
             </Button>
@@ -60,7 +70,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("8")}
-              disable={changeName}
+              disable={changeName || !checkName}
             >
               Intermediate
             </Button>
@@ -69,7 +79,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("5")}
-              disable={changeName}
+              disable={changeName || !checkName}
             >
               Hard
             </Button>
@@ -78,7 +88,7 @@ export default function Levels({ playerAttempts, playerNameData }) {
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("3")}
-              disable={changeName}
+              disable={changeName || !checkName}
             >
               Professtional
             </Button>
