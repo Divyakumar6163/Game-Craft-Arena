@@ -11,7 +11,6 @@ export default function Player2({
 }) {
   const [finalAttempts, setFinalAttempts] = useState(attempts);
   const [guess, setGuess] = useState("");
-  // const [guess1, setGuess1] = useState("");
   const [guess2, setGuess2] = useState("");
   const [guess3, setGuess3] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,12 +34,12 @@ export default function Player2({
   }
   function handleSubmit(event) {
     event.preventDefault();
-    if (guess !== dataReceived.object) {
+    if (guess.toLowerCase() !== dataReceived.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - 1);
       setIsSubmitted(false);
       setShakeAttempts(true);
       setTimeout(() => setShakeAttempts(false), 500);
-    } else if (guess === dataReceived.object) {
+    } else if (guess.toLowerCase() === dataReceived.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
       setAble((prevState) => ({ ...prevState, able1: true }));
@@ -48,39 +47,38 @@ export default function Player2({
     }
     if (
       finalAttempts === 1 ||
-      (attempts > 8 && attempts <= 12 && guess === dataReceived.object)
+      (attempts > 8 &&
+        attempts <= 12 &&
+        guess.toLowerCase() === dataReceived.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts > 3 &&
         attempts <= 8 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts <= 3 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object &&
-        guess3 === dataReceived3.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     }
   }
 
   function handleSubmit2(event) {
     event.preventDefault();
-    if (guess2 !== dataReceived2.object) {
+    if (guess2.toLowerCase() !== dataReceived2.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - 1);
       setIsSubmitted(false);
       setShakeAttempts(true);
       setTimeout(() => setShakeAttempts(false), 500);
-    } else if (guess2 === dataReceived2.object) {
+    } else if (guess2.toLowerCase() === dataReceived2.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
       setAble((prevState) => ({ ...prevState, able2: true }));
@@ -88,38 +86,37 @@ export default function Player2({
     }
     if (
       finalAttempts === 1 ||
-      (attempts > 8 && attempts <= 12 && guess === dataReceived.object)
+      (attempts > 8 &&
+        attempts <= 12 &&
+        guess.toLowerCase() === dataReceived.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts > 3 &&
         attempts <= 8 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts <= 3 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object &&
-        guess3 === dataReceived3.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     }
   }
   function handleSubmit3(event) {
     event.preventDefault();
-    if (guess3 !== dataReceived3.object) {
+    if (guess3.toLowerCase() !== dataReceived3.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - 1);
       setIsSubmitted(false);
       setShakeAttempts(true);
       setTimeout(() => setShakeAttempts(false), 500);
-    } else if (guess3 === dataReceived3.object) {
+    } else if (guess3.toLowerCase() === dataReceived3.object.toLowerCase()) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
       setAble((prevState) => ({ ...prevState, able3: true }));
@@ -127,28 +124,27 @@ export default function Player2({
     }
     if (
       finalAttempts === 1 ||
-      (attempts > 8 && attempts <= 12 && guess === dataReceived.object)
+      (attempts > 8 &&
+        attempts <= 12 &&
+        guess.toLowerCase() === dataReceived.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts > 3 &&
         attempts <= 8 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     } else if (
       finalAttempts === 1 ||
       (attempts <= 3 &&
-        guess === dataReceived.object &&
-        guess2 === dataReceived2.object &&
-        guess3 === dataReceived3.object)
+        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
     ) {
       setModal(true);
-      // console.log(finalAttempts);
     }
   }
   function handleBack() {
@@ -325,18 +321,20 @@ export default function Player2({
           )}
         </div>
       </div>
-      {guess === dataReceived.object && isSubmitted && modal && (
-        <Modal
-          message="You Won"
-          leftAttempts={finalAttempts - 3}
-          className={styles.modalMessage}
-          finalScore={score}
-          object1=""
-          object2=""
-          object3=""
-          attempts={attempts}
-        />
-      )}
+      {guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+        isSubmitted &&
+        modal && (
+          <Modal
+            message="You Won"
+            leftAttempts={finalAttempts - 3}
+            className={styles.modalMessage}
+            finalScore={score}
+            object1=""
+            object2=""
+            object3=""
+            attempts={attempts}
+          />
+        )}
       {finalAttempts === 0 && modal && (
         <Modal
           message="You Lost"

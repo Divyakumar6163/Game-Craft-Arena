@@ -41,7 +41,7 @@ export default function PlayerName({
         Enter Player Names
       </h2>
       <div className={styles.container}>
-        <label className={styles.h2}>Enter Player 1 Name:</label>
+        <label className={styles.h2}>Enter Player 1 Name: </label>
         <input
           className={styles.input}
           type="text"
@@ -52,7 +52,7 @@ export default function PlayerName({
         />
       </div>
       <div className={styles.container}>
-        <label className={styles.h2}>Enter Player 2 Name:</label>
+        <label className={styles.h2}>Enter Player 2 Name: </label>
         <input
           className={styles.input}
           type="text"
