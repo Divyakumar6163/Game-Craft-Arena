@@ -24,10 +24,12 @@
 }
 
 .playerHeader {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-top: 2.5rem;
   margin-bottom: 30px;
   color: #F1F3FFFF;
+  font-family: "Baloo 2", sans-serif;
+
 }
 
 .playerForm {

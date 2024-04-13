@@ -35,7 +35,7 @@ export default function Levels({
       <section className={styleLevel.section}>
         {!changeName ? (
           <button className={styleLevel.button} onClick={handleClick}>
-            Change Player Name
+            Enter Player Name
           </button>
         ) : null}
         {changeName ? (

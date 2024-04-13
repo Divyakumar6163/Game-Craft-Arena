@@ -1,3 +1,4 @@
+import style from "./header.module.css";
 export default function Header() {
   return (
     <>
@@ -9,6 +10,7 @@ export default function Header() {
       >
         <image src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F717768062982013%2F&psig=AOvVaw3" />
         <h1
+          className={style.h1}
           style={{
             textAlign: "center",
             padding: "2rem 0rem",
@@ -16,7 +18,7 @@ export default function Header() {
             margin: "0rem 0rem 12rem 0rem",
           }}
         >
-          GUESS THE NAME
+          GUESS THE OBJECT
         </h1>
       </header>
     </>
