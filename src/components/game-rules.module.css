@@ -1,30 +1,34 @@
-.mainContainer{
-  background: linear-gradient(#09203F , #537895);
+.mainContainer {
+  background: linear-gradient(#09203F, #537895);
   height: auto;
   min-height: 80vh;
 }
+
 .section {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #011936FF;
-    border-radius: 50px;
-    box-shadow: #09203F 0px 0px 10px 5px;
-    border: #09203F  1px solid;
-    height: 40vh;
-  }
-  .h2 {
-    margin-bottom: 15px;
-    color: #F1F3FFFF;
-    margin-left: 2rem;
-  }
-  .ul {
-    padding: 0;
-    color: #F4FFFDFF;
-    margin: .5rem 0rem 0rem 2rem;
-  }
-  .li {
-    margin-bottom: 10px;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #011936FF;
+  border-radius: 50px;
+  box-shadow: #09203F 0px 0px 10px 5px;
+  border: #09203F 1px solid;
+  height: 53vh;
+}
+
+.h2 {
+  margin-bottom: 15px;
+  color: #F1F3FFFF;
+  margin-left: 2rem;
+}
+
+.ul {
+  padding: 0;
+  color: #F4FFFDFF;
+  margin: .5rem 0rem 0rem 2rem;
+}
+
+.li {
+  margin-bottom: 20px;
+}

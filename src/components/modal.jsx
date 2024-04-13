@@ -34,7 +34,7 @@ export default function Modal({
           Object 2: {object2}
         </p>
       )}
-      {object2 !== "" && (
+      {object3 !== "" && (
         <p style={{ fontWeight: "800" }} className={style.p}>
           Object 3: {object3}
         </p>

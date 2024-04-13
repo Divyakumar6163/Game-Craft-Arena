@@ -8,18 +8,23 @@ export default function GameRules() {
         <h2 className={styles.h2}>Game Rules</h2>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            Guess the name of the object that another person is giving.
+            Guess the name of the object that another player is giving, by the
+            help of category and description.
           </li>
           <li className={styles.li}>
-            Based on the level you chosen, you have to guess the object.
+            Based on the level you chosen, you have to guess the object, in the
+            given number of attempts.
           </li>
           <li className={styles.li}>
-            You are given with the description and the title of the object by
-            another player.
+            Levels which contain multiple objects, 3 extra attempts will be
+            given for every correct guess.
           </li>
-          <li>Click on the Next button to move to the next person</li>
+          <li className={styles.li}>
+            Player are free to give any object and if Player 2 will not be able
+            to guess that within the given attempts then he will loose and if
+            guessed correctly then he will win.
+          </li>
         </ul>
-
         <NavLink
           style={{
             backgroundColor: "#09203F",
@@ -30,7 +35,7 @@ export default function GameRules() {
             textDecoration: " none",
             display: " inline-block",
             fontSize: "1rem",
-            margin: " 30px 4px 0rem 27rem",
+            margin: " -20px 4px 0rem 27rem",
             cursor: " pointer",
             borderRadius: "25px",
           }}
