@@ -17,15 +17,16 @@
   border-radius: 50px;
   box-shadow: #09203F 0px 0px 10px 5px;
   border: #09203F 1px solid;
-  /* background: linear-gradient(#09203F , #537895); */
 }
 
 .h2 {
   font-size: 2rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 0rem;
   color: #F1F3FFFF;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .ul {
