@@ -1,6 +1,14 @@
 import style from "./modal.module.css";
 import { useNavigate } from "react-router-dom";
-export default function Modal({ message, leftAttempts, finalScore }) {
+export default function Modal({
+  message,
+  leftAttempts,
+  finalScore,
+  object1,
+  object2,
+  object3,
+  attempts,
+}) {
   const navigate = useNavigate();
   function handleRestart() {
     navigate("/player1");
@@ -16,8 +24,23 @@ export default function Modal({ message, leftAttempts, finalScore }) {
       >
         {message}
       </h1>
-      <p className={style.p}>Attempts Left:{leftAttempts}</p>
-      <p className={style.p}>Score:{finalScore}</p>
+      {object1 !== "" && (
+        <p style={{ fontWeight: "800" }} className={style.p}>
+          Object {attempts > 8 ? null : 1}: {object1}
+        </p>
+      )}
+      {object2 !== "" && (
+        <p style={{ fontWeight: "800" }} className={style.p}>
+          Object 2: {object2}
+        </p>
+      )}
+      {object2 !== "" && (
+        <p style={{ fontWeight: "800" }} className={style.p}>
+          Object 3: {object3}
+        </p>
+      )}
+      <p className={style.p}>Attempts Left: {leftAttempts}</p>
+      <p className={style.p}>Score: {finalScore}</p>
       <button onClick={handleLevel} className={style.button}>
         Level
       </button>
