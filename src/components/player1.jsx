@@ -33,15 +33,35 @@ export default function Player1({
     category: "",
     description: "",
   });
+  const [check, setCheck] = useState(false);
   const navigate = useNavigate();
   function handleClick(event) {
     event.preventDefault();
+    if (
+      object.current.value.trim().length === 0 ||
+      category.current.value.trim().length === 0 ||
+      description.current.value.trim().length === 0
+    ) {
+      // alert("Please fill all the fields");
+      setCheck(true);
+      return;
+    }
     setPlayer1({
       object: object.current.value,
       category: category.current.value,
       description: description.current.value,
     });
     if (attempts <= 8) {
+      if (
+        object1.current.value.trim().length === 0 ||
+        category1.current.value.trim().length === 0 ||
+        description1.current.value.trim().length === 0
+      ) {
+        // alert("Please fill all the fields");
+        setCheck(true);
+        return;
+      }
+
       setPlayer1_2({
         object: object1.current.value,
         category: category1.current.value,
@@ -49,6 +69,15 @@ export default function Player1({
       });
     }
     if (attempts <= 3) {
+      if (
+        object2.current.value.trim().length === 0 ||
+        category2.current.value.trim().length === 0 ||
+        description2.current.value.trim().length === 0
+      ) {
+        // alert("Please fill all the fields");
+        setCheck(true);
+        return;
+      }
       setPlayer1_3({
         object: object2.current.value,
         category: category2.current.value,
@@ -85,14 +114,14 @@ export default function Player1({
             <form className={styles.playerForm} onSubmit={handleClick}>
               <input
                 type="text"
-                placeholder="Object"
+                placeholder={`Object ${attempts <= 8 ? 1 : ""}`}
                 ref={object}
                 className={styles.playerInput}
                 required
               />
               <input
                 type="text"
-                placeholder="Category"
+                placeholder={`Category ${attempts <= 8 ? 1 : ""}`}
                 ref={category}
                 className={styles.playerInput}
                 required
@@ -102,36 +131,27 @@ export default function Player1({
                 id=""
                 cols="30"
                 rows="10"
-                placeholder="Description"
+                placeholder={`Description ${attempts <= 8 ? 1 : ""}`}
                 ref={description}
                 className={`${styles.playerTextarea} ${styles.playerInput}`}
                 required
               ></textarea>
 
-              <button
-                type="submit"
-                className={styles.playerButton}
-                // disabled={
-                //   ((player1_2.object === "" ||
-                //     player1_2.category === "" ||
-                //     player1_2.description === "" ||
-                //     player1_3.object === "" ||
-                //     player1_3.category === "" ||
-                //     player1_3.description === "") &&
-                //     attempts <= 3) ||
-                //   ((player1_2.object === "" ||
-                //     player1_2.category === "" ||
-                //     player1_2.description === "") &&
-                //     attempts <= 8)
-                //     ? true
-                //     : false
-                // }
-              >
-                Submit
-              </button>
-              <p style={{ color: "red", margin: "1rem 1rem 2rem 3rem" }}>
-                *Please fill all the input fields
-              </p>
+              {attempts >= 10 ? (
+                <button type="submit" className={styles.playerButton}>
+                  Submit
+                </button>
+              ) : (
+                attempts > 3 && (
+                  <button
+                    type="submit"
+                    className={styles.playerButton}
+                    style={{ marginLeft: "20rem" }}
+                  >
+                    Submit
+                  </button>
+                )
+              )}
             </form>
           </div>
 
@@ -140,14 +160,14 @@ export default function Player1({
               <form className={styles.playerForm} onSubmit={handleClick}>
                 <input
                   type="text"
-                  placeholder="Object"
+                  placeholder="Object 2"
                   ref={object1}
                   className={styles.playerInput}
                   required
                 />
                 <input
                   type="text"
-                  placeholder="Category"
+                  placeholder="Category 2"
                   ref={category1}
                   className={styles.playerInput}
                   required
@@ -157,14 +177,28 @@ export default function Player1({
                   id=""
                   cols="30"
                   rows="10"
-                  placeholder="Description"
+                  placeholder="Description 2"
                   ref={description1}
                   className={`${styles.playerTextarea} ${styles.playerInput}`}
                   required
                 ></textarea>
-                {/* <button type="submit" className={styles.playerButton}>
-                Submit
-              </button> */}
+                {attempts <= 3 ? (
+                  <button type="submit" className={styles.playerButton}>
+                    Submit
+                  </button>
+                ) : null}
+                {check && attempts > 3 && (
+                  <span
+                    className={styles.shake}
+                    style={{
+                      color: "red",
+                      marginTop: "4.7rem",
+                      marginLeft: "-7.5rem",
+                    }}
+                  >
+                    Please fill all the input fields
+                  </span>
+                )}
               </form>
             </div>
           )}
@@ -174,14 +208,14 @@ export default function Player1({
               <form className={styles.playerForm} onSubmit={handleClick}>
                 <input
                   type="text"
-                  placeholder="Object"
+                  placeholder="Object 3"
                   ref={object2}
                   className={styles.playerInput}
                   required
                 />
                 <input
                   type="text"
-                  placeholder="Category"
+                  placeholder="Category 3"
                   ref={category2}
                   className={styles.playerInput}
                   required
@@ -191,21 +225,27 @@ export default function Player1({
                   id=""
                   cols="30"
                   rows="10"
-                  placeholder="Description"
+                  placeholder="Description 3"
                   ref={description2}
                   className={`${styles.playerTextarea} ${styles.playerInput}`}
                   required
                 ></textarea>
-                {/* <button type="submit" className={styles.playerButton}>
-                Submit
-              </button> */}
+                {check && (
+                  <span
+                    className={styles.shake}
+                    style={{
+                      color: "red",
+                      marginTop: "4.7rem",
+                      marginLeft: "-17.5rem",
+                    }}
+                  >
+                    Please fill all the input fields
+                  </span>
+                )}
               </form>
             </div>
           )}
         </div>
-        {/* <button type="submit" className={styles.playerButton}>
-          Submit
-        </button> */}
       </div>
     </div>
   );

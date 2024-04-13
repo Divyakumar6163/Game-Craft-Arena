@@ -18,6 +18,11 @@ export default function Player2({
   const [modal, setModal] = useState(false);
   const [score, setScore] = useState("0");
   const [shakeAttempts, setShakeAttempts] = useState(false);
+  const [able, setAble] = useState({
+    able1: false,
+    able2: false,
+    able3: false,
+  });
   const navigate = useNavigate();
   function handleGuess(event) {
     setGuess(event.target.value);
@@ -38,6 +43,7 @@ export default function Player2({
     } else if (guess === dataReceived.object) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
+      setAble((prevState) => ({ ...prevState, able1: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
     if (
@@ -77,6 +83,7 @@ export default function Player2({
     } else if (guess2 === dataReceived2.object) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
+      setAble((prevState) => ({ ...prevState, able2: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
     if (
@@ -115,6 +122,7 @@ export default function Player2({
     } else if (guess3 === dataReceived3.object) {
       setFinalAttempts((finalAttempts) => finalAttempts - -3);
       setIsSubmitted(true);
+      setAble((prevState) => ({ ...prevState, able3: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
     if (
@@ -177,10 +185,29 @@ export default function Player2({
                     onChange={handleGuess}
                     placeholder="Enter your guess"
                     required
+                    disabled={modal}
                   />
-                  <button type="submit" className={styles.submitButton}>
+                  <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={able.able1 || modal}
+                  >
                     Submit
                   </button>
+                  {able.able1 ? (
+                    <p
+                      style={{
+                        color: "green",
+                        textAlign: "center",
+                        fontSize: "1.1rem",
+                        fontWeight: "800",
+                        textShadow:
+                          "0 0 3px white, 0 0 5px white, 0 0 10px white, 0 0 15px white",
+                      }}
+                    >
+                      Correct Answer!
+                    </p>
+                  ) : null}
                 </div>
               </form>
             </div>
@@ -204,10 +231,29 @@ export default function Player2({
                       onChange={handleGuess2}
                       placeholder="Enter your guess"
                       required
+                      disabled={modal}
                     />
-                    <button type="submit" className={styles.submitButton}>
+                    <button
+                      type="submit"
+                      className={styles.submitButton}
+                      disabled={able.able2 || modal}
+                    >
                       Submit
                     </button>
+                    {able.able2 ? (
+                      <p
+                        style={{
+                          color: "green",
+                          textAlign: "center",
+                          fontSize: "1.1rem",
+                          fontWeight: "800",
+                          textShadow:
+                            "0 0 3px white, 0 0 5px white, 0 0 10px white, 0 0 15px white",
+                        }}
+                      >
+                        Correct Answer!
+                      </p>
+                    ) : null}
                   </div>
                 </form>
               </div>
@@ -231,10 +277,29 @@ export default function Player2({
                       onChange={handleGuess3}
                       placeholder="Enter your guess"
                       required
+                      disabled={modal}
                     />
-                    <button type="submit" className={styles.submitButton}>
+                    <button
+                      type="submit"
+                      className={styles.submitButton}
+                      disabled={able.able3 || modal}
+                    >
                       Submit
                     </button>
+                    {able.able3 ? (
+                      <p
+                        style={{
+                          color: "green",
+                          textAlign: "center",
+                          fontSize: "1.1rem",
+                          fontWeight: "800",
+                          textShadow:
+                            "0 0 3px white, 0 0 5px white, 0 0 10px white, 0 0 15px white",
+                        }}
+                      >
+                        Correct Answer!
+                      </p>
+                    ) : null}
                   </div>
                 </form>
               </div>
@@ -260,24 +325,28 @@ export default function Player2({
           )}
         </div>
       </div>
-      {guess === dataReceived.object &&
-        // guess2 === dataReceived.object &&
-        // guess3 === dataReceived.object &&
-        isSubmitted &&
-        modal && (
-          <Modal
-            message="You Won"
-            leftAttempts={finalAttempts - 3}
-            className={styles.modalMessage}
-            finalScore={score}
-          />
-        )}
+      {guess === dataReceived.object && isSubmitted && modal && (
+        <Modal
+          message="You Won"
+          leftAttempts={finalAttempts - 3}
+          className={styles.modalMessage}
+          finalScore={score}
+          object1=""
+          object2=""
+          object3=""
+          attempts={attempts}
+        />
+      )}
       {finalAttempts === 0 && modal && (
         <Modal
           message="You Lost"
           finalScore="0"
           leftAttempts={finalAttempts}
+          object1={dataReceived.object}
+          object2={attempts <= 8 ? dataReceived2.object : ""}
+          object3={attempts <= 3 ? dataReceived3.object : ""}
           className={styles.modalMessage}
+          attempts={attempts}
         />
       )}
     </div>

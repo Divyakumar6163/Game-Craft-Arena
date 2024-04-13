@@ -1,6 +1,7 @@
 .mainContainer{
   background: linear-gradient(#09203F , #537895);
-  height: 80vh;
+  height: auto;
+  min-height: 80vh;
 }
 .section {
     max-width: 600px;

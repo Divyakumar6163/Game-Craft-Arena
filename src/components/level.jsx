@@ -94,6 +94,9 @@ export default function Levels({
             </Button>
           </li>
         </ul>
+        {!checkName ? (
+          <p className={styleLevel.blinkingText}>Please Enter Your Names</p>
+        ) : null}
       </section>
     </div>
   );
