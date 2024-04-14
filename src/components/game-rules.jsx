@@ -39,7 +39,7 @@ export default function GameRules() {
             cursor: " pointer",
             borderRadius: "25px",
           }}
-          to="/levels"
+          to="/playingOption"
         >
           Start Playing &#129054;
         </NavLink>

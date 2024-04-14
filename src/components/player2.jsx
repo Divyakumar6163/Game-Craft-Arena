@@ -2,12 +2,96 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "./modal";
 import styles from "./player2.module.css";
+const DUMMY_DATA = [
+  {
+    object: "Apple",
+    category: "Fruit",
+    description: "Red in color",
+  },
+  {
+    object: "Car",
+    category: "Vehicle",
+    description: "Four wheeler",
+  },
+  {
+    object: "Lion",
+    category: "Animal",
+    description: "King of the jungle",
+  },
+  {
+    object: "Banana",
+    category: "Fruit",
+    description: "Yellow in color",
+  },
+  {
+    object: "Bike",
+    category: "Vehicle",
+    description: "Two wheeler",
+  },
+  {
+    object: "Tiger",
+    category: "Animal",
+    description: "King of the jungle",
+  },
+  {
+    object: "Bus",
+    category: "Vehicle",
+    description: "Large vehicle for transportation",
+  },
+  {
+    object: "Apple",
+    category: "Fruit",
+    description: "Red in color",
+  },
+  {
+    object: "Car",
+    category: "Vehicle",
+    description: "Four wheeler",
+  },
+  {
+    object: "Lion",
+    category: "Animal",
+    description: "King of the jungle",
+  },
+  {
+    object: "Grapes",
+    category: "Fruit",
+    description: "Purple in color",
+  },
+  {
+    object: "Motorcycle",
+    category: "Vehicle",
+    description: "Two wheeler with an engine",
+  },
+  {
+    object: "Elephant",
+    category: "Animal",
+    description: "Largest land mammal",
+  },
+  {
+    object: "Watermelon",
+    category: "Fruit",
+    description: "Red and juicy",
+  },
+  {
+    object: "Truck",
+    category: "Vehicle",
+    description: "Large vehicle for transportation",
+  },
+  {
+    object: "Giraffe",
+    category: "Animal",
+    description: "Tallest land mammal",
+  },
+];
 export default function Player2({
   dataReceived,
   dataReceived2,
   dataReceived3,
   attempts,
+  player1Name,
   player2Name,
+  isRobot,
 }) {
   const [finalAttempts, setFinalAttempts] = useState(attempts);
   const [guess, setGuess] = useState("");
@@ -23,6 +107,13 @@ export default function Player2({
     able3: false,
   });
   const navigate = useNavigate();
+  // useEffect(() => {
+  if (isRobot) {
+    dataReceived = DUMMY_DATA[0];
+    dataReceived2 = DUMMY_DATA[1];
+    dataReceived3 = DUMMY_DATA[2];
+  }
+  // }, []);
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -148,7 +239,8 @@ export default function Player2({
     }
   }
   function handleBack() {
-    navigate("/player1");
+    if (!isRobot) navigate("/player1");
+    else navigate("/levels");
   }
   return (
     <div className={styles.mainContainer}>
@@ -161,7 +253,9 @@ export default function Player2({
           opacity: modal ? 0.05 : 1,
         }}
       >
-        <h2 className={styles.title}>Player 2-{player2Name}</h2>
+        <h2 className={styles.title}>
+          Player {isRobot ? "" : 2}-{isRobot ? player1Name : player2Name}
+        </h2>
         <div className={styles.innerContainer}>
           <div style={{ display: "flex", displayDirection: "row" }}>
             <div className={styles.innerContent}>
@@ -333,6 +427,8 @@ export default function Player2({
             object2=""
             object3=""
             attempts={attempts}
+            isRobot={isRobot}
+            setModal={setModal}
           />
         )}
       {finalAttempts === 0 && modal && (
@@ -345,6 +441,8 @@ export default function Player2({
           object3={attempts <= 3 ? dataReceived3.object : ""}
           className={styles.modalMessage}
           attempts={attempts}
+          isRobot={isRobot}
+          setModal={setModal}
         />
       )}
     </div>

@@ -8,15 +8,23 @@ export default function Levels({
   playerNameData,
   checkName,
   setCheckName,
+  isRobot,
 }) {
   const navigate = useNavigate();
   const [changeName, setChangeName] = useState(false);
+
   function handleAttempts(attempts) {
     playerAttempts(attempts);
     setTimeout(() => {
-      navigate("/player1");
+      if (isRobot) navigate("/player2");
+      else navigate("/player1");
     }, 0);
   }
+
+  const ismpName =
+    sessionStorage.getItem("mpplayer1") && sessionStorage.getItem("mpplayer2");
+  const isspName = sessionStorage.getItem("spplayer1");
+
   function handleClick() {
     setChangeName(true);
   }
@@ -24,9 +32,8 @@ export default function Levels({
     if (changeName) {
       setCheckName(false);
     }
-    navigate("/");
+    navigate("/playingOption");
   }
-  console.log(checkName);
   return (
     <div className={styleLevel.mainContainer}>
       <button className={styleLevel.backButton} onClick={handleBack}>
@@ -40,6 +47,7 @@ export default function Levels({
         ) : null}
         {changeName ? (
           <PlayerName
+            isRobot={isRobot}
             playerNameFinal={playerNameData}
             changePlayerName={setChangeName}
             checkName={setCheckName}
@@ -52,7 +60,7 @@ export default function Levels({
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("12")}
-              disable={changeName || !checkName}
+              disable={changeName || !(!isRobot ? ismpName : isspName)}
             >
               Beginner
             </Button>
@@ -61,7 +69,7 @@ export default function Levels({
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("10")}
-              disable={changeName || !checkName}
+              disable={changeName || !(!isRobot ? ismpName : isspName)}
             >
               Easy
             </Button>
@@ -70,7 +78,7 @@ export default function Levels({
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("8")}
-              disable={changeName || !checkName}
+              disable={changeName || !(!isRobot ? ismpName : isspName)}
             >
               Intermediate
             </Button>
@@ -79,7 +87,7 @@ export default function Levels({
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("5")}
-              disable={changeName || !checkName}
+              disable={changeName || !(!isRobot ? ismpName : isspName)}
             >
               Hard
             </Button>
@@ -88,13 +96,13 @@ export default function Levels({
             <Button
               className={styleLevel.Button}
               onChange={() => handleAttempts("3")}
-              disable={changeName || !checkName}
+              disable={changeName || !(!isRobot ? ismpName : isspName)}
             >
               Professtional
             </Button>
           </li>
         </ul>
-        {!checkName ? (
+        {!(!isRobot ? ismpName : isspName) ? (
           <p className={styleLevel.blinkingText}>Please Enter Your Names</p>
         ) : null}
       </section>
