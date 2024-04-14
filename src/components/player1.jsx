@@ -42,7 +42,6 @@ export default function Player1({
       category.current.value.trim().length === 0 ||
       description.current.value.trim().length === 0
     ) {
-      // alert("Please fill all the fields");
       setCheck(true);
       return;
     }
