@@ -9,14 +9,12 @@ export default function Modal({
   object3,
   attempts,
   isRobot,
-  setModal,
 }) {
   const navigate = useNavigate();
   function handleRestart() {
     if (!isRobot) navigate("/player1");
     else {
       navigate("/");
-      // setModal(false);
     }
   }
   function handleLevel() {

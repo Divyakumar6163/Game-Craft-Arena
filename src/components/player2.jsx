@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "./modal";
 import styles from "./player2.module.css";
+import RestartModal from "./restartModal";
 const DUMMY_DATA = [
   {
     object: "Apple",
@@ -106,12 +107,13 @@ export default function Player2({
     able2: false,
     able3: false,
   });
+  const [restartModal, setRestartModal] = useState(false);
   const navigate = useNavigate();
   // useEffect(() => {
   if (isRobot) {
-    dataReceived = DUMMY_DATA[0];
-    dataReceived2 = DUMMY_DATA[1];
-    dataReceived3 = DUMMY_DATA[2];
+    dataReceived = DUMMY_DATA[10];
+    dataReceived2 = DUMMY_DATA[11];
+    dataReceived3 = DUMMY_DATA[12];
   }
   // }, []);
   function handleGuess(event) {
@@ -242,15 +244,22 @@ export default function Player2({
     if (!isRobot) navigate("/player1");
     else navigate("/levels");
   }
+  function handleRestart() {
+    setRestartModal(true);
+  }
+  console.log(restartModal);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
         Back
       </button>
+      <button className={styles.restartButton} onClick={handleRestart}>
+        Restart
+      </button>
       <div
         className={styles.playerContainer}
         style={{
-          opacity: modal ? 0.05 : 1,
+          opacity: modal || restartModal ? 0.05 : 1,
         }}
       >
         <h2 className={styles.title}>
@@ -428,7 +437,6 @@ export default function Player2({
             object3=""
             attempts={attempts}
             isRobot={isRobot}
-            setModal={setModal}
           />
         )}
       {finalAttempts === 0 && modal && (
@@ -442,9 +450,13 @@ export default function Player2({
           className={styles.modalMessage}
           attempts={attempts}
           isRobot={isRobot}
-          setModal={setModal}
         />
       )}
+      <div>
+        {restartModal && !modal && (
+          <RestartModal setRestartModal={setRestartModal} isRobot={isRobot} />
+        )}
+      </div>
     </div>
   );
 }
