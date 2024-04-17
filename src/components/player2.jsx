@@ -7,62 +7,48 @@ const DUMMY_DATA = [
   {
     object: "Apple",
     category: "Fruit",
-    description: "Red in color",
+    description: "Red in color and mostly cultivated in Jammu & Kashmir",
   },
   {
     object: "Car",
     category: "Vehicle",
-    description: "Four wheeler",
+    description: "Four wheeler Vehicle, use for the personal uses mostly.",
   },
   {
     object: "Lion",
     category: "Animal",
-    description: "King of the jungle",
+    description: "King of the jungle, brown in color",
   },
   {
     object: "Banana",
     category: "Fruit",
-    description: "Yellow in color",
+    description: "Yellow in color.It is cultivated without the use of seeds",
   },
   {
     object: "Bike",
     category: "Vehicle",
-    description: "Two wheeler",
+    description: "Two wheeler, and worked with the help of motor",
   },
   {
     object: "Tiger",
     category: "Animal",
-    description: "King of the jungle",
+    description: "A wild animal,having strips in its body",
   },
   {
     object: "Bus",
     category: "Vehicle",
-    description: "Large vehicle for transportation",
-  },
-  {
-    object: "Apple",
-    category: "Fruit",
-    description: "Red in color",
-  },
-  {
-    object: "Car",
-    category: "Vehicle",
-    description: "Four wheeler",
-  },
-  {
-    object: "Lion",
-    category: "Animal",
-    description: "King of the jungle",
+    description:
+      "Large vehicle for transportation,mainly uses for public transportation",
   },
   {
     object: "Grapes",
     category: "Fruit",
-    description: "Purple in color",
+    description: "Purple in color, also present in green color.",
   },
   {
     object: "Motorcycle",
     category: "Vehicle",
-    description: "Two wheeler with an engine",
+    description: "Two wheeler with an engine and extended version of cycles.",
   },
   {
     object: "Elephant",
@@ -72,12 +58,13 @@ const DUMMY_DATA = [
   {
     object: "Watermelon",
     category: "Fruit",
-    description: "Red and juicy",
+    description: "Red and juicy, and outer covering is in green color.",
   },
   {
     object: "Truck",
     category: "Vehicle",
-    description: "Large vehicle for transportation",
+    description:
+      "Large vehicle for transportation,not for public but specially goods transportation.",
   },
   {
     object: "Giraffe",
@@ -115,11 +102,42 @@ export default function Player2({
   const navigate = useNavigate();
   useEffect(() => {
     if (isRobot) {
-      setDataReceived(DUMMY_DATA[Math.floor(Math.random() * 15)]);
-      setDataReceived2(DUMMY_DATA[Math.floor(Math.random() * 15)]);
-      setDataReceived3(DUMMY_DATA[Math.floor(Math.random() * 15)]);
+      setDataReceived(
+        DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
+      );
+      setDataReceived2(
+        DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
+      );
+      setDataReceived3(
+        DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
+      );
     }
-  }, [runUseEffectAgain, isRobot]);
+    if (isRobot) {
+      if (
+        dataReceived.object.toLowerCase() === dataReceived2.object.toLowerCase()
+      ) {
+        setDataReceived2(
+          DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
+        );
+      }
+      if (
+        dataReceived.object.toLowerCase() ===
+          dataReceived3.object.toLowerCase() ||
+        dataReceived3.object.toLowerCase() ===
+          dataReceived2.object.toLowerCase()
+      ) {
+        setDataReceived3(
+          DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
+        );
+      }
+    }
+  }, [
+    runUseEffectAgain,
+    isRobot,
+    // dataReceived.object,
+    // dataReceived2.object,
+    // dataReceived3.object,
+  ]);
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -259,6 +277,11 @@ export default function Player2({
     setGuess("");
     setGuess2("");
     setGuess3("");
+    setAble({
+      able1: false,
+      able2: false,
+      able3: false,
+    });
   };
 
   return (
@@ -297,12 +320,12 @@ export default function Player2({
                     onChange={handleGuess}
                     placeholder="Enter your guess"
                     required
-                    disabled={modal}
+                    disabled={modal || restartModal}
                   />
                   <button
                     type="submit"
                     className={styles.submitButton}
-                    disabled={able.able1 || modal}
+                    disabled={able.able1 || modal || restartModal}
                   >
                     Submit
                   </button>
@@ -343,12 +366,12 @@ export default function Player2({
                       onChange={handleGuess2}
                       placeholder="Enter your guess"
                       required
-                      disabled={modal}
+                      disabled={modal || restartModal}
                     />
                     <button
                       type="submit"
                       className={styles.submitButton}
-                      disabled={able.able2 || modal}
+                      disabled={able.able2 || modal || restartModal}
                     >
                       Submit
                     </button>
@@ -389,12 +412,12 @@ export default function Player2({
                       onChange={handleGuess3}
                       placeholder="Enter your guess"
                       required
-                      disabled={modal}
+                      disabled={modal || restartModal}
                     />
                     <button
                       type="submit"
                       className={styles.submitButton}
-                      disabled={able.able3 || modal}
+                      disabled={able.able3 || modal || restartModal}
                     >
                       Submit
                     </button>
