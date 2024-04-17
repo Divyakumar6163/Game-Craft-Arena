@@ -9,12 +9,15 @@ export default function Modal({
   object3,
   attempts,
   isRobot,
+  setModal,
+  resethandler,
 }) {
   const navigate = useNavigate();
   function handleRestart() {
     if (!isRobot) navigate("/player1");
     else {
-      navigate("/");
+      resethandler();
+      setModal(false);
     }
   }
   function handleLevel() {
@@ -49,7 +52,7 @@ export default function Modal({
         Level
       </button>
       <button onClick={handleRestart} className={style.button}>
-        {isRobot ? "Home" : "Restart"}
+        Restart
       </button>
     </dialog>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "./modal";
 import styles from "./player2.module.css";
@@ -86,9 +86,9 @@ const DUMMY_DATA = [
   },
 ];
 export default function Player2({
-  dataReceived,
-  dataReceived2,
-  dataReceived3,
+  dataReceive,
+  dataReceive2,
+  dataReceive3,
   attempts,
   player1Name,
   player2Name,
@@ -107,15 +107,19 @@ export default function Player2({
     able2: false,
     able3: false,
   });
+  const [dataReceived, setDataReceived] = useState(dataReceive);
+  const [dataReceived2, setDataReceived2] = useState(dataReceive2);
+  const [dataReceived3, setDataReceived3] = useState(dataReceive3);
   const [restartModal, setRestartModal] = useState(false);
+  const [runUseEffectAgain, setRunUseEffectAgain] = useState(false);
   const navigate = useNavigate();
-  // useEffect(() => {
-  if (isRobot) {
-    dataReceived = DUMMY_DATA[10];
-    dataReceived2 = DUMMY_DATA[11];
-    dataReceived3 = DUMMY_DATA[12];
-  }
-  // }, []);
+  useEffect(() => {
+    if (isRobot) {
+      setDataReceived(DUMMY_DATA[Math.floor(Math.random() * 15)]);
+      setDataReceived2(DUMMY_DATA[Math.floor(Math.random() * 15)]);
+      setDataReceived3(DUMMY_DATA[Math.floor(Math.random() * 15)]);
+    }
+  }, [runUseEffectAgain, isRobot]);
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -248,6 +252,15 @@ export default function Player2({
     setRestartModal(true);
   }
   console.log(restartModal);
+
+  const resethandler = () => {
+    setRunUseEffectAgain((prev) => !prev);
+    setFinalAttempts(attempts);
+    setGuess("");
+    setGuess2("");
+    setGuess3("");
+  };
+
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
@@ -437,6 +450,8 @@ export default function Player2({
             object3=""
             attempts={attempts}
             isRobot={isRobot}
+            setModal={setModal}
+            resethandler={resethandler}
           />
         )}
       {finalAttempts === 0 && modal && (
@@ -450,11 +465,17 @@ export default function Player2({
           className={styles.modalMessage}
           attempts={attempts}
           isRobot={isRobot}
+          setModal={setModal}
+          resethandler={resethandler}
         />
       )}
       <div>
         {restartModal && !modal && (
-          <RestartModal setRestartModal={setRestartModal} isRobot={isRobot} />
+          <RestartModal
+            setRestartModal={setRestartModal}
+            isRobot={isRobot}
+            resethandler={resethandler}
+          />
         )}
       </div>
     </div>

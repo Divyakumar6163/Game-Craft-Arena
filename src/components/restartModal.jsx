@@ -1,13 +1,21 @@
 import style from "./restartModal.module.css";
 import { useNavigate } from "react-router-dom";
-export default function RestartModal({ setRestartModal, isRobot }) {
+export default function RestartModal({
+  setRestartModal,
+  isRobot,
+  resethandler,
+}) {
   const Navigate = useNavigate();
   function handleClose() {
     setRestartModal(false);
   }
   function handleRestart() {
     if (!isRobot) Navigate("/player1");
-    else Navigate("/levels");
+    else {
+      resethandler();
+      setRestartModal(false);
+      Navigate("/player2");
+    }
   }
   return (
     <dialog open className={style.modal}>

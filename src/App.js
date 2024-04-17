@@ -54,7 +54,7 @@ function App() {
       <Route path="/playingOption" element={<PlayingOption checkOption={setIsRobot}/>}/>
       <Route path="/levels" element={<Levels playerNameData={(PlayerNameValue) => PlayerName(PlayerNameValue)} playerAttempts={(numAttempt) =>PlayerAttempts(numAttempt)} checkName={checkName} setCheckName={setCheckName} isRobot={isRobot}/>}/>
       <Route path="/player1" element={<Player1 player1Name={playerName.player1} playerDetail={(playerDetail)=>PlayerDetail(playerDetail)} playerDetail1={(playerDetail1)=>PlayerDetail1(playerDetail1)} playerDetail2={(playerDetail2)=>PlayerDetail2(playerDetail2)} attempts={attempts} />}/>
-      <Route path="/player2" element={<Player2 player1Name={playerName.player1} player2Name={playerName.player2} dataReceived={PlayerData} dataReceived2={PlayerData2} dataReceived3={PlayerData3} attempts={attempts} isRobot={isRobot}/>}/>
+      <Route path="/player2" element={<Player2 player1Name={playerName.player1} player2Name={playerName.player2} dataReceive={PlayerData} dataReceive2={PlayerData2} dataReceive3={PlayerData3} attempts={attempts} isRobot={isRobot}/>}/>
       </Routes> 
      </BrowserRouter>
     </main>
