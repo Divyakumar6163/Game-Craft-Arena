@@ -61,12 +61,14 @@
   text-align: center;
   /* height: fit-content; */
   max-width: 22rem;
+  min-height: 12rem;
 }
 
 .guessInputContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin-top: 2rem; */
 }
 
 .guessInput {
