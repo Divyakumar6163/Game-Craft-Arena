@@ -19,7 +19,7 @@ export default function Choice({ playingChoiceImg }) {
         Back
       </button>
       <div className={style.innerContainer}>
-        <h1 className={style.h1}>Choose Your Game</h1>
+        <h1 className={style.h1}>Choose Your Type</h1>
         <button className={style.button} onClick={handleClick1}>
           Guess By Description
         </button>
