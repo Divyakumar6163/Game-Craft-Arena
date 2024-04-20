@@ -1,10 +1,15 @@
 import style from "./playingOption.module.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function PlayingOption({ checkOption }) {
+  const [innerContainerClass, setInnerContainerClass] = useState(false);
   const navigate = useNavigate();
   function handleClick1() {
     checkOption(true);
-    navigate("/levels");
+    setInnerContainerClass(true);
+    setTimeout(() => {
+      navigate("/choice");
+    }, 1700);
   }
   function handleClick2() {
     checkOption(false);
@@ -13,12 +18,19 @@ export default function PlayingOption({ checkOption }) {
   function handleBack() {
     navigate("/");
   }
+  console.log(innerContainerClass);
   return (
     <div className={style.playingOption}>
       <button className={style.backButton} onClick={handleBack}>
         Back
       </button>
-      <div className={style.innerContainer}>
+      <div
+        className={
+          innerContainerClass === true
+            ? `${style.innerContainer}`
+            : `${style.rotated}`
+        }
+      >
         <h1 className={style.h1}>Playing Options</h1>
         <button className={style.button} onClick={handleClick1}>
           Single Player

@@ -19,6 +19,27 @@
     box-shadow: #09203F 0px 0px 10px 5px;
     border: #09203F 1px solid;
     height: 57vh;
+    transition: transform 2s ease-in-out;
+    /* Add a smooth transition for the rotation */
+}
+
+.rotated {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #011936FF;
+    border-radius: 50px;
+    box-shadow: #09203F 0px 0px 10px 5px;
+    border: #09203F 1px solid;
+    height: 57vh;
+    transform: rotateY(360deg);
+    /* Rotate the innerContainer along the Y-axis */
 }
 
 .h1 {
