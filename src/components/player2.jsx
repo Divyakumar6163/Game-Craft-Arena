@@ -112,32 +112,7 @@ export default function Player2({
         DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
       );
     }
-    if (isRobot) {
-      if (
-        dataReceived.object.toLowerCase() === dataReceived2.object.toLowerCase()
-      ) {
-        setDataReceived2(
-          DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
-        );
-      }
-      if (
-        dataReceived.object.toLowerCase() ===
-          dataReceived3.object.toLowerCase() ||
-        dataReceived3.object.toLowerCase() ===
-          dataReceived2.object.toLowerCase()
-      ) {
-        setDataReceived3(
-          DUMMY_DATA[Math.floor(Math.random() * DUMMY_DATA.length)]
-        );
-      }
-    }
-  }, [
-    runUseEffectAgain,
-    isRobot,
-    // dataReceived.object,
-    // dataReceived2.object,
-    // dataReceived3.object,
-  ]);
+  }, [runUseEffectAgain, isRobot]);
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -160,27 +135,27 @@ export default function Player2({
       setAble((prevState) => ({ ...prevState, able1: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
+    console.log(finalAttempts);
     if (
-      finalAttempts === 1 ||
-      (attempts > 8 &&
-        attempts <= 12 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase())
+      attempts > 8 &&
+      attempts <= 12 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase()
     ) {
       setModal(true);
-    } else if (
-      finalAttempts === 1 ||
-      (attempts > 3 &&
-        attempts <= 8 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
+    }
+    if (
+      attempts > 3 &&
+      attempts <= 8 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase()
     ) {
       setModal(true);
-    } else if (
-      finalAttempts === 1 ||
-      (attempts <= 3 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
-        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
+    }
+    if (
+      attempts <= 3 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+      guess3.toLowerCase() === dataReceived3.object.toLowerCase()
     ) {
       setModal(true);
     }
@@ -199,27 +174,26 @@ export default function Player2({
       setAble((prevState) => ({ ...prevState, able2: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
+    console.log(finalAttempts);
     if (
-      finalAttempts === 1 ||
-      (attempts > 8 &&
-        attempts <= 12 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase())
+      attempts > 8 &&
+      attempts <= 12 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase()
+    ) {
+      setModal(true);
+    }
+    if (
+      attempts > 3 &&
+      attempts <= 8 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase()
     ) {
       setModal(true);
     } else if (
-      finalAttempts === 1 ||
-      (attempts > 3 &&
-        attempts <= 8 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
-    ) {
-      setModal(true);
-    } else if (
-      finalAttempts === 1 ||
-      (attempts <= 3 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
-        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
+      attempts <= 3 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+      guess3.toLowerCase() === dataReceived3.object.toLowerCase()
     ) {
       setModal(true);
     }
@@ -237,27 +211,25 @@ export default function Player2({
       setAble((prevState) => ({ ...prevState, able3: true }));
       setScore(Math.round((finalAttempts * 100) / attempts));
     }
+    console.log(finalAttempts);
     if (
-      finalAttempts === 1 ||
-      (attempts > 8 &&
-        attempts <= 12 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase())
+      attempts > 8 &&
+      attempts <= 12 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase()
     ) {
       setModal(true);
     } else if (
-      finalAttempts === 1 ||
-      (attempts > 3 &&
-        attempts <= 8 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase())
+      attempts > 3 &&
+      attempts <= 8 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase()
     ) {
       setModal(true);
     } else if (
-      finalAttempts === 1 ||
-      (attempts <= 3 &&
-        guess.toLowerCase() === dataReceived.object.toLowerCase() &&
-        guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
-        guess3.toLowerCase() === dataReceived3.object.toLowerCase())
+      attempts <= 3 &&
+      guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+      guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+      guess3.toLowerCase() === dataReceived3.object.toLowerCase()
     ) {
       setModal(true);
     }
@@ -283,26 +255,139 @@ export default function Player2({
       able3: false,
     });
   };
-
+  // console.log(finalAttempts);
+  console.log(modal);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
         Back
       </button>
-      <button className={styles.restartButton} onClick={handleRestart}>
+      <button
+        className={styles.restartButton}
+        onClick={handleRestart}
+        disabled={
+          modal ||
+          (finalAttempts === 0 &&
+            ((attempts <= 3 &&
+              ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+                guess3.toLowerCase() !== dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() ===
+                    dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() !==
+                    dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() ===
+                    dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() !==
+                    dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() ===
+                    dataReceived3.object.toLowerCase()) ||
+                (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() !==
+                    dataReceived3.object.toLowerCase()))) ||
+              (attempts > 3 &&
+                attempts <= 8 &&
+                ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() !==
+                    dataReceived2.object.toLowerCase()) ||
+                  (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() !==
+                      dataReceived2.object.toLowerCase()) ||
+                  (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() ===
+                      dataReceived2.object.toLowerCase()))) ||
+              (attempts > 8 &&
+                attempts <= 12 &&
+                guess.toLowerCase() !== dataReceived.object.toLowerCase())))
+        }
+      >
         Restart
       </button>
       <div
         className={styles.playerContainer}
         style={{
-          opacity: modal || restartModal ? 0.05 : 1,
+          opacity:
+            modal ||
+            (finalAttempts === 0 &&
+              ((attempts <= 3 &&
+                ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                  guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+                  guess3.toLowerCase() !==
+                    dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() !==
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() ===
+                      dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() ===
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() !==
+                      dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() ===
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() ===
+                      dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() !==
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() !==
+                      dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() !==
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() ===
+                      dataReceived3.object.toLowerCase()) ||
+                  (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() ===
+                      dataReceived2.object.toLowerCase() &&
+                    guess3.toLowerCase() !==
+                      dataReceived3.object.toLowerCase()))) ||
+                (attempts > 3 &&
+                  attempts <= 8 &&
+                  ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                    guess2.toLowerCase() !==
+                      dataReceived2.object.toLowerCase()) ||
+                    (guess.toLowerCase() ===
+                      dataReceived.object.toLowerCase() &&
+                      guess2.toLowerCase() !==
+                        dataReceived2.object.toLowerCase()) ||
+                    (guess.toLowerCase() !==
+                      dataReceived.object.toLowerCase() &&
+                      guess2.toLowerCase() ===
+                        dataReceived2.object.toLowerCase()))) ||
+                (attempts > 8 &&
+                  attempts <= 12 &&
+                  guess.toLowerCase() !==
+                    dataReceived.object.toLowerCase()))) ||
+            restartModal
+              ? 0.05
+              : 1,
         }}
       >
         <h2 className={styles.title}>
           Player {isRobot ? "" : 2}-{isRobot ? player1Name : player2Name}
         </h2>
         <div className={styles.innerContainer}>
-          <div style={{ display: "flex", displayDirection: "row" }}>
+          <div
+            style={{
+              display: "flex",
+              displayDirection: "row",
+              minHeight: "20rem",
+            }}
+          >
             <div className={styles.innerContent}>
               <div className={styles.descriptionContainer}>
                 <p style={{ color: "#F1F3FFFF" }}>
@@ -320,12 +405,143 @@ export default function Player2({
                     onChange={handleGuess}
                     placeholder="Enter your guess"
                     required
-                    disabled={modal || restartModal}
+                    disabled={
+                      modal ||
+                      (finalAttempts === 0 &&
+                        ((attempts <= 3 &&
+                          ((guess.toLowerCase() !==
+                            dataReceived.object.toLowerCase() &&
+                            guess2.toLowerCase() !==
+                              dataReceived2.object.toLowerCase() &&
+                            guess3.toLowerCase() !==
+                              dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()))) ||
+                          (attempts > 3 &&
+                            attempts <= 8 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase()))) ||
+                          (attempts > 8 &&
+                            attempts <= 12 &&
+                            guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase()))) ||
+                      restartModal
+                    }
                   />
                   <button
                     type="submit"
                     className={styles.submitButton}
-                    disabled={able.able1 || modal || restartModal}
+                    disabled={
+                      able.able1 ||
+                      modal ||
+                      (finalAttempts === 0 &&
+                        ((attempts <= 3 &&
+                          ((guess.toLowerCase() !==
+                            dataReceived.object.toLowerCase() &&
+                            guess2.toLowerCase() !==
+                              dataReceived2.object.toLowerCase() &&
+                            guess3.toLowerCase() !==
+                              dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() ===
+                                dataReceived3.object.toLowerCase()) ||
+                            (guess.toLowerCase() ===
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() ===
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()))) ||
+                          (attempts > 3 &&
+                            attempts <= 8 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase()))) ||
+                          (attempts > 8 &&
+                            attempts <= 12 &&
+                            guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase()))) ||
+                      restartModal
+                    }
                   >
                     Submit
                   </button>
@@ -366,12 +582,143 @@ export default function Player2({
                       onChange={handleGuess2}
                       placeholder="Enter your guess"
                       required
-                      disabled={modal || restartModal}
+                      disabled={
+                        modal ||
+                        (finalAttempts === 0 &&
+                          ((attempts <= 3 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()))) ||
+                            (attempts > 3 &&
+                              attempts <= 8 &&
+                              ((guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() ===
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() !==
+                                    dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() !==
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() ===
+                                    dataReceived2.object.toLowerCase()))) ||
+                            (attempts > 8 &&
+                              attempts <= 12 &&
+                              guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase()))) ||
+                        restartModal
+                      }
                     />
                     <button
                       type="submit"
                       className={styles.submitButton}
-                      disabled={able.able2 || modal || restartModal}
+                      disabled={
+                        able.able2 ||
+                        modal ||
+                        (finalAttempts === 0 &&
+                          ((attempts <= 3 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()))) ||
+                            (attempts > 3 &&
+                              attempts <= 8 &&
+                              ((guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() ===
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() !==
+                                    dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() !==
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() ===
+                                    dataReceived2.object.toLowerCase()))) ||
+                            (attempts > 8 &&
+                              attempts <= 12 &&
+                              guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase()))) ||
+                        restartModal
+                      }
                     >
                       Submit
                     </button>
@@ -412,12 +759,143 @@ export default function Player2({
                       onChange={handleGuess3}
                       placeholder="Enter your guess"
                       required
-                      disabled={modal || restartModal}
+                      disabled={
+                        modal ||
+                        (finalAttempts === 0 &&
+                          ((attempts <= 3 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()))) ||
+                            (attempts > 3 &&
+                              attempts <= 8 &&
+                              ((guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() ===
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() !==
+                                    dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() !==
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() ===
+                                    dataReceived2.object.toLowerCase()))) ||
+                            (attempts > 8 &&
+                              attempts <= 12 &&
+                              guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase()))) ||
+                        restartModal
+                      }
                     />
                     <button
                       type="submit"
                       className={styles.submitButton}
-                      disabled={able.able3 || modal || restartModal}
+                      disabled={
+                        able.able3 ||
+                        modal ||
+                        (finalAttempts === 0 &&
+                          ((attempts <= 3 &&
+                            ((guess.toLowerCase() !==
+                              dataReceived.object.toLowerCase() &&
+                              guess2.toLowerCase() !==
+                                dataReceived2.object.toLowerCase() &&
+                              guess3.toLowerCase() !==
+                                dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() ===
+                                  dataReceived3.object.toLowerCase()) ||
+                              (guess.toLowerCase() ===
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() ===
+                                  dataReceived2.object.toLowerCase() &&
+                                guess3.toLowerCase() !==
+                                  dataReceived3.object.toLowerCase()))) ||
+                            (attempts > 3 &&
+                              attempts <= 8 &&
+                              ((guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase() &&
+                                guess2.toLowerCase() !==
+                                  dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() ===
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() !==
+                                    dataReceived2.object.toLowerCase()) ||
+                                (guess.toLowerCase() !==
+                                  dataReceived.object.toLowerCase() &&
+                                  guess2.toLowerCase() ===
+                                    dataReceived2.object.toLowerCase()))) ||
+                            (attempts > 8 &&
+                              attempts <= 12 &&
+                              guess.toLowerCase() !==
+                                dataReceived.object.toLowerCase()))) ||
+                        restartModal
+                      }
                     >
                       Submit
                     </button>
@@ -477,21 +955,55 @@ export default function Player2({
             resethandler={resethandler}
           />
         )}
-      {finalAttempts === 0 && modal && (
-        <Modal
-          message="You Lost"
-          finalScore="0"
-          leftAttempts={finalAttempts}
-          object1={dataReceived.object}
-          object2={attempts <= 8 ? dataReceived2.object : ""}
-          object3={attempts <= 3 ? dataReceived3.object : ""}
-          className={styles.modalMessage}
-          attempts={attempts}
-          isRobot={isRobot}
-          setModal={setModal}
-          resethandler={resethandler}
-        />
-      )}
+      {finalAttempts === 0 &&
+        ((attempts <= 3 &&
+          ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+            guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+            guess3.toLowerCase() !== dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() === dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() !== dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() === dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() !== dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() !== dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() === dataReceived3.object.toLowerCase()) ||
+            (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() === dataReceived2.object.toLowerCase() &&
+              guess3.toLowerCase() !== dataReceived3.object.toLowerCase()))) ||
+          (attempts > 3 &&
+            attempts <= 8 &&
+            ((guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+              guess2.toLowerCase() !== dataReceived2.object.toLowerCase()) ||
+              (guess.toLowerCase() === dataReceived.object.toLowerCase() &&
+                guess2.toLowerCase() !== dataReceived2.object.toLowerCase()) ||
+              (guess.toLowerCase() !== dataReceived.object.toLowerCase() &&
+                guess2.toLowerCase() ===
+                  dataReceived2.object.toLowerCase()))) ||
+          (attempts > 8 &&
+            attempts <= 12 &&
+            guess.toLowerCase() !== dataReceived.object.toLowerCase())) && (
+          <Modal
+            message="You Lost"
+            finalScore="0"
+            leftAttempts={finalAttempts}
+            object1={dataReceived.object}
+            object2={attempts <= 8 ? dataReceived2.object : ""}
+            object3={attempts <= 3 ? dataReceived3.object : ""}
+            className={styles.modalMessage}
+            attempts={attempts}
+            isRobot={isRobot}
+            setModal={setModal}
+            resethandler={resethandler}
+          />
+        )}
       <div>
         {restartModal && !modal && (
           <RestartModal
