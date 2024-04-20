@@ -32,7 +32,8 @@ export default function Levels({
     if (changeName) {
       setCheckName(false);
     }
-    navigate("/playingOption");
+    if (isRobot) navigate("/choice");
+    else navigate("/playingOption");
   }
   return (
     <div className={styleLevel.mainContainer}>
