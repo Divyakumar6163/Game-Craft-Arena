@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Guess-the-Name-Game/static/css/main.c8900a7b.css",
+    "main.js": "/Guess-the-Name-Game/static/js/main.64c4b024.js",
+    "static/js/453.6ca11368.chunk.js": "/Guess-the-Name-Game/static/js/453.6ca11368.chunk.js",
+    "index.html": "/Guess-the-Name-Game/index.html",
+    "main.c8900a7b.css.map": "/Guess-the-Name-Game/static/css/main.c8900a7b.css.map",
+    "main.64c4b024.js.map": "/Guess-the-Name-Game/static/js/main.64c4b024.js.map",
+    "453.6ca11368.chunk.js.map": "/Guess-the-Name-Game/static/js/453.6ca11368.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8900a7b.css",
+    "static/js/main.64c4b024.js"
+  ]
+}
