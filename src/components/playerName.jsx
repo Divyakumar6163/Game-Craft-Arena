@@ -27,8 +27,8 @@ export default function PlayerName({
   function handleClick() {
     if (
       !isRobot
-        ? name.player1 === "" || name.player2 === ""
-        : name.player1 === ""
+        ? name.player1 === null || name.player2 === null
+        : name.player1 === null
     ) {
       setIsSubmit(true);
       // console.log(name);
@@ -50,7 +50,7 @@ export default function PlayerName({
   } else {
     checkName(true);
   }
-
+  console.log(name);
   return (
     <div
       className={styles.containerPlayer}
