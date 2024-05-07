@@ -12,7 +12,6 @@ export default function Levels({
 }) {
   const navigate = useNavigate();
   const [changeName, setChangeName] = useState(false);
-
   function handleAttempts(attempts) {
     playerAttempts(attempts);
     setTimeout(() => {
@@ -35,6 +34,7 @@ export default function Levels({
     if (isRobot) navigate("/choice");
     else navigate("/playingOption");
   }
+  console.log(changeName);
   return (
     <div className={styleLevel.mainContainer}>
       <button className={styleLevel.backButton} onClick={handleBack}>

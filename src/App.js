@@ -46,12 +46,13 @@ function App() {
   function PlayerName(PlayerNameValue){
     setPlayerName(PlayerNameValue);
   }
+
   // console.log(isRobot);
   return (
     <main>
     <Header/>
-     <BrowserRouter>
-     <Routes>
+     <BrowserRouter basename={"Guess-the-Name-Game"}>
+     <Routes >
       <Route path="/" element={<GameRules/>}/>
       <Route path="/playingOption" element={<PlayingOption checkOption={setIsRobot} playingChoiceImg={setPlayingChoiceImg}/>}/>
       <Route path="/choice" element={<Choice playingChoiceImg={setPlayingChoiceImg}/>}/>
