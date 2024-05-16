@@ -20,11 +20,11 @@ const objectScheme = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: [true, "Please add the category of the object"],
+    // required: [true, "Please add the category of the object"],
   },
   description: {
     type: String,
-    required: [true, "Please add a description about the object"],
+    // required: [true, "Please add a description about the object"],
   },
   image: {
     type: String,

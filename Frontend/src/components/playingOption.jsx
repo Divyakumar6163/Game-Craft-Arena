@@ -1,7 +1,7 @@
 import style from "./playingOption.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function PlayingOption({ checkOption, playingChoiceImg }) {
+export default function PlayingOption({ checkOption }) {
   const [innerContainerClass, setInnerContainerClass] = useState(false);
   const navigate = useNavigate();
   function handleClick1() {
@@ -13,13 +13,14 @@ export default function PlayingOption({ checkOption, playingChoiceImg }) {
   }
   function handleClick2() {
     checkOption(false);
-    playingChoiceImg(false);
-    navigate("/levels");
+    setInnerContainerClass(true);
+    setTimeout(() => {
+      navigate("/choice");
+    }, 1700);
   }
   function handleBack() {
     navigate("/");
   }
-  console.log(innerContainerClass);
   return (
     <div className={style.playingOption}>
       <button className={style.backButton} onClick={handleBack}>

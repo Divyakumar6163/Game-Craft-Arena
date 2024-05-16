@@ -31,10 +31,8 @@ export default function Levels({
     if (changeName) {
       setCheckName(false);
     }
-    if (isRobot) navigate("/choice");
-    else navigate("/playingOption");
+    navigate("/choice");
   }
-  console.log(changeName);
   return (
     <div className={styleLevel.mainContainer}>
       <button className={styleLevel.backButton} onClick={handleBack}>
