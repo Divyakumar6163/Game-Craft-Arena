@@ -9,6 +9,7 @@ export default function Player1({
   playerDetail2,
   attempts,
 }) {
+  let data;
   const object = useRef();
   const category = useRef();
   const description = useRef();
@@ -83,22 +84,23 @@ export default function Player1({
         description: description2.current.value,
       });
     }
-    const data = [player1, player1_2, player1_3];
+    data = {
+      object: object.current.value,
+      category: category.current.value,
+      description: description.current.value,
+      // image: image.current.value
+    };
     // console.log(data);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/player1 ",
-        data[0],
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("Data posted successfully:", response.data);
-      // setTimeout(() => {
-      //   navigate("/player2");
-      // }, 0);
+      const response = await axios.post("http://localhost:8000/player1", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      // console.log("Data posted successfully:", response.data);
+      setTimeout(() => {
+        navigate("/player2");
+      }, 0);
       return response.data;
     } catch (error) {
       console.error("Error posting data:", error);
