@@ -42,7 +42,10 @@ export default function Player1({
     image: "",
   });
   const [check, setCheck] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [base64, setBase64] = useState("");
+  const [base64_1, setBase64_1] = useState("");
+  const [base64_2, setBase64_2] = useState("");
+  const [selectedURL, setSelectedURL] = useState(null);
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
@@ -65,10 +68,17 @@ export default function Player1({
         setCheck(true);
         return;
       }
-      setPlayer1({
-        object: object.current.value,
-        image: image.current.value,
-      });
+      if (!base64) {
+        setPlayer1({
+          object: object.current.value,
+          image: image.current.value,
+        });
+      } else {
+        setPlayer1({
+          object: object.current.value,
+          image: base64,
+        });
+      }
       // console.log(object.current.value);
       // console.log(image.current.value);
     }
@@ -91,10 +101,17 @@ export default function Player1({
         setCheck(true);
         return;
       }
-      setPlayer1_2({
-        object: object1.current.value,
-        image: image1.current.value,
-      });
+      if (!base64_1) {
+        setPlayer1_2({
+          object: object1.current.value,
+          image: image1.current.value,
+        });
+      } else {
+        setPlayer1_2({
+          object: object1.current.value,
+          image: base64_1,
+        });
+      }
     }
     if (attempts <= 3 && !playingChoiceImg) {
       if (
@@ -116,10 +133,17 @@ export default function Player1({
         setCheck(true);
         return;
       }
-      setPlayer1_3({
-        object: object2.current.value,
-        image: image2.current.value,
-      });
+      if (!base64_2) {
+        setPlayer1_3({
+          object: object2.current.value,
+          image: image2.current.value,
+        });
+      } else {
+        setPlayer1_3({
+          object: object2.current.value,
+          image: base64_2,
+        });
+      }
     }
     if (!playingChoiceImg) {
       data = {
@@ -128,10 +152,17 @@ export default function Player1({
         description: description.current.value,
       };
     } else if (playingChoiceImg) {
-      data = {
-        object: object.current.value,
-        image: image.current.value,
-      };
+      if (!base64) {
+        data = {
+          object: object.current.value,
+          image: image.current.value,
+        };
+      } else {
+        data = {
+          object: object.current.value,
+          image: base64,
+        };
+      }
     }
     // console.log(data);
     try {
@@ -158,15 +189,32 @@ export default function Player1({
   useEffect(() => {
     playerDetail2(player1_3);
   }, [playerDetail2, player1_3]);
-
+  const handleFileURL = () => {
+    setSelectedURL(true);
+  };
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    if (file) {
+      convertToBase64(file);
+    }
+  };
+
+  const convertToBase64 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setBase64(reader.result);
+      setSelectedURL(false);
+    };
+    reader.onerror = (error) => {
+      console.error("Error reading file: ", error);
+    };
   };
 
   function handleBack() {
     navigate("/levels");
   }
-
+  console.log(base64);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
@@ -207,15 +255,27 @@ export default function Player1({
                 ></textarea>
               ) : (
                 <>
-                  <input
-                    type="text"
-                    placeholder="Image URL"
-                    ref={image}
-                    className={styles.playerInput}
-                    required
-                  />
-                  <p> OR</p>
-                  <input type="file" onChange={handleFileChange} />
+                  {!base64 && (
+                    <input
+                      type="text"
+                      placeholder="Image URL"
+                      ref={image}
+                      onChange={handleFileURL}
+                      className={styles.playerInput}
+                      required
+                    />
+                  )}
+                  {selectedURL === null && <p> OR</p>}
+                  {!selectedURL && (
+                    <input type="file" onChange={handleFileChange} />
+                  )}
+                  {base64 && !selectedURL && (
+                    <img
+                      src={base64}
+                      alt="Selected"
+                      style={{ width: "200px", marginTop: "10px" }}
+                    />
+                  )}
                 </>
               )}
 
@@ -341,7 +401,11 @@ export default function Player1({
                       required
                     />
                     <p> OR</p>
-                    <input type="file" onChange={handleFileChange} />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                    />
                   </>
                 )}
 

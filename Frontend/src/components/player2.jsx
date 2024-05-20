@@ -204,6 +204,7 @@ export default function Player2({
       able3: false,
     });
   };
+  console.log(dataReceived.image);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
