@@ -12,16 +12,19 @@ function App() {
     object: "",
     category: "",
     description: "",
+    image: "",
   });
   const [PlayerData2, setPlayerData2] = useState({
     object: "",
     category: "",
     description: "",
+    image: "",
   });
   const [PlayerData3, setPlayerData3] = useState({
     object: "",
     category: "",
     description: "",
+    image: "",
   });
   const [attempts, setAttempts] = useState();
   const [playerName, setPlayerName] = useState({
