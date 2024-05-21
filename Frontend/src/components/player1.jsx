@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { ImCross } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import styles from "./player1.module.css"; // Import the styles
 import axios from "axios";
@@ -46,6 +47,8 @@ export default function Player1({
   const [base64_1, setBase64_1] = useState("");
   const [base64_2, setBase64_2] = useState("");
   const [selectedURL, setSelectedURL] = useState(null);
+  const [selectedURL1, setSelectedURL1] = useState(null);
+  const [selectedURL2, setSelectedURL2] = useState(null);
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
@@ -64,11 +67,20 @@ export default function Player1({
         description: description.current.value,
       });
     } else if (playingChoiceImg) {
-      if (object.current.value.trim().length === 0) {
+      if (
+        (!base64 &&
+          (object.current.value.trim().length === 0 ||
+            image.current.value.trim().length === 0)) ||
+        (base64 &&
+          (object.current.value.trim().length === 0 ||
+            base64.trim().length === 0))
+      ) {
         setCheck(true);
+        // setSelectedURL(false);
         return;
       }
       if (!base64) {
+        // setSelectedURL(true);
         setPlayer1({
           object: object.current.value,
           image: image.current.value,
@@ -79,8 +91,6 @@ export default function Player1({
           image: base64,
         });
       }
-      // console.log(object.current.value);
-      // console.log(image.current.value);
     }
     if (attempts <= 8 && !playingChoiceImg) {
       if (
@@ -97,7 +107,14 @@ export default function Player1({
         description: description1.current.value,
       });
     } else if (attempts <= 8 && playingChoiceImg) {
-      if (object1.current.value.trim().length === 0) {
+      if (
+        (!base64_1 &&
+          (object1.current.value.trim().length === 0 ||
+            image1.current.value.trim().length === 0)) ||
+        (base64_1 &&
+          (object1.current.value.trim().length === 0 ||
+            base64_1.trim().length === 0))
+      ) {
         setCheck(true);
         return;
       }
@@ -129,7 +146,14 @@ export default function Player1({
         description: description2.current.value,
       });
     } else if (attempts <= 3 && playingChoiceImg) {
-      if (object2.current.value.trim().length === 0) {
+      if (
+        (!base64_2 &&
+          (object2.current.value.trim().length === 0 ||
+            image2.current.value.trim().length === 0)) ||
+        (base64_2 &&
+          (object2.current.value.trim().length === 0 ||
+            base64_2.trim().length === 0))
+      ) {
         setCheck(true);
         return;
       }
@@ -189,13 +213,35 @@ export default function Player1({
   useEffect(() => {
     playerDetail2(player1_3);
   }, [playerDetail2, player1_3]);
+  // useEffect(() => {
+  //   if (!image.current) setSelectedURL(false);
+  //   else setSelectedURL(true);
+  // }, [image.current]);
   const handleFileURL = () => {
     setSelectedURL(true);
+  };
+  const handleFileURL1 = () => {
+    setSelectedURL1(true);
+  };
+  const handleFileURL2 = () => {
+    setSelectedURL2(true);
   };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       convertToBase64(file);
+    }
+  };
+  const handleFileChange1 = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      convertToBase64_1(file);
+    }
+  };
+  const handleFileChange2 = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      convertToBase64_2(file);
     }
   };
 
@@ -210,11 +256,45 @@ export default function Player1({
       console.error("Error reading file: ", error);
     };
   };
-
+  const convertToBase64_1 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setBase64_1(reader.result);
+      setSelectedURL1(false);
+    };
+    reader.onerror = (error) => {
+      console.error("Error reading file: ", error);
+    };
+  };
+  const convertToBase64_2 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setBase64_2(reader.result);
+      setSelectedURL2(false);
+    };
+    reader.onerror = (error) => {
+      console.error("Error reading file: ", error);
+    };
+  };
+  const handleCross = () => {
+    setBase64("");
+    setSelectedURL(null);
+  };
+  const handleCross1 = () => {
+    setBase64_1("");
+    setSelectedURL1(null);
+  };
+  const handleCross2 = () => {
+    setBase64_2("");
+    setSelectedURL2(null);
+  };
   function handleBack() {
     navigate("/levels");
   }
-  console.log(base64);
+  // console.log(base64);
+  // console.log(image.current.length);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
@@ -265,15 +345,41 @@ export default function Player1({
                       required
                     />
                   )}
-                  {selectedURL === null && <p> OR</p>}
+                  {selectedURL === null && (
+                    <p
+                      style={{
+                        color: "white",
+                        textAlign: "center",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      OR
+                    </p>
+                  )}
                   {!selectedURL && (
-                    <input type="file" onChange={handleFileChange} />
+                    <input
+                      type="file"
+                      onChange={handleFileChange}
+                      className={styles.fileInput}
+                    />
+                  )}
+                  {base64 && !selectedURL && (
+                    <ImCross
+                      onClick={handleCross}
+                      style={{
+                        marginTop: "1vh",
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                    />
                   )}
                   {base64 && !selectedURL && (
                     <img
                       src={base64}
                       alt="Selected"
-                      style={{ width: "200px", marginTop: "10px" }}
+                      // style={{ width: "200px", marginTop: "10px" }}
+                      className={styles.fileImg}
                     />
                   )}
                 </>
@@ -288,7 +394,7 @@ export default function Player1({
                   <button
                     type="submit"
                     className={styles.playerButton}
-                    style={{ marginLeft: "20rem" }}
+                    style={{ marginLeft: "20rem", marginTop: "9vh" }}
                   >
                     Submit
                   </button>
@@ -329,15 +435,53 @@ export default function Player1({
                   ></textarea>
                 ) : (
                   <>
-                    <input
-                      type="text"
-                      placeholder="Image URL"
-                      ref={image1}
-                      className={styles.playerInput}
-                      required
-                    />
-                    <p> OR</p>
-                    <input type="file" onChange={handleFileChange} />
+                    {!base64_1 && (
+                      <input
+                        type="text"
+                        placeholder="Image URL"
+                        ref={image1}
+                        onChange={handleFileURL1}
+                        className={styles.playerInput}
+                        required
+                      />
+                    )}
+                    {selectedURL1 === null && (
+                      <p
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontWeight: "700",
+                        }}
+                      >
+                        {" "}
+                        OR
+                      </p>
+                    )}
+                    {!selectedURL1 && (
+                      <input
+                        type="file"
+                        onChange={handleFileChange1}
+                        className={styles.fileInput}
+                      />
+                    )}
+                    {base64_1 && !selectedURL1 && (
+                      <ImCross
+                        onClick={handleCross1}
+                        style={{
+                          marginTop: "1vh",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                    {base64_1 && !selectedURL1 && (
+                      <img
+                        src={base64_1}
+                        alt="Selected"
+                        className={styles.fileImg}
+                        // style={{ marginTop: "9vh" }}
+                      />
+                    )}
                   </>
                 )}
                 {attempts <= 3 ? (
@@ -350,11 +494,11 @@ export default function Player1({
                     className={styles.shake}
                     style={{
                       color: "red",
-                      marginTop: "4.7rem",
+                      marginTop: "13.2rem",
                       marginLeft: "-7.5rem",
                     }}
                   >
-                    Please fill all the input fields
+                    *Please fill all the input fields
                   </span>
                 )}
               </form>
@@ -393,19 +537,53 @@ export default function Player1({
                   ></textarea>
                 ) : (
                   <>
-                    <input
-                      type="text"
-                      placeholder="Image URL"
-                      ref={image2}
-                      className={styles.playerInput}
-                      required
-                    />
-                    <p> OR</p>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFileChange}
-                    />
+                    {!base64_2 && (
+                      <input
+                        type="text"
+                        placeholder="Image URL"
+                        ref={image2}
+                        onChange={handleFileURL2}
+                        className={styles.playerInput}
+                        required
+                      />
+                    )}
+                    {selectedURL2 === null && (
+                      <p
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontWeight: "700",
+                        }}
+                      >
+                        {" "}
+                        OR
+                      </p>
+                    )}
+                    {!selectedURL2 && (
+                      <input
+                        type="file"
+                        onChange={handleFileChange2}
+                        className={styles.fileInput}
+                      />
+                    )}
+                    {base64_2 && !selectedURL2 && (
+                      <ImCross
+                        onClick={handleCross2}
+                        style={{
+                          marginTop: "1vh",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                    {base64_2 && !selectedURL2 && (
+                      <img
+                        src={base64_2}
+                        alt="Selected"
+                        className={styles.fileImg}
+                        // style={{ width: "200px", marginTop: "10px" }}
+                      />
+                    )}
                   </>
                 )}
 
@@ -414,11 +592,11 @@ export default function Player1({
                     className={styles.shake}
                     style={{
                       color: "red",
-                      marginTop: "4.7rem",
+                      marginTop: "18vh",
                       marginLeft: "-17.5rem",
                     }}
                   >
-                    Please fill all the input fields
+                    *Please fill all the input fields
                   </span>
                 )}
               </form>

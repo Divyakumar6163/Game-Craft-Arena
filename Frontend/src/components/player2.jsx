@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { useQuery } from "react-query";
 import axios from "axios";
 import Modal from "./modal";
 import styles from "./player2.module.css";
@@ -32,12 +33,30 @@ export default function Player2({
   const [dataReceived3, setDataReceived3] = useState(dataReceive3);
   const [restartModal, setRestartModal] = useState(false);
   const [runUseEffectAgain, setRunUseEffectAgain] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
+    let response;
     if (isRobot) {
+      if (
+        dataReceived.object === "" ||
+        dataReceived2.object === "" ||
+        dataReceived3.object === ""
+      ) {
+        setLoading(true);
+        console.log(loading);
+      }
       const fetchData = async () => {
         try {
-          const response = await axios.get("http://localhost:8000/player2");
+          if (playingChoiceImg) {
+            response = await axios.get("http://localhost:8000/player2", {
+              params: { keyword: "image" },
+            });
+          } else {
+            response = await axios.get("http://localhost:8000/player2", {
+              params: { keyword: null },
+            });
+          }
           setDataReceived(
             response.data[Math.floor(Math.random() * response.data.length)]
           );
@@ -47,11 +66,12 @@ export default function Player2({
           setDataReceived3(
             response.data[Math.floor(Math.random() * response.data.length)]
           );
-          // setLoading(false);
+
+          setLoading(false);
         } catch (err) {
           console.log(err);
           // setError(error);
-          // setLoading(false);
+          setLoading(false);
         }
       };
 
@@ -63,7 +83,7 @@ export default function Player2({
       //   return <p>Error loading data: {error.message}</p>;
       // }
     }
-  }, [runUseEffectAgain, isRobot]);
+  }, [runUseEffectAgain, isRobot, playingChoiceImg]);
   function handleGuess(event) {
     setGuess(event.target.value);
   }
@@ -204,7 +224,7 @@ export default function Player2({
       able3: false,
     });
   };
-  console.log(dataReceived.image);
+  console.log(dataReceived);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
@@ -341,15 +361,18 @@ export default function Player2({
                 <p style={{ color: "#F1F3FFFF" }}>
                   Guess the object {attempts <= 8 && "1"}:
                 </p>
-                {!playingChoiceImg && (
+                {loading && (
+                  <p style={{ color: "white", marginTop: "6vh" }}>Loading...</p>
+                )}
+                {!playingChoiceImg && !loading && (
                   <p style={{ color: "#F1F3FFFF" }}>{dataReceived.category}</p>
                 )}
-                {!playingChoiceImg && (
+                {!playingChoiceImg && !loading && (
                   <p style={{ color: "#F1F3FFFF" }}>
                     {dataReceived.description}
                   </p>
                 )}
-                {playingChoiceImg && (
+                {playingChoiceImg && !loading && (
                   <img
                     className={styles.image}
                     src={dataReceived.image}
@@ -528,17 +551,22 @@ export default function Player2({
               <div className={styles.innerContent}>
                 <div className={styles.descriptionContainer}>
                   <p style={{ color: "#F1F3FFFF" }}>Guess the object 2:</p>
-                  {!playingChoiceImg && (
+                  {loading && (
+                    <p style={{ color: "white", marginTop: "6vh" }}>
+                      Loading...
+                    </p>
+                  )}
+                  {!playingChoiceImg && !loading && (
                     <p style={{ color: "#F1F3FFFF" }}>
                       {dataReceived2.category}
                     </p>
                   )}
-                  {!playingChoiceImg && (
+                  {!playingChoiceImg && !loading && (
                     <p style={{ color: "#F1F3FFFF" }}>
                       {dataReceived2.description}
                     </p>
                   )}
-                  {playingChoiceImg && (
+                  {playingChoiceImg && !loading && (
                     <img
                       className={styles.image}
                       src={dataReceived2.image}
@@ -719,17 +747,22 @@ export default function Player2({
               <div className={styles.innerContent}>
                 <div className={styles.descriptionContainer}>
                   <p style={{ color: "#F1F3FFFF" }}>Guess the object 3:</p>
-                  {!playingChoiceImg && (
+                  {loading && (
+                    <p style={{ color: "white", marginTop: "6vh" }}>
+                      Loading...
+                    </p>
+                  )}
+                  {!playingChoiceImg && !loading && (
                     <p style={{ color: "#F1F3FFFF" }}>
                       {dataReceived3.category}
                     </p>
                   )}
-                  {!playingChoiceImg && (
+                  {!playingChoiceImg && !loading && (
                     <p style={{ color: "#F1F3FFFF" }}>
                       {dataReceived3.description}
                     </p>
                   )}
-                  {playingChoiceImg && (
+                  {playingChoiceImg && !loading && (
                     <img
                       className={styles.image}
                       src={dataReceived3.image}
