@@ -1,12 +1,13 @@
-import Header from "./components/header";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Levels from "./components/level";
-import GameRules from "./components/game-rules";
-import Player1 from "./components/player1";
-import Player2 from "./components/player2";
-import PlayingOption from "./components/playingOption";
-import Choice from "./components/choice";
+import Levels from "./components/guess-the-name-game/level";
+import GameRules from "./components/guess-the-name-game/game-rules";
+import Player1 from "./components/guess-the-name-game/player1";
+import Player2 from "./components/guess-the-name-game/player2";
+import PlayingOption from "./components/guess-the-name-game/playingOption";
+import Choice from "./components/guess-the-name-game/choice";
+import GameChoice from "./components/Landing Page/gameChoice.jsx";
 import { useState } from "react";
+import TicTacToe from "./components/tic-tac-toe/gameFile.jsx";
 function App() {
   const [PlayerData, setPlayerData] = useState({
     object: "",
@@ -50,15 +51,17 @@ function App() {
     setPlayerName(PlayerNameValue);
   }
 
-  // console.log(isRobot);
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <BrowserRouter basename={"Guess-the-Name-Game"}>
         <Routes>
-          <Route path="/" element={<GameRules />} />
+          <Route path="/" element={<GameChoice />} />
+          <Route path="/tic-tac-toe" element={<TicTacToe />} />
+          <Route path="/" element={<GameChoice />} />
+          <Route path="/guess-the-object" element={<GameRules />} />
           <Route
-            path="/playingOption"
+            path="/guess-the-object/playingOption"
             element={
               <PlayingOption
                 checkOption={setIsRobot}
@@ -67,11 +70,11 @@ function App() {
             }
           />
           <Route
-            path="/choice"
+            path="/guess-the-object/choice"
             element={<Choice playingChoiceImg={setPlayingChoiceImg} />}
           />
           <Route
-            path="/levels"
+            path="/guess-the-object/levels"
             element={
               <Levels
                 playerNameData={(PlayerNameValue) =>
@@ -85,7 +88,7 @@ function App() {
             }
           />
           <Route
-            path="/player1"
+            path="/guess-the-object/player1"
             element={
               <Player1
                 player1Name={playerName.player1}
@@ -98,7 +101,7 @@ function App() {
             }
           />
           <Route
-            path="/player2"
+            path="/guess-the-object/player2"
             element={
               <Player2
                 player1Name={playerName.player1}

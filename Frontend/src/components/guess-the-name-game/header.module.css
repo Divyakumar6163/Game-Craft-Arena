@@ -3,21 +3,18 @@
     font-size: 3rem;
 }
 
-/* Media Query for screens with width less than 1200px */
 @media (max-width: 1200px) {
     .h1 {
         font-size: 2.5rem;
     }
 }
 
-/* Media Query for screens with width less than 768px (tablet) */
 @media (max-width: 768px) {
     .h1 {
         font-size: 2rem;
     }
 }
 
-/* Media Query for screens with width less than 500px (mobile) */
 @media (max-width: 500px) {
     .h1 {
         font-size: 1.5rem;
