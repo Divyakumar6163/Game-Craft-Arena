@@ -10,11 +10,11 @@ export default function RestartModal({
     setRestartModal(false);
   }
   function handleRestart() {
-    if (!isRobot) Navigate("/player1");
+    if (!isRobot) Navigate("/guess-the-object/player1");
     else {
       resethandler();
       setRestartModal(false);
-      Navigate("/player2");
+      Navigate("/guess-the-object/player2");
     }
   }
   return (

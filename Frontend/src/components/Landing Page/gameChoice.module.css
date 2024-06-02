@@ -1,0 +1,131 @@
+/* gameChoice.module.css */
+.h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-top: 20px;
+    color: #444;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.mainArea {
+    background: linear-gradient(#ffffff, #f0f0f0);
+    min-height: 97vh;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    margin: 5vh 0vw;
+    height: calc(50vh - 100px);
+}
+
+.title {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.buttonContainer {
+    width: 50vw;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button {
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc0;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px #00000080;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    min-width: 10vw;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+    background-color: #c0c2c1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .h1 {
+        font-size: 2em;
+    }
+
+    .buttonContainer {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 550px) {
+    .h1 {
+        font-size: 1.5em;
+    }
+
+    .buttonContainer {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 450px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .button {
+        width: 80%;
+        margin: 10px 0;
+    }
+}

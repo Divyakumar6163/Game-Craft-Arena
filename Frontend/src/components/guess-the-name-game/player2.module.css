@@ -137,33 +137,26 @@
 }
 
 .backButton {
-  position: fixed;
-  /* Already set */
-  bottom: 0;
-  /* Align to the bottom of the viewport */
-  left: 0;
-  /* Align to the left of the viewport */
-  margin: 1rem;
-  /* Add some margin for spacing */
   border-radius: 100%;
   width: 4rem;
   height: 4rem;
   background-color: #09203F;
   border: 5px solid #0956a9;
   color: white;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+}
+
+.backButton:hover {
+  box-shadow: 0px 0px 10px 5px;
 }
 
 .restartButton {
   position: fixed;
-  /* Already set */
-  bottom: 0;
-  /* Align to the bottom of the viewport */
-  right: 0;
-  /* Align to the right of the viewport */
-  margin: 1rem;
-  /* Add some margin for spacing */
+  bottom: 50px;
+  right: 50px;
   border-radius: 100%;
   width: 4rem;
   height: 4rem;

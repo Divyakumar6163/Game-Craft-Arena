@@ -1,0 +1,167 @@
+.main {
+    background: radial-gradient(circle at top,
+            rgba(241, 210, 70, 0.98),
+            rgba(250, 176, 103, 0.87)),
+        url('../../../public/bg-pattern-dark.png');
+    background-repeat: repeat;
+    background-size: 100% 100%, 30% 30%, 100% 100%;
+    min-height: 110vh;
+    padding: 2vh 0;
+}
+
+.h1 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.gameContainer {
+    max-width: 50%;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 6px;
+    background: linear-gradient(#383624, #282617);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.players {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.players li {
+    display: flex;
+    align-items: center;
+    flex: 1 1 45%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.highlightPlayer li.active {
+    border-color: #f6e35a;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        border-color: #f6e35a;
+        box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+    }
+
+    50% {
+        border-color: #f8c031;
+        box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
+    }
+
+    100% {
+        border-color: #f6e35a;
+        box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+    }
+}
+
+.highlightPlayer li.active .player-name,
+.highlightPlayer li.active .player-symbol {
+    color: #f6e35a;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.playerSymbol {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.playerName {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    border-bottom: 1px dashed;
+    outline: none;
+    cursor: pointer;
+}
+
+.playerName:focus {
+    border-bottom: 1px solid;
+}
+
+.button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+    font: inherit;
+    padding: 0 .5rem;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.input {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    font: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.backButton {
+    border-radius: 100%;
+    width: 4rem;
+    height: 4rem;
+    background-color: #342503;
+    border: 5px solid rgb(136, 83, 3);
+    color: white;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    box-shadow: 0px 0px 10px 5px #000;
+}
+
+@media (max-width: 1150px) {
+    .gameContainer {
+        max-width: 90%;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .gameContainer {
+        max-width: 90%;
+        padding: 0.5rem;
+    }
+
+    .players {
+        gap: 0.5rem;
+    }
+
+    .button {
+        padding: 0.2rem 0.3rem;
+    }
+
+    .input {
+        padding: 0.3rem;
+    }
+}

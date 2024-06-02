@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import styles from "./player1.module.css"; // Import the styles
+import Header from "./header";
 import axios from "axios";
 export default function Player1({
   playerDetail,
@@ -196,7 +197,7 @@ export default function Player1({
       });
       // console.log("Data posted successfully:", response.data);
       setTimeout(() => {
-        navigate("/player2");
+        navigate("/guess-the-object/player2");
       }, 0);
       return response.data;
     } catch (error) {
@@ -290,317 +291,320 @@ export default function Player1({
     setSelectedURL2(null);
   };
   function handleBack() {
-    navigate("/levels");
+    navigate("/guess-the-object/levels");
   }
   return (
-    <div className={styles.mainContainer}>
-      <button className={styles.backButton} onClick={handleBack}>
-        Back
-      </button>
-      <div className={styles.playerContainer}>
-        <h1 className={styles.playerHeader}>Player 1-{player1Name}</h1>
+    <>
+      <Header />
+      <div className={styles.mainContainer}>
+        <button className={styles.backButton} onClick={handleBack}>
+          Back
+        </button>
+        <div className={styles.playerContainer}>
+          <h1 className={styles.playerHeader}>Player 1-{player1Name}</h1>
 
-        <div style={{ display: "flex", displayDirection: "row" }}>
-          <div>
-            <form className={styles.playerForm} onSubmit={handleClick}>
-              <input
-                type="text"
-                placeholder={`Object ${attempts <= 8 ? 1 : ""}`}
-                ref={object}
-                className={styles.playerInput}
-                required
-              />
-              {!playingChoiceImg && (
+          <div style={{ display: "flex", displayDirection: "row" }}>
+            <div>
+              <form className={styles.playerForm} onSubmit={handleClick}>
                 <input
                   type="text"
-                  placeholder={`Category ${attempts <= 8 ? 1 : ""}`}
-                  ref={category}
+                  placeholder={`Object ${attempts <= 8 ? 1 : ""}`}
+                  ref={object}
                   className={styles.playerInput}
                   required
                 />
-              )}
-              {!playingChoiceImg ? (
-                <textarea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder={`Description ${attempts <= 8 ? 1 : ""}`}
-                  ref={description}
-                  className={`${styles.playerTextarea} ${styles.playerInput}`}
-                  required
-                ></textarea>
-              ) : (
-                <>
-                  {!base64 && (
+                {!playingChoiceImg && (
+                  <input
+                    type="text"
+                    placeholder={`Category ${attempts <= 8 ? 1 : ""}`}
+                    ref={category}
+                    className={styles.playerInput}
+                    required
+                  />
+                )}
+                {!playingChoiceImg ? (
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder={`Description ${attempts <= 8 ? 1 : ""}`}
+                    ref={description}
+                    className={`${styles.playerTextarea} ${styles.playerInput}`}
+                    required
+                  ></textarea>
+                ) : (
+                  <>
+                    {!base64 && (
+                      <input
+                        type="text"
+                        placeholder="Image URL"
+                        ref={image}
+                        onChange={handleFileURL}
+                        className={styles.playerInput}
+                        required
+                      />
+                    )}
+                    {selectedURL === null && (
+                      <p
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontWeight: "700",
+                        }}
+                      >
+                        {" "}
+                        OR
+                      </p>
+                    )}
+                    {!selectedURL && (
+                      <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className={styles.fileInput}
+                      />
+                    )}
+                    {base64 && !selectedURL && (
+                      <ImCross
+                        onClick={handleCross}
+                        style={{
+                          marginTop: "1vh",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                    {base64 && !selectedURL && (
+                      <img
+                        src={base64}
+                        alt="Selected"
+                        // style={{ width: "200px", marginTop: "10px" }}
+                        className={styles.fileImg}
+                      />
+                    )}
+                  </>
+                )}
+
+                {attempts >= 10 ? (
+                  <button type="submit" className={styles.playerButton}>
+                    Submit
+                  </button>
+                ) : (
+                  attempts > 3 && (
+                    <button
+                      type="submit"
+                      className={styles.playerButton}
+                      style={{ marginLeft: "20rem", marginTop: "9vh" }}
+                    >
+                      Submit
+                    </button>
+                  )
+                )}
+              </form>
+            </div>
+
+            {attempts <= 8 && (
+              <div>
+                <form className={styles.playerForm} onSubmit={handleClick}>
+                  <input
+                    type="text"
+                    placeholder="Object 2"
+                    ref={object1}
+                    className={styles.playerInput}
+                    required
+                  />
+                  {!playingChoiceImg && (
                     <input
                       type="text"
-                      placeholder="Image URL"
-                      ref={image}
-                      onChange={handleFileURL}
+                      placeholder="Category 2"
+                      ref={category1}
                       className={styles.playerInput}
                       required
                     />
                   )}
-                  {selectedURL === null && (
-                    <p
+                  {!playingChoiceImg ? (
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="10"
+                      placeholder="Description 2"
+                      ref={description1}
+                      className={`${styles.playerTextarea} ${styles.playerInput}`}
+                      required
+                    ></textarea>
+                  ) : (
+                    <>
+                      {!base64_1 && (
+                        <input
+                          type="text"
+                          placeholder="Image URL"
+                          ref={image1}
+                          onChange={handleFileURL1}
+                          className={styles.playerInput}
+                          required
+                        />
+                      )}
+                      {selectedURL1 === null && (
+                        <p
+                          style={{
+                            color: "white",
+                            textAlign: "center",
+                            fontWeight: "700",
+                          }}
+                        >
+                          {" "}
+                          OR
+                        </p>
+                      )}
+                      {!selectedURL1 && (
+                        <input
+                          type="file"
+                          onChange={handleFileChange1}
+                          className={styles.fileInput}
+                        />
+                      )}
+                      {base64_1 && !selectedURL1 && (
+                        <ImCross
+                          onClick={handleCross1}
+                          style={{
+                            marginTop: "1vh",
+                            color: "white",
+                            cursor: "pointer",
+                          }}
+                        />
+                      )}
+                      {base64_1 && !selectedURL1 && (
+                        <img
+                          src={base64_1}
+                          alt="Selected"
+                          className={styles.fileImg}
+                          // style={{ marginTop: "9vh" }}
+                        />
+                      )}
+                    </>
+                  )}
+                  {attempts <= 3 ? (
+                    <button type="submit" className={styles.playerButton}>
+                      Submit
+                    </button>
+                  ) : null}
+                  {check && attempts > 3 && (
+                    <span
+                      className={styles.shake}
                       style={{
-                        color: "white",
-                        textAlign: "center",
-                        fontWeight: "700",
+                        color: "red",
+                        marginTop: "13.2rem",
+                        marginLeft: "-7.5rem",
                       }}
                     >
-                      {" "}
-                      OR
-                    </p>
+                      *Please fill all the input fields
+                    </span>
                   )}
-                  {!selectedURL && (
+                </form>
+              </div>
+            )}
+
+            {attempts <= 3 && (
+              <div>
+                <form className={styles.playerForm} onSubmit={handleClick}>
+                  <input
+                    type="text"
+                    placeholder="Object 3"
+                    ref={object2}
+                    className={styles.playerInput}
+                    required
+                  />
+                  {!playingChoiceImg && (
                     <input
-                      type="file"
-                      onChange={handleFileChange}
-                      className={styles.fileInput}
+                      type="text"
+                      placeholder="Category 3"
+                      ref={category2}
+                      className={styles.playerInput}
+                      required
                     />
                   )}
-                  {base64 && !selectedURL && (
-                    <ImCross
-                      onClick={handleCross}
+                  {!playingChoiceImg ? (
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="10"
+                      placeholder="Description 3"
+                      ref={description2}
+                      className={`${styles.playerTextarea} ${styles.playerInput}`}
+                      required
+                    ></textarea>
+                  ) : (
+                    <>
+                      {!base64_2 && (
+                        <input
+                          type="text"
+                          placeholder="Image URL"
+                          ref={image2}
+                          onChange={handleFileURL2}
+                          className={styles.playerInput}
+                          required
+                        />
+                      )}
+                      {selectedURL2 === null && (
+                        <p
+                          style={{
+                            color: "white",
+                            textAlign: "center",
+                            fontWeight: "700",
+                          }}
+                        >
+                          {" "}
+                          OR
+                        </p>
+                      )}
+                      {!selectedURL2 && (
+                        <input
+                          type="file"
+                          onChange={handleFileChange2}
+                          className={styles.fileInput}
+                        />
+                      )}
+                      {base64_2 && !selectedURL2 && (
+                        <ImCross
+                          onClick={handleCross2}
+                          style={{
+                            marginTop: "1vh",
+                            color: "white",
+                            cursor: "pointer",
+                          }}
+                        />
+                      )}
+                      {base64_2 && !selectedURL2 && (
+                        <img
+                          src={base64_2}
+                          alt="Selected"
+                          className={styles.fileImg}
+                          // style={{ width: "200px", marginTop: "10px" }}
+                        />
+                      )}
+                    </>
+                  )}
+
+                  {check && (
+                    <span
+                      className={styles.shake}
                       style={{
-                        marginTop: "1vh",
-                        color: "white",
-                        cursor: "pointer",
+                        color: "red",
+                        marginTop: "18vh",
+                        marginLeft: "-17.5rem",
                       }}
-                    />
+                    >
+                      *Please fill all the input fields
+                    </span>
                   )}
-                  {base64 && !selectedURL && (
-                    <img
-                      src={base64}
-                      alt="Selected"
-                      // style={{ width: "200px", marginTop: "10px" }}
-                      className={styles.fileImg}
-                    />
-                  )}
-                </>
-              )}
-
-              {attempts >= 10 ? (
-                <button type="submit" className={styles.playerButton}>
-                  Submit
-                </button>
-              ) : (
-                attempts > 3 && (
-                  <button
-                    type="submit"
-                    className={styles.playerButton}
-                    style={{ marginLeft: "20rem", marginTop: "9vh" }}
-                  >
-                    Submit
-                  </button>
-                )
-              )}
-            </form>
+                </form>
+              </div>
+            )}
           </div>
-
-          {attempts <= 8 && (
-            <div>
-              <form className={styles.playerForm} onSubmit={handleClick}>
-                <input
-                  type="text"
-                  placeholder="Object 2"
-                  ref={object1}
-                  className={styles.playerInput}
-                  required
-                />
-                {!playingChoiceImg && (
-                  <input
-                    type="text"
-                    placeholder="Category 2"
-                    ref={category1}
-                    className={styles.playerInput}
-                    required
-                  />
-                )}
-                {!playingChoiceImg ? (
-                  <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="Description 2"
-                    ref={description1}
-                    className={`${styles.playerTextarea} ${styles.playerInput}`}
-                    required
-                  ></textarea>
-                ) : (
-                  <>
-                    {!base64_1 && (
-                      <input
-                        type="text"
-                        placeholder="Image URL"
-                        ref={image1}
-                        onChange={handleFileURL1}
-                        className={styles.playerInput}
-                        required
-                      />
-                    )}
-                    {selectedURL1 === null && (
-                      <p
-                        style={{
-                          color: "white",
-                          textAlign: "center",
-                          fontWeight: "700",
-                        }}
-                      >
-                        {" "}
-                        OR
-                      </p>
-                    )}
-                    {!selectedURL1 && (
-                      <input
-                        type="file"
-                        onChange={handleFileChange1}
-                        className={styles.fileInput}
-                      />
-                    )}
-                    {base64_1 && !selectedURL1 && (
-                      <ImCross
-                        onClick={handleCross1}
-                        style={{
-                          marginTop: "1vh",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                      />
-                    )}
-                    {base64_1 && !selectedURL1 && (
-                      <img
-                        src={base64_1}
-                        alt="Selected"
-                        className={styles.fileImg}
-                        // style={{ marginTop: "9vh" }}
-                      />
-                    )}
-                  </>
-                )}
-                {attempts <= 3 ? (
-                  <button type="submit" className={styles.playerButton}>
-                    Submit
-                  </button>
-                ) : null}
-                {check && attempts > 3 && (
-                  <span
-                    className={styles.shake}
-                    style={{
-                      color: "red",
-                      marginTop: "13.2rem",
-                      marginLeft: "-7.5rem",
-                    }}
-                  >
-                    *Please fill all the input fields
-                  </span>
-                )}
-              </form>
-            </div>
-          )}
-
-          {attempts <= 3 && (
-            <div>
-              <form className={styles.playerForm} onSubmit={handleClick}>
-                <input
-                  type="text"
-                  placeholder="Object 3"
-                  ref={object2}
-                  className={styles.playerInput}
-                  required
-                />
-                {!playingChoiceImg && (
-                  <input
-                    type="text"
-                    placeholder="Category 3"
-                    ref={category2}
-                    className={styles.playerInput}
-                    required
-                  />
-                )}
-                {!playingChoiceImg ? (
-                  <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="Description 3"
-                    ref={description2}
-                    className={`${styles.playerTextarea} ${styles.playerInput}`}
-                    required
-                  ></textarea>
-                ) : (
-                  <>
-                    {!base64_2 && (
-                      <input
-                        type="text"
-                        placeholder="Image URL"
-                        ref={image2}
-                        onChange={handleFileURL2}
-                        className={styles.playerInput}
-                        required
-                      />
-                    )}
-                    {selectedURL2 === null && (
-                      <p
-                        style={{
-                          color: "white",
-                          textAlign: "center",
-                          fontWeight: "700",
-                        }}
-                      >
-                        {" "}
-                        OR
-                      </p>
-                    )}
-                    {!selectedURL2 && (
-                      <input
-                        type="file"
-                        onChange={handleFileChange2}
-                        className={styles.fileInput}
-                      />
-                    )}
-                    {base64_2 && !selectedURL2 && (
-                      <ImCross
-                        onClick={handleCross2}
-                        style={{
-                          marginTop: "1vh",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                      />
-                    )}
-                    {base64_2 && !selectedURL2 && (
-                      <img
-                        src={base64_2}
-                        alt="Selected"
-                        className={styles.fileImg}
-                        // style={{ width: "200px", marginTop: "10px" }}
-                      />
-                    )}
-                  </>
-                )}
-
-                {check && (
-                  <span
-                    className={styles.shake}
-                    style={{
-                      color: "red",
-                      marginTop: "18vh",
-                      marginLeft: "-17.5rem",
-                    }}
-                  >
-                    *Please fill all the input fields
-                  </span>
-                )}
-              </form>
-            </div>
-          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }

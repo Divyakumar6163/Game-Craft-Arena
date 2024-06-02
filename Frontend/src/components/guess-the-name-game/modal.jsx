@@ -14,14 +14,14 @@ export default function Modal({
 }) {
   const navigate = useNavigate();
   function handleRestart() {
-    if (!isRobot) navigate("/player1");
+    if (!isRobot) navigate("/guess-the-object/player1");
     else {
       resethandler();
       setModal(false);
     }
   }
   function handleLevel() {
-    navigate("/levels");
+    navigate("/guess-the-object/levels");
   }
   return (
     <dialog open className={style.modal}>
