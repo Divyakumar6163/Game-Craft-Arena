@@ -1,19 +1,34 @@
 .modal {
     position: fixed;
     top: 50%;
-    left: 30%;
+    left: 50%;
+    /* Changed from 30% to 50% for centering */
     transform: translate(-50%, -50%);
     background-color: #011936FF;
     padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    width: 25rem;
+    border: 1px solid #09203F;
     border-radius: 50px;
     box-shadow: #09203F 0px 0px 10px 5px;
-    border: #09203F 1px solid;
+    z-index: 1000;
+    width: 25rem;
     padding-bottom: 4rem;
+    margin: 0;
+}
+
+/* Media Query for screens with width less than 768px (tablet) */
+@media (max-width: 768px) {
+    .modal {
+        width: 20rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Media Query for screens with width less than 500px (mobile) */
+@media (max-width: 500px) {
+    .modal {
+        width: 15rem;
+        padding: 1rem;
+    }
 }
 
 .h1 {
@@ -25,11 +40,25 @@
     font-family: "Baloo 2", sans-serif;
 }
 
+/* Media Query for screens with width less than 768px (tablet) */
+@media (max-width: 768px) {
+    .h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Media Query for screens with width less than 500px (mobile) */
+@media (max-width: 500px) {
+    .h1 {
+        font-size: 1.5rem;
+    }
+}
+
 .button {
     background-color: #09203F;
     border: 4px solid #0956a9;
     color: white;
-    padding: 1rem 1rem;
+    padding: 1rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -38,9 +67,29 @@
     cursor: pointer;
     border-radius: 25px;
     width: 10rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
     background-color: #03142a;
     box-shadow: 0px 0px 10px 5px;
+}
+
+/* Media Query for screens with width less than 768px (tablet) */
+@media (max-width: 768px) {
+    .button {
+        width: 8rem;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Media Query for screens with width less than 500px (mobile) */
+@media (max-width: 500px) {
+    .button {
+        width: 3rem;
+        font-size: 0.8rem;
+        padding: 0.6rem;
+        margin-left: 10vw;
+    }
 }

@@ -136,7 +136,6 @@ export default function Player1({
         category2.current.value.trim().length === 0 ||
         description2.current.value.trim().length === 0
       ) {
-        // alert("Please fill all the fields");
         setCheck(true);
         return;
       }
@@ -293,8 +292,6 @@ export default function Player1({
   function handleBack() {
     navigate("/levels");
   }
-  // console.log(base64);
-  // console.log(image.current.length);
   return (
     <div className={styles.mainContainer}>
       <button className={styles.backButton} onClick={handleBack}>
