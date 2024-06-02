@@ -25,24 +25,37 @@ export default function GameRules() {
             guessed correctly then he will win.
           </li>
         </ul>
-        <NavLink
-          style={{
-            backgroundColor: "#09203F",
-            border: "4px solid #0956a9",
-            color: "white",
-            padding: "1rem 1rem",
-            textAlign: "center",
-            textDecoration: " none",
-            display: " inline-block",
-            fontSize: "1rem",
-            margin: " -20px 4px 0rem 27rem",
-            cursor: " pointer",
-            borderRadius: "25px",
-          }}
-          to="/playingOption"
-        >
-          Start Playing &#129054;
-        </NavLink>
+        <div style={{ position: "relative" }}>
+          <NavLink
+            style={{
+              backgroundColor: "#09203F",
+              border: "4px solid #0956a9",
+              color: "white",
+              padding: "1rem 1.5rem",
+              textAlign: "center",
+              textDecoration: "none",
+              display: "inline-block",
+              fontSize: "1rem",
+              cursor: "pointer",
+              borderRadius: "25px",
+              position: "absolute",
+              top: "1rem",
+              right: "1rem",
+              transition: "background-color 0.3s ease, transform 0.3s ease",
+            }}
+            to="/playingOption"
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "#03142a";
+              e.target.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "#09203F";
+              e.target.style.transform = "scale(1)";
+            }}
+          >
+            Start Playing &#129054;
+          </NavLink>
+        </div>
       </section>
     </div>
   );

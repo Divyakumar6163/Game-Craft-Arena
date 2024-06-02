@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 50px; */
   font-family: Arial, sans-serif;
   background: linear-gradient(#09203F, #537895);
   height: auto;
@@ -29,7 +28,6 @@
   margin-bottom: 30px;
   color: #F1F3FFFF;
   font-family: "Baloo 2", sans-serif;
-
 }
 
 .playerForm {
@@ -171,5 +169,51 @@
 
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .playerContainer {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .playerForm {
+    width: 100%;
+    margin: 0;
+  }
+
+  .playerButton {
+    width: 80%;
+  }
+
+  .backButton {
+    width: 4rem;
+    height: 4rem;
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .playerForm {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .playerInput {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .fileInput {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .playerButton {
+    width: 30%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

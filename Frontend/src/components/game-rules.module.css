@@ -9,12 +9,11 @@
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #011936FF;
   border-radius: 50px;
+  background-color: #011936FF;
   box-shadow: #09203F 0px 0px 10px 5px;
   border: #09203F 1px solid;
-  height: 57vh;
+  height: 60vh;
 }
 
 .h2 {
@@ -28,9 +27,31 @@
 .ul {
   padding: 0;
   color: #F4FFFDFF;
-  margin: .5rem 0rem 0rem 2rem;
+  margin: 0.5rem 0rem 0rem 2rem;
 }
 
 .li {
   margin-bottom: 20px;
+}
+
+/* Media Query for screens with width less than 500px */
+@media (max-width: 500px) {
+  .section {
+    max-width: 90%;
+    padding: 10px;
+    height: auto;
+  }
+
+  .h2 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .ul {
+    margin-left: 1rem;
+  }
+
+  .li {
+    margin-bottom: 15px;
+  }
 }
