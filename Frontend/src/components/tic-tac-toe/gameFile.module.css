@@ -124,6 +124,36 @@
     box-sizing: border-box;
 }
 
+.logButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.logButton {
+    align-items: center;
+    background-color: #342503;
+    border: 1px solid rgb(136, 83, 3);
+    border-radius: 25px;
+    box-shadow: 0 2px 5px #00000080;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    justify-items: center;
+    margin: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.logButton:hover {
+    background-color: #423002;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 .backButton {
     border-radius: 100%;
     width: 4rem;

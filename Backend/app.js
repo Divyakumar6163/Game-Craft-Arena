@@ -46,7 +46,7 @@ const objectSchemaImg = new mongoose.Schema({
 const ObjectModelImg = mongoose.model("ObjectImg", objectSchemaImg);
 
 // POST route for creating an object with Base64 image
-app.post("/player1", async (req, res) => {
+app.post("/guess-the-object/player1", async (req, res) => {
   const { object, image, category, description } = req.body;
   try {
     if (image) {
@@ -73,7 +73,7 @@ app.post("/player1", async (req, res) => {
   }
 });
 
-app.get("/player2", async (req, res) => {
+app.get("/guess-the-object/player2", async (req, res) => {
   try {
     let objects;
     // const keyword = { keyword: "image" };
