@@ -190,11 +190,15 @@ export default function Player1({
     }
     // console.log(data);
     try {
-      const response = await axios.post("http://localhost:8000/player1", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8000/guess-the-object/player1",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       // console.log("Data posted successfully:", response.data);
       setTimeout(() => {
         navigate("/guess-the-object/player2");

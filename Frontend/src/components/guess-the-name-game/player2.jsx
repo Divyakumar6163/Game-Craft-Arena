@@ -50,13 +50,19 @@ export default function Player2({
       const fetchData = async () => {
         try {
           if (playingChoiceImg) {
-            response = await axios.get("http://localhost:8000/player2", {
-              params: { keyword: "image" },
-            });
+            response = await axios.get(
+              "http://localhost:8000/guess-the-object/player2",
+              {
+                params: { keyword: "image" },
+              }
+            );
           } else {
-            response = await axios.get("http://localhost:8000/player2", {
-              params: { keyword: null },
-            });
+            response = await axios.get(
+              "http://localhost:8000/guess-the-object/player2",
+              {
+                params: { keyword: null },
+              }
+            );
           }
           setDataReceived(
             response.data[Math.floor(Math.random() * response.data.length)]

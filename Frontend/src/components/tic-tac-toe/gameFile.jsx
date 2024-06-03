@@ -65,6 +65,7 @@ function TicTacToe() {
   const navigate = useNavigate();
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
+  const [viewLog, setViewLog] = useState(false);
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns);
 
@@ -101,6 +102,11 @@ function TicTacToe() {
       };
     });
   }
+  function handleLogs() {
+    setViewLog((prevValue) => {
+      return !prevValue;
+    });
+  }
   function handleBack() {
     navigate("/");
   }
@@ -127,7 +133,12 @@ function TicTacToe() {
         ) : undefined}
         <GameBoard board={gameBoard} onSelectSquare={handleEntry}></GameBoard>
       </div>
-      <Log turns={gameTurns}></Log>
+      {viewLog && <Log turns={gameTurns}></Log>}
+      <div className={style.logButtonContainer}>
+        <button onClick={handleLogs} className={style.logButton}>
+          {viewLog ? "Close" : "View Log"}
+        </button>
+      </div>
       <button className={style.backButton} onClick={handleBack}>
         Back
       </button>
