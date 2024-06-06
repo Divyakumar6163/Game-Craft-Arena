@@ -7,7 +7,6 @@ import Header from "./header";
 export default function Levels({
   playerAttempts,
   playerNameData,
-  checkName,
   setCheckName,
   isRobot,
 }) {

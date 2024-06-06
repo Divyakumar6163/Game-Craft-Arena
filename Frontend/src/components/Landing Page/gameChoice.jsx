@@ -26,7 +26,7 @@ export default function GameChoice() {
               Tic Tac Toe
             </button>
             <button
-              onClick={ClickHandler(navigate, "/tic-tac-toe")}
+              onClick={ClickHandler(navigate, "/quiz")}
               className={style.button}
             >
               Quiz
