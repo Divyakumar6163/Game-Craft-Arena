@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
-// import { useQuery } from "react-query";
 import axios from "axios";
 import Modal from "./modal";
 import styles from "./player2.module.css";
