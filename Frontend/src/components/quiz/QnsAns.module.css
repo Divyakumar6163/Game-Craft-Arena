@@ -1,16 +1,28 @@
+.question {
+    font-size: 2.5rem;
+    color: #F1EBBB;
+    margin: 20px 0;
+    font-family: "Baloo 2", sans-serif;
+}
+
 .option {
     display: block;
-    margin: 10px auto;
+    margin: 3vh auto;
     padding: 10px 20px;
     font-size: 1em;
     color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    background-color: #11144C;
+    font-size: 1.4rem;
+    font-weight: 700;
+    min-width: 25rem;
+    min-height: 10vh;
+    border: 7px solid #0a11a2;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .option:hover {
-    background-color: #0056b3;
+    background-color: #020427;
+    box-shadow: #f8f6f7 0px 0px 10px 5px;
 }
