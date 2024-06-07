@@ -1,17 +1,19 @@
 .main {
     padding: 20px;
     text-align: center;
+    background: linear-gradient(#45046A, #B5076B);
+    height: 75vh;
 }
 
 .header {
-    background-color: #f8f9fa;
+    background-color: #45046A;
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
 .header h1 {
+    font-family: "Baloo 2", sans-serif;
     margin: 0;
-    font-size: 2em;
-    color: #333;
+    font-size: 4rem;
+    color: #EEEEEE;
 }
