@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { QuizContext } from "../../context/quizContext";
+import styles from "./Modal.module.css";
 
 function Modal({ length }) {
+  const { score } = useContext(QuizContext);
   return (
-    <dialog open>
-      <h1>Game Over!</h1>
-      <p>You scored SCORE out of {length} questions.</p>
+    <dialog open className={styles.dialog}>
+      <h1 className={styles.title}>Quiz Finished!</h1>
+      <p className={styles.score}>
+        You scored {score} out of {length} questions.
+      </p>
     </dialog>
   );
 }

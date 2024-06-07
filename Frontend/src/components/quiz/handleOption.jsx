@@ -1,6 +1,7 @@
-function handleOption(option, answer, nextIndex) {
+function handleOption(option, answer, nextIndex, correctAns) {
   if (option === answer) {
     nextIndex();
+    correctAns();
   } else {
     nextIndex();
   }
