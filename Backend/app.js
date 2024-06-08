@@ -107,7 +107,22 @@ app.get("/guess-the-object/player2", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-app.get("/quiz", async (req, res) => {
+app.post("/quiz/createQuiz", async (req, res) => {
+  try {
+    const { quiz } = req.body;
+    console.log(quiz);
+    const newQuiz = new QuizModel({
+      quiz,
+    });
+    await newQuiz.save();
+    // console.log(newQuiz);
+    res.status(201).json({ message: "Data saved successfully" });
+  } catch (err) {
+    console.error("Error saving data:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+app.get("/quiz/playQuiz", async (req, res) => {
   try {
     let data;
     data = await QuizModel.find();

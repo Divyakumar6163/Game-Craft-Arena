@@ -2,6 +2,12 @@ import style from "./gameChoice.module.css";
 import { useNavigate } from "react-router-dom";
 import ClickHandler from "./ClickHandler";
 // import MovingCards from "./movingCards";
+const games = [
+  { name: "Guess The Object", link: "/guess-the-object" },
+  { name: "Tic Tac Toe", link: "/tic-tac-toe" },
+  { name: "Quiz", link: "/quiz" },
+  { name: "Sudoku", link: "/quiz" },
+];
 export default function GameChoice() {
   const navigate = useNavigate();
   return (
@@ -13,30 +19,17 @@ export default function GameChoice() {
         <div className={style.buttonContainer}>
           <h1 className={style.title}>Choose Your Game</h1>
           <div className={style.container}>
-            <button
-              onClick={ClickHandler(navigate, "/guess-the-object")}
-              className={style.button}
-            >
-              Guess The Object
-            </button>
-            <button
-              onClick={ClickHandler(navigate, "/tic-tac-toe")}
-              className={style.button}
-            >
-              Tic Tac Toe
-            </button>
-            <button
-              onClick={ClickHandler(navigate, "/quiz")}
-              className={style.button}
-            >
-              Quiz
-            </button>
-            <button
-              onClick={ClickHandler(navigate, "/tic-tac-toe")}
-              className={style.button}
-            >
-              Sudoku
-            </button>
+            {games.map((data, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={ClickHandler(navigate, data.link)}
+                  className={style.button}
+                >
+                  {data.name}
+                </button>
+              );
+            })}
           </div>
         </div>
       </main>
