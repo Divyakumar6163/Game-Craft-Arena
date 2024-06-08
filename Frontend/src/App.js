@@ -6,7 +6,9 @@ import Player2 from "./components/guess-the-name-game/player2";
 import PlayingOption from "./components/guess-the-name-game/playingOption";
 import Choice from "./components/guess-the-name-game/choice";
 import GameChoice from "./components/Landing Page/gameChoice.jsx";
-import Quiz from "./components/quiz/quiz.jsx";
+import Quiz from "./components/quiz/homeQuiz.jsx";
+import QuizPlay from "./components/quiz/quiz.jsx";
+import CreateQuiz from "./components/quiz/createQuiz";
 import { useState } from "react";
 import TicTacToe from "./components/tic-tac-toe/gameFile.jsx";
 function App() {
@@ -60,6 +62,8 @@ function App() {
           <Route path="/" element={<GameChoice />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quiz/playQuiz" element={<QuizPlay />} />
+          <Route path="/quiz/createQuiz" element={<CreateQuiz />} />
           <Route path="/guess-the-object" element={<GameRules />} />
           <Route
             path="/guess-the-object/playingOption"

@@ -7,11 +7,12 @@ import Modal from "./Modal";
 
 function QnsAns() {
   const [quizData, setQuizData] = useState([]);
-  const { index, nextIndex, correctAns } = useContext(QuizContext);
+  const { index, nextIndex, correctAns, isRestart } = useContext(QuizContext);
+  // let fetchData;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/quiz");
+        const response = await axios.get("http://localhost:8000/quiz/playQuiz");
         setQuizData(
           response.data[Math.floor(Math.random() * response.data.length)].quiz
         );
@@ -20,7 +21,8 @@ function QnsAns() {
       }
     };
     fetchData();
-  }, []);
+  }, [isRestart]);
+  console.log(isRestart);
   const currentQuestion = index !== quizData.length ? quizData[index] : null;
   if (!currentQuestion) {
     return <Modal length={index} />;
