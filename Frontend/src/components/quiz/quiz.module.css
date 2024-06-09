@@ -2,7 +2,7 @@
     padding: 20px;
     text-align: center;
     background: linear-gradient(#45046A, #B5076B);
-    height: 75vh;
+    min-height: 75vh;
 }
 
 .header {
@@ -16,4 +16,10 @@
     margin: 0;
     font-size: 4rem;
     color: #EEEEEE;
+}
+
+@media (max-width: 350px) {
+    .header h1 {
+        font-size: 3rem;
+    }
 }

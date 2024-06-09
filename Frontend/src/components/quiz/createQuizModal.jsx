@@ -44,11 +44,13 @@ function CreateQuizModal({
   }
   return (
     <div className={styles.modal}>
-      <h1>Are you sure to Save your Data?</h1>
-      <button className={styles["retake-button"]} onClick={handleRetake}>
+      <h1 className={styles.h1}>Are you sure to Save your Data?</h1>
+      <button className={styles.button} onClick={handleRetake}>
         Retake
       </button>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={handleSave} className={styles.button}>
+        Save
+      </button>
     </div>
   );
 }

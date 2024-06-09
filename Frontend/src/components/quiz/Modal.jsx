@@ -10,11 +10,29 @@ function Modal({ length }) {
     <dialog open className={styles.dialog}>
       <h1 className={styles.title}>Quiz Finished!</h1>
       <p className={styles.score}>
-        You scored {score} out of {length} questions.
+        You scored{" "}
+        <span
+          style={{
+            color: `${score <= length / 3 ? "red" : score <= (2 * length) / 3 ? "yellow" : "rgb(9, 236, 9)"}`,
+          }}
+        >
+          {score}
+        </span>{" "}
+        out of&nbsp;&nbsp;
+        <span style={{ color: "black" }}>{length}</span> questions.
       </p>
-      <button onClick={() => handleHome(navigate, "/")}>Home</button>
-      <button onClick={() => handleRestart(reStart)}>Start New Quiz</button>
-      <button onClick={() => handleTest(reTest)}>Retake Quiz</button>
+      <button
+        onClick={() => handleHome(navigate, "/")}
+        className={styles.button}
+      >
+        Home
+      </button>
+      <button onClick={() => handleRestart(reStart)} className={styles.button}>
+        Start New Quiz
+      </button>
+      <button onClick={() => handleTest(reTest)} className={styles.button}>
+        Retake Quiz
+      </button>
     </dialog>
   );
 }

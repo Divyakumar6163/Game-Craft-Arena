@@ -3,7 +3,6 @@ import CreateQuizModal from "./createQuizModal";
 import styles from "./createQuiz.module.css";
 import NumberOfQnsInput from "./numberOfQnsInput";
 import QuizInputForm from "./QuizInputForm";
-
 function CreateQuiz() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
