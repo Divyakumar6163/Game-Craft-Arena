@@ -31,7 +31,7 @@ function NumberOfQnsInput({
         </div>
       </div>
       {numberOfQuestions <= 0 && isClicked && (
-        <p className={styles.p}>*Please enter correct size of Quiz</p>
+        <p className={styles.p}>*Please Enter Correct Size Of Quiz</p>
       )}
     </form>
   );
