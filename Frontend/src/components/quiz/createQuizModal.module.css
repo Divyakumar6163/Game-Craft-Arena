@@ -1,0 +1,57 @@
+/* createQuizModal.module.css */
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.modal h1 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #45046A;
+}
+
+.modal button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+.modal button:active {
+    background-color: #004085;
+}
+
+.modal .retake-button {
+    background-color: #f44336;
+}
+
+.modal .retake-button:hover {
+    background-color: #c62828;
+}
+
+.modal .retake-button:active {
+    background-color: #8e0000;
+}
