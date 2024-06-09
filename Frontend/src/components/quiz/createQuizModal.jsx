@@ -1,7 +1,17 @@
 import React from "react";
 import axios from "axios";
-function CreateQuizModal({ quiz }) {
+import styles from "./createQuizModal.module.css";
+import { useNavigate } from "react-router-dom";
+function CreateQuizModal({
+  quiz,
+  setQuiz,
+  setShowModal,
+  setIsSubmitted,
+  setNumberOfQuestions,
+  setCurrentQuestion,
+}) {
   let data = { quiz: quiz };
+  const navigate = useNavigate();
   const handleSave = async () => {
     try {
       const response = await axios.post(
@@ -13,13 +23,31 @@ function CreateQuizModal({ quiz }) {
           },
         }
       );
+      setTimeout(() => {
+        navigate("/quiz");
+      }, 0);
       return response.data;
     } catch (error) {
       console.log(error);
     }
   };
+  function handleRetake() {
+    setShowModal(false);
+    setNumberOfQuestions(1);
+    setCurrentQuestion({
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    });
+    setQuiz([]);
+    setIsSubmitted(false);
+  }
   return (
-    <div>
+    <div className={styles.modal}>
+      <h1>Are you sure to Save your Data?</h1>
+      <button className={styles["retake-button"]} onClick={handleRetake}>
+        Retake
+      </button>
       <button onClick={handleSave}>Save</button>
     </div>
   );

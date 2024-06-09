@@ -1,10 +1,12 @@
 import React from "react";
 import { handleHome } from "./clickHandler";
 import { useNavigate } from "react-router-dom";
+import styles from "./homeQuiz.module.css";
+
 function HomeQuiz() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className={styles.container}>
       <button onClick={() => handleHome(navigate, "/quiz/createQuiz")}>
         Create Quiz
       </button>

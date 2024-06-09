@@ -1,0 +1,128 @@
+/* CreateQuiz.module.css */
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(#45046A, #B5076B);
+    height: 94.5vh;
+}
+
+.header {
+    width: 100%;
+    background-color: transparent;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-family: "Baloo 2", sans-serif;
+    margin: 0vh;
+    font-size: 4rem;
+    color: #EEEEEE;
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 100px;
+}
+
+.formDiv {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15vh;
+}
+
+.form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formArea {
+    display: flex;
+    flex-direction: row;
+}
+
+.label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Baloo 2", sans-serif;
+    margin-bottom: 30px;
+}
+
+.p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: red;
+}
+
+.h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: "Baloo 2", sans-serif;
+    margin: 0;
+}
+
+form input[type="number"],
+form input[type="text"] {
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form button:active {
+    background-color: #004085;
+}
+
+.save-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
