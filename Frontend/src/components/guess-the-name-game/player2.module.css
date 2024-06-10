@@ -138,8 +138,8 @@
 
 .backButton {
   border-radius: 100%;
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem;
+  height: 4.5rem;
   background-color: #09203F;
   border: 5px solid #0956a9;
   color: white;
@@ -147,10 +147,14 @@
   bottom: 50px;
   left: 50px;
   cursor: pointer;
+  font-size: 14px;
+  padding-left: 17px;
 }
 
 .backButton:hover {
   box-shadow: 0px 0px 10px 5px;
+  background-color: #09203F;
+  border: 5px solid #0956a9;
 }
 
 .restartButton {
@@ -158,21 +162,21 @@
   bottom: 50px;
   right: 50px;
   border-radius: 100%;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   background-color: #09203F;
   border: 5px solid #0956a9;
   color: white;
+  padding-left: 17px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-}
-
-.backButton:hover {
-  box-shadow: 0px 0px 10px 5px;
+  font-size: 13px;
 }
 
 .restartButton:hover {
   box-shadow: 0px 0px 10px 5px;
+  background-color: #09203F;
+  border: 5px solid #0956a9;
 }
 
 .image {
@@ -208,24 +212,17 @@
     font-size: 0.9rem;
   }
 
-  .backButton,
-  .restartButton {
-    width: 3rem;
-    height: 3rem;
-    bottom: 20px;
-  }
-
   .image {
     width: 6rem;
     height: 6rem;
   }
 
-  /* Additional styles for screens with width less than 1200px */
   .backButton,
   .restartButton {
     width: 4rem;
     height: 4rem;
     bottom: 15px;
+    padding-left: 13px;
   }
 
   .image {
@@ -234,7 +231,6 @@
   }
 }
 
-/* Media Query for screens with width less than 500px */
 @media (max-width: 500px) {
   .playerContainer {
     padding: 0.5rem;
