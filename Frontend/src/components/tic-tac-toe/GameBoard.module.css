@@ -32,6 +32,11 @@
     font-weight: 900;
 }
 
+.gameBoardButton:hover {
+    color: #3f3b00;
+    background: #aca788;
+}
+
 /* Media queries for responsive adjustments */
 @media (max-width: 768px) {
     .gameContainer {

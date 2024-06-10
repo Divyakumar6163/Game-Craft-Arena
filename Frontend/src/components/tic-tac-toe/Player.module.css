@@ -37,6 +37,11 @@
     text-transform: uppercase;
 }
 
+.input:focus {
+    outline: none;
+
+}
+
 @keyframes pulse {
     0% {
         border-color: #f6e35a;
@@ -109,4 +114,9 @@
     transition: color 0.2s;
     padding: 0.5rem 0.25rem 0.25rem 0.25rem;
     text-align: center;
+}
+
+.button:hover {
+    background: none;
+    color: #c3ba78;
 }

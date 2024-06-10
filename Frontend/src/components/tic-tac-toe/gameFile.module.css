@@ -164,10 +164,13 @@
     margin-bottom: 50px;
     margin-left: 50px;
     cursor: pointer;
+    padding-left: 13px;
 }
 
 .backButton:hover {
     box-shadow: 0px 0px 10px 5px #000;
+    background-color: #1c1402;
+    border: 5px solid rgb(136, 83, 3);
 }
 
 @media (max-width: 1150px) {

@@ -1,41 +1,40 @@
 .main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
+    /* Adjusted padding */
     text-align: center;
     background: linear-gradient(#45046A, #B5076B);
-    height: 94.5vh;
+    height: 100vh;
 }
 
 .header {
-    width: 100%;
     background-color: transparent;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: center;
+    padding: 0;
+    background: #45046A;
 }
 
 .header h1 {
     font-family: "Baloo 2", sans-serif;
-    margin: 0vh;
+    margin: 0;
     font-size: 4rem;
     color: #EEEEEE;
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
     width: 100%;
-    padding-top: 100px;
+    flex: 1;
+    justify-content: center;
+    /* Center the form vertically */
+    align-items: center;
+    /* Center the form horizontally */
 }
 
 .formDiv {
@@ -46,14 +45,7 @@
     box-shadow: #09203F 0px 0px 10px 5px;
     width: 100%;
     max-width: 40vw;
-    min-height: 25vh;
-    margin: 0 1vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: space-between;
-    justify-content: space-between;
-    margin-top: 15vh;
+    margin: 0;
 }
 
 .form {
@@ -73,7 +65,8 @@
 .formArea {
     display: flex;
     flex-direction: row;
-    margin-top: 3vh;
+    margin-top: 2vh;
+    /* Adjusted margin */
 }
 
 .label {
@@ -116,7 +109,7 @@ form button {
     text-decoration: none;
     display: inline-block;
     font-size: 1rem;
-    margin: 4px 0rem 0rem 1rem;
+    margin: 4px 0 0 1rem;
     cursor: pointer;
     border-radius: 25px;
     width: 10rem;
@@ -130,11 +123,110 @@ form button:hover {
 
 form button:active {
     background-color: #34093f;
-    ;
 }
 
 .save-button {
     margin-left: 10px;
     padding: 5px 10px;
     font-size: 14px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: #B5076B;
+}
+
+.backButton {
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+    background-color: #34093f;
+    border: 5px solid #c80cbb;
+    color: white;
+    cursor: pointer;
+    padding-left: 18px;
+    margin-left: 2vw;
+    margin-top: -20vh;
+}
+
+.backButton:hover {
+    box-shadow: 0px 0px 10px 5px;
+    background-color: #24072c;
+    border: 5px solid #c80cbb;
+}
+
+.reFreshButton {
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+    background-color: #34093f;
+    border: 5px solid #c80cbb;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding-left: 15px;
+    margin-right: 2vw;
+    margin-bottom: 2vw;
+    font-size: 13px;
+    margin-top: -20vh;
+}
+
+.reFreshButton:hover {
+    box-shadow: 0px 0px 10px 5px;
+    background-color: #1e0623;
+    border: 5px solid #c80cbb;
+}
+
+@media (min-width: 450px) {
+    .main {
+        height: 100vh;
+    }
+
+    .form button {
+        margin: 0;
+        margin-top: -2vh;
+    }
+}
+
+@media (max-width: 450px) {
+    .header h1 {
+        font-size: 3rem;
+    }
+
+    .label {
+        font-size: 1.5rem;
+    }
+
+    .h3 {
+        font-size: 1.5rem;
+    }
+
+    form input[type="number"],
+    form input[type="text"] {
+        height: 1vh;
+    }
+
+    form button {
+        width: 4rem;
+        font-size: 10px;
+        padding-left: 12px;
+        margin: 0;
+        margin-top: -1vh;
+    }
+
+    .backButton {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 10px;
+        padding-left: 12px;
+    }
+
+    .reFreshButton {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 10px;
+        padding-left: 6px;
+    }
 }

@@ -121,8 +121,68 @@
     transition: width 1s linear;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 601px) {
     .progressLine {
         display: none;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.backButton {
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+    background-color: #34093f;
+    border: 5px solid #c80cbb;
+    color: white;
+    cursor: pointer;
+    padding-left: 18px;
+    /* margin-right: 90vw; */
+}
+
+.backButton:hover {
+    box-shadow: 0px 0px 10px 5px;
+    background-color: #24072c;
+    border: 5px solid #c80cbb;
+}
+
+.reFreshButton {
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+    background-color: #34093f;
+    border: 5px solid #c80cbb;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding-left: 15px;
+    font-size: 13px;
+    /* margin-left: 90vw; */
+}
+
+.reFreshButton:hover {
+    box-shadow: 0px 0px 10px 5px;
+    background-color: #1e0623;
+    border: 5px solid #c80cbb;
+}
+
+@media (max-width: 450px) {
+    .backButton {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 10px;
+        padding-left: 12px;
+    }
+
+    .reFreshButton {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 10px;
+        padding-left: 6px;
     }
 }

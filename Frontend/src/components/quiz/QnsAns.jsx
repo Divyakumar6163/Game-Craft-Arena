@@ -4,10 +4,13 @@ import handleOptionClick from "./handleOption";
 import axios from "axios";
 import { QuizContext } from "../../context/quizContext";
 import Modal from "./Modal";
-
+import { handleHome, handleTest } from "./clickHandler";
+import { useNavigate } from "react-router-dom";
 function QnsAns() {
+  const navigate = useNavigate();
   const [quizData, setQuizData] = useState([]);
-  const { index, nextIndex, correctAns, isRestart } = useContext(QuizContext);
+  const { index, nextIndex, correctAns, isRestart, reTest } =
+    useContext(QuizContext);
   const [timer, setTimer] = useState(10);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
@@ -64,65 +67,71 @@ function QnsAns() {
   }
   const progressWidth = `${(timer / 10) * 100}%`;
   return (
-    <div className={styles.questionContainer}>
-      <div
-        className={styles.progressLine}
-        style={{ width: progressWidth }}
-      ></div>
-      <h1 className={styles.timer}>
-        <div className={styles.innerCircle}>
-          <div
-            className={styles.text}
-            style={{ color: `${timer <= 3 ? "red" : "white"}` }}
-          >
-            {timer}
+    <>
+      <div className={styles.questionContainer}>
+        <div
+          className={styles.progressLine}
+          style={{ width: progressWidth }}
+        ></div>
+        <h1 className={styles.timer}>
+          <div className={styles.innerCircle}>
+            <div
+              className={styles.text}
+              style={{ color: `${timer <= 3 ? "red" : "white"}` }}
+            >
+              {timer}
+            </div>
           </div>
+          <div className={styles.outerCircle}></div>
+        </h1>
+        <h1 className={styles.question}>{currentQuestion?.question}</h1>
+        <div className={styles.options}>
+          {currentQuestion?.options.map((option, idx) => (
+            <button
+              key={idx}
+              className={styles.option}
+              disabled={!isClicked ? true : false}
+              style={{
+                border:
+                  selectedOption === option
+                    ? isCorrect
+                      ? "5px solid rgb(12, 220, 12)"
+                      : "5px solid red"
+                    : "5px solid #0a11a2",
+              }}
+              onClick={() =>
+                handleOptionClick(
+                  option,
+                  currentQuestion,
+                  setIsCorrect,
+                  correctAns,
+                  setSelectedOption
+                )
+              }
+            >
+              {option}
+            </button>
+          ))}
         </div>
-        <div className={styles.outerCircle}></div>
-      </h1>
-      <h1 className={styles.question}>{currentQuestion?.question}</h1>
-      <div className={styles.options}>
-        {currentQuestion?.options.map((option, idx) => (
-          <button
-            key={idx}
-            className={styles.option}
-            disabled={!isClicked ? true : false}
-            style={{
-              border:
-                selectedOption === option
-                  ? isCorrect
-                    ? "5px solid rgb(12, 220, 12)"
-                    : "5px solid red"
-                  : "5px solid #0a11a2",
-            }}
-            onClick={() =>
-              handleOptionClick(
-                option,
-                currentQuestion,
-                setIsCorrect,
-                correctAns,
-                setSelectedOption
-              )
-            }
-          >
-            {option}
-          </button>
-        ))}
       </div>
-    </div>
+      <footer className={styles.footer}>
+        <button
+          className={styles.backButton}
+          onClick={() => handleHome(navigate, "/quiz")}
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setTimer(10);
+            handleTest(reTest);
+          }}
+          className={styles.reFreshButton}
+        >
+          Refresh
+        </button>
+      </footer>
+    </>
   );
 }
-
 export default QnsAns;
-
-// handleOption.js
-// function handleOption(option, answer, setIsCorrect, correctAns) {
-//   if (option === answer) {
-//     setIsCorrect(true);
-//     correctAns();
-//   } else {
-//     setIsCorrect(false);
-//   }
-// }
-
-// export default handleOption;
