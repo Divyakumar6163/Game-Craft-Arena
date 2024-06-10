@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./QnsAns.module.css";
-import handleOption from "./handleOption";
+import handleOptionClick from "./handleOption";
 import axios from "axios";
 import { QuizContext } from "../../context/quizContext";
 import Modal from "./Modal";
@@ -8,8 +8,10 @@ import Modal from "./Modal";
 function QnsAns() {
   const [quizData, setQuizData] = useState([]);
   const { index, nextIndex, correctAns, isRestart } = useContext(QuizContext);
-  const [timer, setTimer] = useState(10); // Initial timer value in seconds
-
+  const [timer, setTimer] = useState(10);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
+  const [isClicked, setIsClicked] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,24 +30,39 @@ function QnsAns() {
 
   useEffect(() => {
     if (currentQuestion) {
-      if (timer >= 0) {
+      if (timer >= 0 && isCorrect === null) {
+        // setIsClicked(true);
         const intervalId = setInterval(() => {
           setTimer((prevTimer) => prevTimer - 1);
         }, 1000);
         return () => clearInterval(intervalId);
-      } else {
+      } else if (timer < 0) {
         nextIndex();
         setTimer(10);
       }
     }
-  }, [timer, nextIndex, currentQuestion]);
+  }, [timer, nextIndex, currentQuestion, isCorrect]);
+
+  useEffect(() => {
+    if (isCorrect !== null) {
+      setIsClicked(false);
+      const timeoutId = setTimeout(() => {
+        nextIndex();
+        setTimer(10);
+        setSelectedOption(null);
+        setIsCorrect(null);
+      }, 500);
+      return () => {
+        setIsClicked(true);
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [isCorrect, nextIndex]);
 
   if (!currentQuestion) {
     return <Modal length={index} />;
   }
-
   const progressWidth = `${(timer / 10) * 100}%`;
-
   return (
     <div className={styles.questionContainer}>
       <div
@@ -69,13 +86,22 @@ function QnsAns() {
           <button
             key={idx}
             className={styles.option}
+            disabled={!isClicked ? true : false}
+            style={{
+              border:
+                selectedOption === option
+                  ? isCorrect
+                    ? "5px solid rgb(12, 220, 12)"
+                    : "5px solid red"
+                  : "5px solid #0a11a2",
+            }}
             onClick={() =>
-              handleOption(
+              handleOptionClick(
                 option,
-                currentQuestion?.answer,
-                nextIndex,
+                currentQuestion,
+                setIsCorrect,
                 correctAns,
-                setTimer
+                setSelectedOption
               )
             }
           >
@@ -88,3 +114,15 @@ function QnsAns() {
 }
 
 export default QnsAns;
+
+// handleOption.js
+// function handleOption(option, answer, setIsCorrect, correctAns) {
+//   if (option === answer) {
+//     setIsCorrect(true);
+//     correctAns();
+//   } else {
+//     setIsCorrect(false);
+//   }
+// }
+
+// export default handleOption;

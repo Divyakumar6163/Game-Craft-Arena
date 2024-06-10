@@ -1,11 +1,19 @@
-function handleOption(option, answer, nextIndex, correctAns, setTimer) {
+const handleOptionClick = (
+  option,
+  currentQuestion,
+  setIsCorrect,
+  correctAns,
+  setSelectedOption
+) => {
+  handleOption(option, currentQuestion.answer, setIsCorrect, correctAns);
+  setSelectedOption(option);
+};
+function handleOption(option, answer, setIsCorrect, correctAns) {
   if (option === answer) {
-    nextIndex();
+    setIsCorrect(true);
     correctAns();
-    setTimer(10);
   } else {
-    nextIndex();
-    setTimer(10);
+    setIsCorrect(false);
   }
 }
-export default handleOption;
+export default handleOptionClick;
