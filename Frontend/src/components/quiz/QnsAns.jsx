@@ -15,6 +15,7 @@ function QnsAns() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isClicked, setIsClicked] = useState(true);
+  // const [isPause, setIsPause] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +37,11 @@ function QnsAns() {
       if (timer >= 0 && isCorrect === null) {
         // setIsClicked(true);
         const intervalId = setInterval(() => {
+          // if (!isPause) {
           setTimer((prevTimer) => prevTimer - 1);
+          // } else {
+          //   setTimer((prevTimer) => prevTimer);
+          // }
         }, 1000);
         return () => clearInterval(intervalId);
       } else if (timer < 0) {
@@ -121,6 +126,15 @@ function QnsAns() {
         >
           Back
         </button>
+        {/* <button
+          onClick={() => {
+            // setTimer(10);
+            handlePause(setIsPause);
+          }}
+          className={styles.reFreshButton}
+        >
+          Pause
+        </button> */}
         <button
           onClick={() => {
             setTimer(10);

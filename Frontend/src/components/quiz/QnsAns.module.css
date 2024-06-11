@@ -141,7 +141,7 @@
     border: 5px solid #c80cbb;
     color: white;
     cursor: pointer;
-    padding-left: 18px;
+    padding-left: 8px;
     /* margin-right: 90vw; */
 }
 
@@ -160,7 +160,7 @@
     color: white;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    padding-left: 15px;
+    padding-left: 10px;
     font-size: 13px;
     /* margin-left: 90vw; */
 }
