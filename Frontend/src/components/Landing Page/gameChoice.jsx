@@ -6,7 +6,7 @@ const games = [
   { name: "Guess The Object", link: "/guess-the-object" },
   { name: "Tic Tac Toe", link: "/tic-tac-toe" },
   { name: "Quiz", link: "/quiz" },
-  { name: "Sudoku", link: "/quiz" },
+  { name: "Sudoku", link: "/sudoku" },
 ];
 export default function GameChoice() {
   const navigate = useNavigate();
