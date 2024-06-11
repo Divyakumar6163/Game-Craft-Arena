@@ -148,7 +148,7 @@
   left: 50px;
   cursor: pointer;
   font-size: 14px;
-  padding-left: 17px;
+  padding-left: 8px;
 }
 
 .backButton:hover {
@@ -167,7 +167,7 @@
   background-color: #09203F;
   border: 5px solid #0956a9;
   color: white;
-  padding-left: 17px;
+  padding-left: 8px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-size: 13px;
@@ -222,7 +222,6 @@
     width: 4rem;
     height: 4rem;
     bottom: 15px;
-    padding-left: 13px;
   }
 
   .image {
