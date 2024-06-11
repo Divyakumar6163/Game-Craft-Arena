@@ -30,14 +30,14 @@ function CreateQuiz() {
   return (
     <>
       <div className={styles.header}>
-        <h1>Create Quiz</h1>
+        <h1 className={styles.h1}>Create Quiz</h1>
       </div>
       <div className={styles.main}>
         {!showModal && (
           <div
             className={styles.formDiv}
             style={{
-              marginTop: `${!isSubmitted || numberOfQuestions <= 0 ? "0vh" : "15vh"}`,
+              marginTop: `${!isSubmitted || numberOfQuestions <= 0 ? "15vh" : "0vh"}`,
             }}
           >
             {(!isSubmitted || numberOfQuestions <= 0) && (
