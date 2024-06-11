@@ -22,7 +22,7 @@ function Modal({ length }) {
         <span style={{ color: "black" }}>{length}</span> questions.
       </p>
       <button
-        onClick={() => handleHome(navigate, "/")}
+        onClick={() => handleHome(navigate, "/quiz")}
         className={styles.button}
       >
         Home

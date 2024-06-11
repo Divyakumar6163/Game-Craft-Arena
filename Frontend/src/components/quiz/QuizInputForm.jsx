@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./createQuiz.module.css";
+
 function QuizInputForm({
   setCurrentQuestion,
   currentQuestion,
@@ -34,11 +35,13 @@ function QuizInputForm({
       setShowModal(true);
     }
   };
+
   return (
-    <form onSubmit={handleFormSubmit} className={styles.form}>
+    <form onSubmit={handleFormSubmit} className={styles.formQuizData}>
       <h3 className={styles.h3}>Quiz Data</h3>
-      <div className={styles["form-group"]}>
+      <div className={styles.formGroup}>
         <input
+          className={styles.formInput}
           required
           type="text"
           placeholder="Enter Question"
@@ -46,10 +49,11 @@ function QuizInputForm({
           onChange={handleQuestionInput}
         />
       </div>
-      <div className={styles["form-group"]}>
+      <div className={styles.formGroup}>
         {currentQuestion.options.map((option, index) => (
           <input
             required
+            className={styles.formInput}
             key={index}
             type="text"
             placeholder={`Option ${index + 1}`}
@@ -58,9 +62,10 @@ function QuizInputForm({
           />
         ))}
       </div>
-      <div className={styles["form-group"]}>
+      <div className={styles.formGroup}>
         <input
           required
+          className={styles.formInput}
           type="text"
           placeholder="Enter Answer"
           value={currentQuestion.answer}
@@ -68,12 +73,17 @@ function QuizInputForm({
         />
       </div>
       {quiz.length + 1 !== numberOfQuestions ? (
-        <button type="submit">Next</button>
+        <button type="submit" className={styles.saveButton}>
+          Next
+        </button>
       ) : null}
       {quiz.length + 1 === numberOfQuestions ? (
-        <button type="submit">Save</button>
+        <button type="submit" className={styles.saveButton}>
+          Save
+        </button>
       ) : null}
     </form>
   );
 }
+
 export default QuizInputForm;
