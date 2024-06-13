@@ -12,6 +12,7 @@ function SudokuBoard() {
   const [win, setWin] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
+  const [modal, setModal] = useState(false);
   function handleInput(event, rowIndex, cellIndex) {
     const value = event.target.value;
     if (value === "" || (value >= 1 && value <= 9)) {
@@ -28,8 +29,9 @@ function SudokuBoard() {
   return (
     <div className={styles.mainContainer}>
       <header className={styles.header}>
-        <h1 className={styles.h1}>Sudoku</h1>
-        {!solvedSudoku && (
+        {!modal && <h1 className={styles.h1}>Sudoku Game</h1>}
+
+        {!solvedSudoku && !modal && (
           <Timer
             timer={timer}
             setTimer={setTimer}
@@ -39,62 +41,67 @@ function SudokuBoard() {
         )}
       </header>
       <div className={styles.sudokuContainer}>
-        <div className={styles.boardContainer}>
-          {!solvedSudoku && (
-            <ol className={styles.ol}>
-              {gameBoard.map((row, rowIndex) => (
-                <li key={rowIndex} className={styles.li}>
-                  {row.map((cell, cellIndex) => (
-                    <input
-                      key={cellIndex}
-                      type="number"
-                      disabled={initialBoard[rowIndex][cellIndex] !== null}
-                      className={styles.input}
-                      value={cell !== null ? cell : ""}
-                      onChange={(event) =>
-                        handleInput(event, rowIndex, cellIndex)
-                      }
-                    />
-                  ))}
-                </li>
-              ))}
-            </ol>
-          )}
-          {console.log(initialBoard)}
-          {solvedSudoku && (
-            <ol className={styles.ol}>
-              {solvedSudoku.map((row, rowIndex) => (
-                <li key={rowIndex} className={styles.li}>
-                  {row.map((cell, cellIndex) => (
-                    <input
-                      key={cellIndex}
-                      type="number"
-                      disabled={true}
-                      className={styles.input}
-                      value={cell !== null ? cell : ""}
-                      style={{
-                        color: `${initialBoard[rowIndex][cellIndex] !== null ? "black" : "red"}`,
-                      }}
-                    />
-                  ))}
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>
-        <Buttons
-          initialBoard={initialBoard}
-          isValid={isValid}
-          win={win}
-          setSolvedSudoku={setSolvedSudoku}
-          gameBoard={gameBoard}
-          setWin={setWin}
-          solvedSudoku={solvedSudoku}
-          setGameBoard={setGameBoard}
-          setTimer={setTimer}
-          setIsPlay={setIsPlay}
-          setInitialBoard={setInitialBoard}
-        />
+        {!modal && (
+          <div className={styles.boardContainer}>
+            {!solvedSudoku && (
+              <ol className={styles.ol}>
+                {gameBoard.map((row, rowIndex) => (
+                  <li key={rowIndex} className={styles.li}>
+                    {row.map((cell, cellIndex) => (
+                      <input
+                        key={cellIndex}
+                        type="number"
+                        disabled={initialBoard[rowIndex][cellIndex] !== null}
+                        className={styles.input}
+                        value={cell !== null ? cell : ""}
+                        onChange={(event) =>
+                          handleInput(event, rowIndex, cellIndex)
+                        }
+                      />
+                    ))}
+                  </li>
+                ))}
+              </ol>
+            )}
+            {console.log(initialBoard)}
+            {solvedSudoku && (
+              <ol className={styles.ol}>
+                {solvedSudoku.map((row, rowIndex) => (
+                  <li key={rowIndex} className={styles.li}>
+                    {row.map((cell, cellIndex) => (
+                      <input
+                        key={cellIndex}
+                        type="number"
+                        disabled={true}
+                        className={styles.input}
+                        value={cell !== null ? cell : ""}
+                        style={{
+                          color: `${initialBoard[rowIndex][cellIndex] !== null ? "black" : "red"}`,
+                        }}
+                      />
+                    ))}
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+        )}
+        {!modal && (
+          <Buttons
+            initialBoard={initialBoard}
+            isValid={isValid}
+            win={win}
+            setSolvedSudoku={setSolvedSudoku}
+            gameBoard={gameBoard}
+            setWin={setWin}
+            solvedSudoku={solvedSudoku}
+            setGameBoard={setGameBoard}
+            setTimer={setTimer}
+            setIsPlay={setIsPlay}
+            setInitialBoard={setInitialBoard}
+            setModal={setModal}
+          />
+        )}
         {win && (
           <div className={styles.p}>
             <Modal
@@ -105,16 +112,17 @@ function SudokuBoard() {
               setTimer={setTimer}
               setIsPlay={setIsPlay}
               setInitialBoard={setInitialBoard}
+              win={win}
+              setModal={setModal}
             />
           </div>
         )}
       </div>
-      {!solvedSudoku && (
+      {!solvedSudoku && !modal && (
         <FooterButtons
           setGameBoard={setGameBoard}
           setSolvedSudoku={setSolvedSudoku}
           setWin={setWin}
-          initialBoard={initialBoard}
           setTimer={setTimer}
           setIsPlay={setIsPlay}
           setInitialBoard={setInitialBoard}

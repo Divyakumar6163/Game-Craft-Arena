@@ -59,6 +59,7 @@ function App() {
     <main>
       {/* <Header /> */}
       <BrowserRouter basename={"Guess-the-Name-Game"}>
+        {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<GameChoice />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />

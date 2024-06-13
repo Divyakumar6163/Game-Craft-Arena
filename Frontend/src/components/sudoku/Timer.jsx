@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-
+import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import styles from "./Timer.module.css";
 function TimerComponent({ timer, setTimer, isPlay, setIsPlay }) {
   function handleTimer() {
     setIsPlay(true);
@@ -25,11 +26,19 @@ function TimerComponent({ timer, setTimer, isPlay, setIsPlay }) {
   } else {
     displayTime = `${seconds}sec`;
   }
-
+  function handlePause() {
+    setIsPlay((prev) => !prev);
+  }
   return (
-    <div>
-      {!timer && <button onClick={handleTimer}>Start Timer</button>}
-      {timer > 0 && <p>{displayTime}</p>}
+    <div className={styles.timerDiv}>
+      {timer > 0 && isPlay && <FaPauseCircle onClick={handlePause} />}
+      {timer > 0 && !isPlay && <FaPlayCircle onClick={handlePause} />}
+      {!timer && (
+        <button onClick={handleTimer} className={styles.timerButton}>
+          Start Timer
+        </button>
+      )}
+      {timer > 0 && <p className={styles.pTimer}>{displayTime}</p>}
     </div>
   );
 }
