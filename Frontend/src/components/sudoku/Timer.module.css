@@ -1,0 +1,68 @@
+.timerDiv {
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timerButton {
+    background-color: #45046a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.timerButton:hover {
+    background-color: #32034a;
+}
+
+.pTimer {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.timerDiv svg {
+    font-size: 24px;
+    cursor: pointer;
+    color: #45046a;
+    transition: color 0.3s ease;
+}
+
+.timerDiv svg:hover {
+    color: #32034a;
+}
+
+@media (max-width: 600px) {
+    .timerDiv {
+        top: 10px;
+        right: 20px;
+        padding: 5px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timerButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .pTimer {
+        font-size: 14px;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .timerDiv svg {
+        font-size: 20px;
+    }
+}

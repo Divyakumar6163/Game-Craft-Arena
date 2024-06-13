@@ -1,3 +1,12 @@
+.h1 {
+    font-size: 3rem;
+    color: #45046a;
+    margin-bottom: 20px;
+    font-family: "Baloo 2", sans-serif;
+    margin-top: 0vh;
+    margin-bottom: 0;
+}
+
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -10,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .ol {
@@ -27,9 +36,9 @@
 }
 
 .input {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 54px;
+    height: 54px;
+    font-size: 1.6rem;
     text-align: center;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -38,8 +47,8 @@
 
 .input:focus {
     outline: none;
-    border-color: #45046a;
-    background-color: #f0e6ff;
+    border-color: #6a308d;
+    background-color: #eae4f3;
 }
 
 .input:nth-child(3n) {
@@ -58,7 +67,6 @@
     border-left: 2px solid #000;
 }
 
-/* Remove number input spinners */
 .input {
     -moz-appearance: textfield;
 }
@@ -67,6 +75,13 @@
 .input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding-bottom: 15vh; */
 }
 
 .button {
@@ -78,12 +93,19 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    margin: 5px;
+    min-width: 6rem;
 }
 
 .button:hover {
     background-color: #6c1b9c;
     transform: scale(1.05);
+}
+
+.note {
+    color: red;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 .p {
@@ -103,27 +125,104 @@
 }
 
 .footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: space-between;
-    margin-top: 20px;
+    padding: 0 20px;
 }
 
 .footerButton {
     background-color: #45046a;
-    color: white;
+    color: #ffffff;
     border: none;
+    border-radius: 5px;
     padding: 10px 20px;
-    margin: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    margin: 0 2vw 2vh 2vw;
+    transition: background-color 0.3s ease;
 }
 
 .footerButton:hover {
-    background-color: #720b98;
-    transform: scale(1.05);
+    background-color: #32034a;
 }
 
-.footerButton:active {
-    background-color: #32024c;
+/* @media (max-height: 750px) {
+    .h1 {
+        font-size: 3.3rem;
+    }
+
+    .input {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        min-width: 5.5rem;
+    }
+
+    .footerButton {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+
+    .mainContainer {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .boardContainer {
+        margin-bottom: 15px;
+    }
+} */
+
+@media (max-width: 800px) {
+    .h1 {
+        font-size: 2.5rem;
+    }
+
+    .input {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 5rem;
+    }
+
+    .footerButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    .h1 {
+        font-size: 2.5rem;
+    }
+
+    .input {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 5rem;
+    }
+
+    .footerButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }

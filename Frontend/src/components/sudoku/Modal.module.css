@@ -3,24 +3,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(91, 5, 140, 0.8);
+    background-color: #ffffff;
     backdrop-filter: blur(10px);
     padding: 2rem;
     border: 1px solid #310233;
     border-radius: 50px;
-    box-shadow: #F1EBBB 0px 0px 10px 5px;
+    box-shadow: #0a0a0a 0px 0px 10px 5px;
     z-index: 1000;
     width: 55vw;
     padding-bottom: 4rem;
     margin: 2vh 1vw;
 }
 
-.p {
+.time {
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
     margin-bottom: 2rem;
-    color: #EEEE;
+    color: black;
     font-family: "Baloo 2", sans-serif;
 }
 
@@ -40,11 +40,16 @@
 
 .h1 {
     font-size: 3.5rem;
-    font-weight: 800;
     text-align: center;
+    color: rgb(11, 223, 11);
     margin-bottom: 1rem;
-    color: #F1EBBB;
     font-family: "Baloo 2", sans-serif;
+}
+
+.p {
+    color: #45046a;
+    text-align: center;
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -59,25 +64,27 @@
     }
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
 .button {
-    background-color: #34093f;
-    border: 4px solid #c80cbb;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    padding: 10px 20px;
     font-size: 1rem;
-    margin: 4px 1rem 1rem 1rem;
+    color: #fff;
+    background-color: #45046a;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 25px;
-    width: 10rem;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s, transform 0.3s;
+    min-width: 6rem;
 }
 
 .button:hover {
-    background-color: #1c0423;
-    box-shadow: 0px 0px 10px 5px;
+    background-color: #6c1b9c;
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -103,11 +110,11 @@
         padding: 0.6rem;
     }
 
-    .title {
+    .h1 {
         font-size: 2.5rem;
     }
 
-    .score {
+    .time {
         font-size: 1.5rem;
     }
 }
