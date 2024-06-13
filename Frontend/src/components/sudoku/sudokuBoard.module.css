@@ -1,3 +1,18 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.boardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .ol {
     list-style-type: none;
     padding: 0;
@@ -18,11 +33,13 @@
     text-align: center;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 .input:focus {
     outline: none;
     border-color: #45046a;
+    background-color: #f0e6ff;
 }
 
 .input:nth-child(3n) {
@@ -50,4 +67,63 @@
 .input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #45046a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #6c1b9c;
+    transform: scale(1.05);
+}
+
+.p {
+    font-size: 1.5rem;
+    color: #45046a;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    margin-top: 20px;
+}
+
+.footerButton {
+    background-color: #45046a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.footerButton:hover {
+    background-color: #720b98;
+    transform: scale(1.05);
+}
+
+.footerButton:active {
+    background-color: #32024c;
 }
