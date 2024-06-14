@@ -29,7 +29,7 @@ function SudokuBoard() {
   return (
     <div className={styles.mainContainer}>
       <header className={styles.header}>
-        {!modal && <h1 className={styles.h1}>Sudoku Game</h1>}
+        {!modal && <h1 className={styles.h1}>Sudoku</h1>}
 
         {!solvedSudoku && !modal && (
           <Timer
@@ -53,6 +53,9 @@ function SudokuBoard() {
                         type="number"
                         disabled={initialBoard[rowIndex][cellIndex] !== null}
                         className={styles.input}
+                        style={{
+                          backgroundColor: `${initialBoard[rowIndex][cellIndex] !== null ? "rgb(240, 240, 240)" : "white"}`,
+                        }}
                         value={cell !== null ? cell : ""}
                         onChange={(event) =>
                           handleInput(event, rowIndex, cellIndex)
@@ -63,7 +66,6 @@ function SudokuBoard() {
                 ))}
               </ol>
             )}
-            {console.log(initialBoard)}
             {solvedSudoku && (
               <ol className={styles.ol}>
                 {solvedSudoku.map((row, rowIndex) => (
