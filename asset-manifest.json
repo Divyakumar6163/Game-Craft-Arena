@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Game-Craft-Arena/static/css/main.ac7a419e.css",
-    "main.js": "/Game-Craft-Arena/static/js/main.979785b6.js",
+    "main.js": "/Game-Craft-Arena/static/js/main.3b78c2a5.js",
     "static/js/453.6ca11368.chunk.js": "/Game-Craft-Arena/static/js/453.6ca11368.chunk.js",
     "static/media/img3.png": "/Game-Craft-Arena/static/media/img3.0c11bd3c723ea872249e.png",
     "static/media/img6.png": "/Game-Craft-Arena/static/media/img6.7c3e0a15b2b62c1e0a8c.png",
@@ -15,11 +15,11 @@
     "static/media/bg-pattern-dark.png": "/Game-Craft-Arena/static/media/bg-pattern-dark.f2c6e30a2a887881a35c.png",
     "index.html": "/Game-Craft-Arena/index.html",
     "main.ac7a419e.css.map": "/Game-Craft-Arena/static/css/main.ac7a419e.css.map",
-    "main.979785b6.js.map": "/Game-Craft-Arena/static/js/main.979785b6.js.map",
+    "main.3b78c2a5.js.map": "/Game-Craft-Arena/static/js/main.3b78c2a5.js.map",
     "453.6ca11368.chunk.js.map": "/Game-Craft-Arena/static/js/453.6ca11368.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ac7a419e.css",
-    "static/js/main.979785b6.js"
+    "static/js/main.3b78c2a5.js"
   ]
 }
