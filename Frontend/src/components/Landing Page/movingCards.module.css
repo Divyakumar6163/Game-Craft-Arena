@@ -47,7 +47,7 @@
 }
 
 .reelImage {
-    width: 18vw;
+    width: 15vw;
     height: auto;
     margin-right: 20px;
     border-radius: 10px;
@@ -55,14 +55,14 @@
 
 @media (max-width: 900px) {
     .reelImage {
-        height: 10rem;
-        width: 10rem;
+        height: 12rem;
+        width: 12rem;
     }
 }
 
 @media (max-width: 450px) {
     .reelImage {
-        height: 5rem;
-        width: 5rem;
+        height: 8.5rem;
+        width: 8.5rem;
     }
 }

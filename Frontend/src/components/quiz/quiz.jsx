@@ -6,7 +6,7 @@ function Question() {
   return (
     <QuizProvider>
       <header className={styles.header}>
-        <h1>Quiz Game</h1>
+        <h1>Quiz Play</h1>
       </header>
       <main className={styles.main}>
         <QnsAns />

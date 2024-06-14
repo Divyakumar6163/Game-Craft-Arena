@@ -1,7 +1,7 @@
 import style from "./gameChoice.module.css";
 import { useNavigate } from "react-router-dom";
 import ClickHandler from "./ClickHandler";
-// import MovingCards from "./movingCards";
+import MovingCards from "./movingCards";
 const games = [
   { name: "Guess The Object", link: "/guess-the-object" },
   { name: "Tic Tac Toe", link: "/tic-tac-toe" },
@@ -13,7 +13,7 @@ export default function GameChoice() {
   return (
     <div className={style.mainArea}>
       <header>
-        <h1 className={style.h1}>Gaming Hub</h1>
+        <h1 className={style.h1}>Game Craft Arena</h1>
       </header>
       <main className={style.main}>
         <div className={style.buttonContainer}>
@@ -34,7 +34,9 @@ export default function GameChoice() {
         </div>
       </main>
       <footer>
-        <div className={style.movingCards}>{/* <MovingCards /> */}</div>
+        <div className={style.movingCards}>
+          <MovingCards />
+        </div>
       </footer>
     </div>
   );
