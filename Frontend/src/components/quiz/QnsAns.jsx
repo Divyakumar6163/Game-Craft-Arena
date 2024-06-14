@@ -19,7 +19,10 @@ function QnsAns() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/quiz/playQuiz");
+        const response = await axios.get(
+          // "http://localhost:8000/quiz/playQuiz"
+          "https://game-craft-arena.onrender.com/quiz/createQuiz"
+        );
         setQuizData(
           response.data[Math.floor(Math.random() * response.data.length)].quiz
         );

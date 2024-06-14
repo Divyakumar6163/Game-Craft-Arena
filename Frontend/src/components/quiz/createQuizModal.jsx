@@ -15,7 +15,8 @@ function CreateQuizModal({
   const handleSave = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/quiz/createQuiz",
+        // "http://localhost:8000/quiz/createQuiz",
+        "https://game-craft-arena.onrender.com/quiz/createQuiz",
         data,
         {
           headers: {
