@@ -25,7 +25,7 @@ function CreateQuizModal({
         }
       );
       setTimeout(() => {
-        navigate("/quiz/createQuiz");
+        navigate("/quiz");
       }, 0);
       return response.data;
     } catch (error) {
