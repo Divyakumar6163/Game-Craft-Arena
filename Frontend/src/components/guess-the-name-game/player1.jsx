@@ -191,7 +191,8 @@ export default function Player1({
     // console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:8000/guess-the-object/player1",
+        // "http://localhost:8000/guess-the-object/player1",
+        "https://game-craft-arena.onrender.com/guess-the-object/player1",
         data,
         {
           headers: {

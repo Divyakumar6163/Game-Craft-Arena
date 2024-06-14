@@ -50,14 +50,16 @@ export default function Player2({
         try {
           if (playingChoiceImg) {
             response = await axios.get(
-              "http://localhost:8000/guess-the-object/player2",
+              // "http://localhost:8000/guess-the-object/player2",
+              "https://game-craft-arena.onrender.com/guess-the-object/player2",
               {
                 params: { keyword: "image" },
               }
             );
           } else {
             response = await axios.get(
-              "http://localhost:8000/guess-the-object/player2",
+              // "http://localhost:8000/guess-the-object/player2",
+              "https://game-craft-arena.onrender.com/guess-the-object/player2",
               {
                 params: { keyword: null },
               }
