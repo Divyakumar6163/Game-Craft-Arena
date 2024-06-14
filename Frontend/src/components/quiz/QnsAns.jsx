@@ -21,7 +21,7 @@ function QnsAns() {
       try {
         const response = await axios.get(
           // "http://localhost:8000/quiz/playQuiz"
-          "https://game-craft-arena.onrender.com/quiz/createQuiz"
+          "https://game-craft-arena.onrender.com/quiz/playQuiz"
         );
         setQuizData(
           response.data[Math.floor(Math.random() * response.data.length)].quiz
