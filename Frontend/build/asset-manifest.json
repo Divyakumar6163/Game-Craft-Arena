@@ -1,15 +1,25 @@
 {
   "files": {
-    "main.css": "/Guess-the-Name-Game/static/css/main.c8900a7b.css",
-    "main.js": "/Guess-the-Name-Game/static/js/main.b8877829.js",
-    "static/js/453.6ca11368.chunk.js": "/Guess-the-Name-Game/static/js/453.6ca11368.chunk.js",
-    "index.html": "/Guess-the-Name-Game/index.html",
-    "main.c8900a7b.css.map": "/Guess-the-Name-Game/static/css/main.c8900a7b.css.map",
-    "main.b8877829.js.map": "/Guess-the-Name-Game/static/js/main.b8877829.js.map",
-    "453.6ca11368.chunk.js.map": "/Guess-the-Name-Game/static/js/453.6ca11368.chunk.js.map"
+    "main.css": "/Game-Craft-Arena/static/css/main.ac7a419e.css",
+    "main.js": "/Game-Craft-Arena/static/js/main.2978e671.js",
+    "static/js/453.6ca11368.chunk.js": "/Game-Craft-Arena/static/js/453.6ca11368.chunk.js",
+    "static/media/img3.png": "/Game-Craft-Arena/static/media/img3.0c11bd3c723ea872249e.png",
+    "static/media/img6.png": "/Game-Craft-Arena/static/media/img6.7c3e0a15b2b62c1e0a8c.png",
+    "static/media/img5.png": "/Game-Craft-Arena/static/media/img5.f8151b4bfa0227b89d57.png",
+    "static/media/img4.png": "/Game-Craft-Arena/static/media/img4.3f1a4906af3cac6c1b12.png",
+    "static/media/img9.png": "/Game-Craft-Arena/static/media/img9.b1c1336e9bf5e6a67d18.png",
+    "static/media/img1.png": "/Game-Craft-Arena/static/media/img1.776d5a89da114beefde3.png",
+    "static/media/img8.png": "/Game-Craft-Arena/static/media/img8.932a79576e1cd769db81.png",
+    "static/media/img2.png": "/Game-Craft-Arena/static/media/img2.8c4437b5e101c9387a67.png",
+    "static/media/img7.png": "/Game-Craft-Arena/static/media/img7.82097e1762d3f27fb6cd.png",
+    "static/media/bg-pattern-dark.png": "/Game-Craft-Arena/static/media/bg-pattern-dark.f2c6e30a2a887881a35c.png",
+    "index.html": "/Game-Craft-Arena/index.html",
+    "main.ac7a419e.css.map": "/Game-Craft-Arena/static/css/main.ac7a419e.css.map",
+    "main.2978e671.js.map": "/Game-Craft-Arena/static/js/main.2978e671.js.map",
+    "453.6ca11368.chunk.js.map": "/Game-Craft-Arena/static/js/453.6ca11368.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8900a7b.css",
-    "static/js/main.b8877829.js"
+    "static/css/main.ac7a419e.css",
+    "static/js/main.2978e671.js"
   ]
 }
