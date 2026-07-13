@@ -1,5 +1,5 @@
 import Button from "./button";
-import styleLevel from "./level.module.css";
+import styleLevel from "./css/level.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PlayerName from "./playerName";

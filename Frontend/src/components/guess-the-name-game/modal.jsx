@@ -1,4 +1,4 @@
-import style from "./modal.module.css";
+import style from "./css/modal.module.css";
 import { useNavigate } from "react-router-dom";
 export default function Modal({
   message,

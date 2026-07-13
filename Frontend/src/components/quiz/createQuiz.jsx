@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CreateQuizModal from "./createQuizModal";
 import styles from "./createQuiz.module.css";
 import NumberOfQnsInput from "./numberOfQnsInput";

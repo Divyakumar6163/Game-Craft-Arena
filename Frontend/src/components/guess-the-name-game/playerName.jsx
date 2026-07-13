@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./playerName.module.css";
+import styles from "./css/playerName.module.css";
 export default function PlayerName({
   playerNameFinal,
   changePlayerName,

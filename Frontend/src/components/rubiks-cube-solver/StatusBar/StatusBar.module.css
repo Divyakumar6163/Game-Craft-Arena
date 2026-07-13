@@ -1,0 +1,15 @@
+.status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: #222;
+
+    color: white;
+
+    border-radius: 10px;
+}

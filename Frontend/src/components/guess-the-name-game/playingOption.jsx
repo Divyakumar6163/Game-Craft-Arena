@@ -1,4 +1,4 @@
-import style from "./playingOption.module.css";
+import style from "./css/playingOption.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";

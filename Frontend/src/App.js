@@ -10,6 +10,7 @@ import Quiz from "./components/quiz/homeQuiz.jsx";
 import QuizPlay from "./components/quiz/quiz.jsx";
 import CreateQuiz from "./components/quiz/createQuiz";
 import Sudoku from "./components/sudoku/sudokuBoard.jsx";
+import RubikCubeSolver from "./components/rubiks-cube-solver/RubikCubeSolver.jsx";
 import { useState } from "react";
 import TicTacToe from "./components/tic-tac-toe/gameFile.jsx";
 function App() {
@@ -67,6 +68,7 @@ function App() {
           <Route path="/quiz/playQuiz" element={<QuizPlay />} />
           <Route path="/quiz/createQuiz" element={<CreateQuiz />} />
           <Route path="/sudoku" element={<Sudoku />} />
+          <Route path="/rubiks-cube-solver" element={<RubikCubeSolver />} />
           <Route path="/guess-the-object" element={<GameRules />} />
           <Route
             path="/guess-the-object/playingOption"

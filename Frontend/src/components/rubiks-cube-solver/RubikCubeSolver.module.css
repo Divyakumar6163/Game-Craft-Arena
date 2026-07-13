@@ -1,0 +1,27 @@
+.container {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 40px;
+
+    padding: 30px;
+
+    max-width: 1400px;
+
+    margin: auto;
+
+}
+
+.title {
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.viewer {
+    flex: 1;
+}

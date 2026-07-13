@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./game-rules.module.css"; // Import CSS module
+import styles from "./css/game-rules.module.css"; // Import CSS module
 import Header from "./header";
 export default function GameRules() {
   const navigate = useNavigate();

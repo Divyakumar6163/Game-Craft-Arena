@@ -1,4 +1,4 @@
-import style from "./choice.module.css";
+import style from "./css/choice.module.css";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
 export default function Choice({ playingChoiceImg }) {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import axios from "axios";
 import Modal from "./modal";
-import styles from "./player2.module.css";
+import styles from "./css/player2.module.css";
 import RestartModal from "./restartModal";
 export default function Player2({
   dataReceive,

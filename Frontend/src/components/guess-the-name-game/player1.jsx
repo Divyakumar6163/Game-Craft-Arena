@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import styles from "./player1.module.css"; // Import the styles
+import styles from "./css/player1.module.css"; // Import the styles
 import Header from "./header";
 import axios from "axios";
 export default function Player1({

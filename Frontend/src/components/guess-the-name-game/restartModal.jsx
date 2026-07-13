@@ -1,4 +1,4 @@
-import style from "./restartModal.module.css";
+import style from "./css/restartModal.module.css";
 import { useNavigate } from "react-router-dom";
 export default function RestartModal({
   setRestartModal,

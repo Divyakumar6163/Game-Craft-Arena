@@ -61,7 +61,7 @@ function deriveGameBoard(gameTurns) {
 // Basically prevTurns & gameTurns are same
 function TicTacToe() {
   // const [activePlayer,setActivePlayer]=useState("X");
-  // uper wale metod se bhi deriveActivePlayer wala kaam kr skte h but hm log useState use krna avoid krna chahte h
+  // uper wale method se bhi deriveActivePlayer wala kaam kr skte h but hm log useState use krna avoid krna chahte h
   const navigate = useNavigate();
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
