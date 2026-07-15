@@ -59,8 +59,8 @@ function App() {
   return (
     <main>
       {/* <Header /> */}
-      <BrowserRouter basename={"Game-Craft-Arena"}>
-        {/* <BrowserRouter> */}
+      {/* <BrowserRouter basename={"Game-Craft-Arena"}> */}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<GameChoice />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
