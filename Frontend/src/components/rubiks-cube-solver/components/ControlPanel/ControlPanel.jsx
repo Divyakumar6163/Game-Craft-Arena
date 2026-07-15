@@ -2,7 +2,12 @@ import styles from "./ControlPanel.module.css";
 import History from "../History/History";
 import Controls from "../Controls/Controls";
 import SolverStats from "../SolverStats/SolverStats";
+import SolverController from "../../algorithms/controllers/SolverController";
+import useSolverStore from "../../store/solverStore";
+
 const ControlPanel = () => {
+  const algorithm = useSolverStore((state) => state.algorithm);
+  const setAlgorithm = useSolverStore((state) => state.setAlgorithm);
   return (
     <div className={styles.panel}>
       <h2>Control Panel</h2>
@@ -15,12 +20,19 @@ const ControlPanel = () => {
       <section className={styles.section}>
         <h3>Solver</h3>
 
-        <select defaultValue="IDA*">
-          <option>BFS</option>
-          <option>Bidirectional BFS</option>
-          <option>A*</option>
-          <option>IDA*</option>
+        <select
+          value={algorithm}
+          onChange={(e) => setAlgorithm(e.target.value)}
+        >
+          <option value="BFS">BFS</option>
+
+          <option value="BIDIRECTIONAL">Bidirectional BFS</option>
+
+          <option value="ASTAR">A*</option>
+
+          {/* <option value="IDASTAR">IDA*</option> */}
         </select>
+        <button onClick={() => SolverController.solve(algorithm)}>Solve</button>
       </section>
       <section className={styles.section}>
         <History />

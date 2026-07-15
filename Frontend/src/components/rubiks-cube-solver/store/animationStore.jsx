@@ -8,6 +8,7 @@ const useAnimationStore = create((set) => ({
   layer: null,
 
   angle: 0,
+  progress: 0,
 
   clockwise: true,
 
@@ -18,6 +19,12 @@ const useAnimationStore = create((set) => ({
       layer,
       clockwise,
       angle: 0,
+      progress: 0,
+    }),
+
+  setProgress: (progress) =>
+    set({
+      progress,
     }),
 
   setAngle: (angle) =>

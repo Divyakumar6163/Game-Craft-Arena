@@ -1,4 +1,4 @@
-import AnimationQueue from "../animations/animationQueue";
+import AnimationQueue from "../animations/AnimationQueue";
 import Animator from "../animations/animator";
 
 import { rotate } from "./cubeActions";

@@ -1,7 +1,6 @@
 class AnimationQueue {
   constructor() {
     this.queue = [];
-
     this.running = false;
   }
 
@@ -9,8 +8,23 @@ class AnimationQueue {
     this.queue.push(move);
   }
 
+  // NEW
+  enqueueMany(moves) {
+    this.queue.push(...moves);
+  }
+
   dequeue() {
     return this.queue.shift();
+  }
+
+  // NEW
+  peek() {
+    return this.queue[0];
+  }
+
+  // NEW
+  size() {
+    return this.queue.length;
   }
 
   isEmpty() {
@@ -19,6 +33,21 @@ class AnimationQueue {
 
   clear() {
     this.queue = [];
+  }
+
+  // NEW
+  start() {
+    this.running = true;
+  }
+
+  // NEW
+  stop() {
+    this.running = false;
+  }
+
+  // NEW
+  isRunning() {
+    return this.running;
   }
 }
 

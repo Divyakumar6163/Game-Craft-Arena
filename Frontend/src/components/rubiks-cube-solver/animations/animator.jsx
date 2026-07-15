@@ -1,4 +1,4 @@
-import AnimationQueue from "./animationQueue";
+import AnimationQueue from "./AnimationQueue";
 
 class Animator {
   async play(callback) {

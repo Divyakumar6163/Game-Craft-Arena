@@ -32,11 +32,26 @@ const RotatingLayer = ({ cubies }) => {
   useFrame(() => {
     if (!groupRef.current) return;
 
-    const value = (clockwise ? angle : -angle) * (Math.PI / 180);
-
     groupRef.current.rotation.set(0, 0, 0);
 
-    groupRef.current.rotation[axis] = value;
+    const value = ((clockwise ? angle : -angle) * Math.PI) / 180;
+
+    switch (axis) {
+      case "x":
+        groupRef.current.rotation.x = value;
+        break;
+
+      case "y":
+        groupRef.current.rotation.y = value;
+        break;
+
+      case "z":
+        groupRef.current.rotation.z = value;
+        break;
+
+      default:
+        break;
+    }
   });
 
   return (

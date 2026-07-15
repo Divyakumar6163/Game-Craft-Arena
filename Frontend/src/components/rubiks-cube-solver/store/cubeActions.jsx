@@ -1,4 +1,5 @@
 import CubeController from "../algorithms/controllers/CubeController";
+import MoveAnimator from "../animations/MoveAnimator";
 
 /**
  * Rotate a single move
@@ -6,6 +7,12 @@ import CubeController from "../algorithms/controllers/CubeController";
  * rotate("R")
  * rotate("U'")
  */
+
+export async function animateMove(move) {
+  await MoveAnimator.animate(move);
+
+  rotate(move);
+}
 export function rotate(move) {
   CubeController.move(move);
 }
