@@ -10,7 +10,7 @@ import Quiz from "./components/quiz/homeQuiz.jsx";
 import QuizPlay from "./components/quiz/quiz.jsx";
 import CreateQuiz from "./components/quiz/createQuiz";
 import Sudoku from "./components/sudoku/sudokuBoard.jsx";
-import RubikCubeSolver from "./components/rubiks-cube-solver/RubikCubeSolver.jsx";
+import RubikCubeSolver from "./components/rubiks-cube-solver/RubiksCube.jsx";
 import { useState } from "react";
 import TicTacToe from "./components/tic-tac-toe/gameFile.jsx";
 function App() {

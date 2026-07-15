@@ -1,0 +1,259 @@
+.verifyLeft {
+
+    flex: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.verifyRight {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+/* ========================================= */
+
+.palette {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 70px);
+
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-top: 20px;
+
+}
+
+/* ========================================= */
+
+.paletteColor {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 16px;
+
+    border: 3px solid transparent;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.paletteColor:hover {
+
+    transform: scale(1.08);
+
+}
+
+.activePalette {
+
+    border-color: white;
+
+    box-shadow:
+
+        0 0 20px rgba(107, 92, 255, .45);
+
+}
+
+/* ========================================= */
+
+.validationContainer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+/* ========================================= */
+
+.validationMessage {
+
+    min-height: 26px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+}
+
+/* ========================================= */
+
+.successValidation {
+
+    color: #22c55e;
+
+}
+
+.errorValidation {
+
+    color: #ef4444;
+
+}
+
+.emptyValidation {
+
+    color: rgba(255, 255, 255, .55);
+
+}
+
+/* ========================================= */
+
+.verifyButtons {
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.verifyButtons button {
+
+    flex: 1;
+
+}
+
+/* ========================================= */
+
+.instructions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    color: rgba(255, 255, 255, .72);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+/* ========================================= */
+
+.colorInfo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.colorDot {
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+}
+
+/* ========================================= */
+
+.paletteLabel {
+
+    margin-top: 8px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, .7);
+
+}
+
+/* ========================================= */
+
+.section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+/* ========================================= */
+
+@media(max-width:1000px) {
+
+    .verifyLeft {
+
+        width: 100%;
+
+    }
+
+    .verifyRight {
+
+        width: 100%;
+
+    }
+
+}
+
+/* ========================================= */
+
+@media(max-width:650px) {
+
+    .palette {
+
+        grid-template-columns: repeat(3, 58px);
+
+        gap: 14px;
+
+    }
+
+    .paletteColor {
+
+        width: 58px;
+
+        height: 58px;
+
+    }
+
+}
+
+/* ========================================= */
+
+@media(max-width:500px) {
+
+    .verifyButtons {
+
+        flex-direction: column;
+
+    }
+
+}

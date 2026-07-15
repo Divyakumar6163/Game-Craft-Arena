@@ -1,0 +1,130 @@
+.facePreview {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: #222738;
+
+    border: 1px solid rgba(255, 255, 255, .06);
+
+    transition: .25s;
+
+}
+
+.facePreview:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .25);
+
+}
+
+.scanned {
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 18px rgba(34, 197, 94, .18);
+
+}
+
+.previewTitle {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+.previewGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 24px);
+
+    grid-template-rows: repeat(3, 24px);
+
+    gap: 4px;
+
+    justify-content: center;
+
+    align-content: center;
+
+}
+
+.previewSticker {
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 4px;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    transition: .2s;
+
+}
+
+.previewSticker:hover {
+
+    transform: scale(1.08);
+
+}
+
+.notScanned {
+
+    opacity: .45;
+
+}
+
+.scannedLabel {
+
+    font-size: 12px;
+
+    color: #22c55e;
+
+    font-weight: 600;
+
+}
+
+.pendingLabel {
+
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, .55);
+
+}
+
+@media(max-width:700px) {
+
+    .previewGrid {
+
+        grid-template-columns: repeat(3, 20px);
+
+        grid-template-rows: repeat(3, 20px);
+
+    }
+
+    .previewSticker {
+
+        width: 20px;
+
+        height: 20px;
+
+    }
+
+}

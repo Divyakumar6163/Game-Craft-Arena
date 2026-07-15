@@ -1,0 +1,293 @@
+.playbackContainer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 26px;
+
+    padding: 24px;
+
+    border-radius: 18px;
+
+    background: #1f2536;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+/* ========================================= */
+
+.moveCounter {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+/* ========================================= */
+
+.currentMove {
+
+    font-size: 30px;
+
+    color: white;
+
+}
+
+.separator {
+
+    color: rgba(255, 255, 255, .45);
+
+}
+
+.totalMoves {
+
+    color: rgba(255, 255, 255, .65);
+
+}
+
+/* ========================================= */
+
+.controlButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+/* ========================================= */
+
+.controlButton {
+
+    width: 58px;
+
+    height: 58px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #2b3145;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.controlButton:hover:not(:disabled) {
+
+    transform: scale(1.08);
+
+    background: #374056;
+
+}
+
+.controlButton:active {
+
+    transform: scale(.95);
+
+}
+
+.controlButton:disabled {
+
+    opacity: .35;
+
+    cursor: not-allowed;
+
+}
+
+/* ========================================= */
+
+.playButton {
+
+    width: 72px;
+
+    height: 72px;
+
+    font-size: 30px;
+
+    background: linear-gradient(135deg,
+            #6b5cff,
+            #4b97ff);
+
+    box-shadow:
+
+        0 0 18px rgba(107, 92, 255, .35);
+
+}
+
+.playButton:hover:not(:disabled) {
+
+    box-shadow:
+
+        0 0 28px rgba(107, 92, 255, .55);
+
+}
+
+/* ========================================= */
+
+.speedControl {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+}
+
+.speedLabel {
+
+    width: 55px;
+
+    text-align: right;
+
+    font-weight: 600;
+
+}
+
+.speedControl input {
+
+    flex: 1;
+
+    max-width: 260px;
+
+    cursor: pointer;
+
+}
+
+.speedValue {
+
+    width: 55px;
+
+    text-align: left;
+
+    font-weight: 700;
+
+}
+
+/* ========================================= */
+
+.slider {
+
+    appearance: none;
+
+    height: 6px;
+
+    border-radius: 999px;
+
+    background: #3b4254;
+
+    outline: none;
+
+}
+
+.slider::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #6b5cff;
+
+    cursor: pointer;
+
+}
+
+.slider::-moz-range-thumb {
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #6b5cff;
+
+    cursor: pointer;
+
+    border: none;
+
+}
+
+/* ========================================= */
+
+@media(max-width:700px) {
+
+    .controlButtons {
+
+        gap: 8px;
+
+    }
+
+    .controlButton {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 18px;
+
+    }
+
+    .playButton {
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 24px;
+
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .speedControl {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .speedLabel {
+
+        width: auto;
+
+    }
+
+    .speedValue {
+
+        width: auto;
+
+    }
+
+}

@@ -1,0 +1,209 @@
+.moveList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-height: 560px;
+
+    overflow-y: auto;
+
+    padding-right: 6px;
+
+}
+
+/* ========================================= */
+
+.moveList::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+.moveList::-webkit-scrollbar-thumb {
+
+    background: #4b97ff;
+
+    border-radius: 10px;
+
+}
+
+.moveList::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+/* ========================================= */
+
+.moveItem {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+
+        60px 70px 1fr;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #202638;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.moveItem:hover {
+
+    transform: translateX(6px);
+
+    background: #2a3145;
+
+}
+
+/* ========================================= */
+
+.activeMove {
+
+    background:
+
+        linear-gradient(90deg,
+
+            rgba(107, 92, 255, .35),
+
+            rgba(75, 151, 255, .18));
+
+    border-left:
+
+        4px solid #6b5cff;
+
+}
+
+.completedMove {
+
+    opacity: .45;
+
+}
+
+/* ========================================= */
+
+.moveNumber {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: rgba(255, 255, 255, .65);
+
+}
+
+.moveNotation {
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: white;
+
+}
+
+.moveDescription {
+
+    font-size: 14px;
+
+    color: rgba(255, 255, 255, .72);
+
+    text-align: left;
+
+    line-height: 1.5;
+
+}
+
+/* ========================================= */
+
+.emptyMoveList {
+
+    height: 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, .65);
+
+}
+
+.emptyMoveList h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 22px;
+
+}
+
+.emptyMoveList p {
+
+    max-width: 260px;
+
+    line-height: 1.6;
+
+}
+
+/* ========================================= */
+
+@media(max-width:900px) {
+
+    .moveList {
+
+        max-height: 400px;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .moveItem {
+
+        grid-template-columns:
+
+            45px 55px 1fr;
+
+        padding: 12px;
+
+    }
+
+    .moveNotation {
+
+        font-size: 18px;
+
+    }
+
+    .moveDescription {
+
+        font-size: 13px;
+
+    }
+
+}

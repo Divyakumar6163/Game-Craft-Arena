@@ -1,0 +1,335 @@
+.scanLeft {
+
+    flex: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.scanRight {
+
+    flex: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.scanRight h2 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 24px;
+
+}
+
+/* ========================================= */
+
+.webcamContainer {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4/3;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #111827;
+
+}
+
+.video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transform: scaleX(-1);
+
+}
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    pointer-events: none;
+
+}
+
+/* ========================================= */
+
+.mirrorContainer {
+
+    margin-top: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: rgba(255, 255, 255, .7);
+
+}
+
+.mirrorContainer input {
+
+    width: 18px;
+
+    height: 18px;
+
+    cursor: pointer;
+
+}
+
+.mirrorContainer label {
+
+    cursor: pointer;
+
+}
+
+/* ========================================= */
+
+.scanControls {
+
+    margin-top: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+/* ========================================= */
+
+.faceIndicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    width: max-content;
+
+    padding: 12px 20px;
+
+    border-radius: 14px;
+
+    background: #262c3c;
+
+}
+
+.faceIndicator h3 {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+.faceIndicator small {
+
+    display: block;
+
+    color: rgba(255, 255, 255, .55);
+
+    margin-top: 3px;
+
+}
+
+/* ========================================= */
+
+.faceDot {
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255, 255, 255, .18);
+
+}
+
+/* ========================================= */
+
+.scanInstruction {
+
+    font-size: 15px;
+
+    color: rgba(255, 255, 255, .72);
+
+    line-height: 1.6;
+
+}
+
+/* ========================================= */
+
+.buttonGroup {
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.buttonGroup button {
+
+    flex: 1;
+
+}
+
+/* ========================================= */
+
+.previewGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+/* ========================================= */
+
+.completedBadge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: max-content;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    background: #163927;
+
+    color: #22c55e;
+
+    font-weight: 600;
+
+}
+
+.completedDot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+}
+
+/* ========================================= */
+
+.scanFooter {
+
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+/* ========================================= */
+
+.card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+/* ========================================= */
+
+@media(max-width:1200px) {
+
+    .previewGrid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media(max-width:900px) {
+
+    .scanLeft {
+
+        width: 100%;
+
+    }
+
+    .scanRight {
+
+        width: 100%;
+
+    }
+
+    .previewGrid {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .previewGrid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .previewGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .buttonGroup {
+
+        flex-direction: column;
+
+    }
+
+}

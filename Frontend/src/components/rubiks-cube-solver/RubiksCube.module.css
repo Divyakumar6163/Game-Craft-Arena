@@ -1,0 +1,2130 @@
+:global(*) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:global(*::before),
+:global(*::after) {
+    box-sizing: border-box;
+}
+
+:global(html) {
+    scroll-behavior: smooth;
+}
+
+.page {
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    background:
+        radial-gradient(circle at top,
+            #1a1b3d 0%,
+            #111827 45%,
+            #09090b 100%);
+
+    color: white;
+
+    overflow-x: hidden;
+
+    padding: 30px;
+
+    font-family:
+        Inter,
+        sans-serif;
+
+}
+
+/* ============================================================
+HEADER
+============================================================ */
+
+.header {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+.header h1 {
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(90deg,
+            #7c5cff,
+            #57b4ff);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.header p {
+
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, .7);
+
+    font-size: 17px;
+
+}
+
+/* ============================================================
+MAIN
+============================================================ */
+
+.main {
+
+    width: 100%;
+
+}
+
+/* ============================================================
+STEP BAR
+============================================================ */
+
+.progressHeader {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 35px 0 55px;
+
+}
+
+.step {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    opacity: .35;
+
+    transition: .3s;
+
+}
+
+.activeStep {
+
+    opacity: 1;
+
+}
+
+.completedStep {
+
+    opacity: 1;
+
+}
+
+.stepCircle {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 2px solid rgba(255, 255, 255, .08);
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+.activeStep .stepCircle {
+
+    background:
+        linear-gradient(135deg,
+            #7c5cff,
+            #4ea5ff);
+
+    border: none;
+
+    box-shadow:
+        0 0 18px rgba(124, 92, 255, .45);
+
+}
+
+.completedStep .stepCircle {
+
+    background:
+        linear-gradient(135deg,
+            #18c964,
+            #17b25c);
+
+}
+
+.stepLabel {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.stepLine {
+
+    width: 90px;
+
+    height: 3px;
+
+    margin: 0 12px;
+
+    background: rgba(255, 255, 255, .08);
+
+}
+
+.activeLine {
+
+    background:
+        linear-gradient(90deg,
+            #7c5cff,
+            #4ea5ff);
+
+}
+
+/* ============================================================
+COMMON PHASE
+============================================================ */
+
+.phase {
+
+    display: flex;
+
+    gap: 28px;
+
+    align-items: flex-start;
+
+    animation: fadeIn .35s ease;
+
+}
+
+/* ============================================================
+GLASS CARD
+============================================================ */
+
+.card {
+
+    background:
+        rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(16px);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+}
+
+/* ============================================================
+BUTTONS
+============================================================ */
+
+.primaryButton,
+
+.secondaryButton,
+
+.successButton {
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    padding: 14px 22px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+}
+
+.primaryButton {
+
+    background:
+
+        linear-gradient(135deg,
+            #7c5cff,
+            #4ea5ff);
+
+    color: white;
+
+}
+
+.primaryButton:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+.secondaryButton {
+
+    background:
+
+        rgba(255, 255, 255, .06);
+
+    color: white;
+
+}
+
+.secondaryButton:hover {
+
+    background:
+
+        rgba(255, 255, 255, .1);
+
+}
+
+.successButton {
+
+    background:
+
+        #18c964;
+
+    color: white;
+
+}
+
+.successButton:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+/* ============================================================
+FADE
+============================================================ */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+/* ============================================================
+   SCAN PHASE
+============================================================ */
+
+.scanLeft {
+
+    flex: 3;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+.scanRight {
+
+    flex: 2;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+.scanRight h2 {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+/* ============================================================
+WEBCAM
+============================================================ */
+
+.webcamContainer {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #111827;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .35);
+
+}
+
+.video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transform: scaleX(-1);
+
+}
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    pointer-events: none;
+
+}
+
+/* ============================================================
+MIRROR
+============================================================ */
+
+.mirrorContainer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: rgba(255, 255, 255, .75);
+
+    font-size: 14px;
+
+}
+
+.mirrorContainer input {
+
+    cursor: pointer;
+
+}
+
+/* ============================================================
+SCAN CONTROLS
+============================================================ */
+
+.scanControls {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.faceIndicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: fit-content;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    background:
+
+        rgba(255, 255, 255, .05);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .08);
+
+}
+
+.faceIndicator h3 {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+.faceDot {
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    border:
+
+        2px solid rgba(255, 255, 255, .2);
+
+}
+
+.scanInstruction {
+
+    color:
+
+        rgba(255, 255, 255, .75);
+
+    font-size: 15px;
+
+}
+
+.scanControls button {
+
+    width: 260px;
+
+}
+
+.previewGrid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+.facePreview:hover {
+
+    transform: translateY(-2px);
+
+    background:
+
+        rgba(255, 255, 255, .07);
+
+}
+
+.facePreview.scanned {
+
+    border-color:
+
+        rgba(24, 201, 100, .5);
+
+    box-shadow:
+
+        0 0 14px rgba(24, 201, 100, .2);
+
+}
+
+.faceTitle {
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    color: white;
+
+}
+
+.faceGrid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(3, 20px);
+
+    grid-template-rows:
+
+        repeat(3, 20px);
+
+    gap: 2px;
+
+}
+
+.miniSticker {
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 3px;
+
+    border:
+
+        1px solid rgba(255, 255, 255, .08);
+
+    background:
+
+        rgba(255, 255, 255, .08);
+
+}
+
+.faceStatus {
+
+    font-size: 12px;
+
+    color: #18c964;
+
+    min-height: 16px;
+
+}
+
+/* ============================================================
+RESPONSIVE
+============================================================ */
+
+@media (max-width:900px) {
+
+    .phase {
+
+        flex-direction: column;
+
+    }
+
+    .scanLeft,
+
+    .scanRight {
+
+        width: 100%;
+
+        flex: none;
+
+    }
+
+    .previewGrid {
+
+        grid-template-columns:
+
+            repeat(2, 1fr);
+
+    }
+
+}
+
+@media (max-width:600px) {
+
+    .previewGrid {
+
+        grid-template-columns:
+
+            repeat(1, 1fr);
+
+    }
+
+    .scanControls button {
+
+        width: 100%;
+
+    }
+
+}
+
+/* ============================================================
+   VERIFY PHASE
+============================================================ */
+
+.verifyLeft {
+
+    flex: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+.verifyRight {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+/* ===========================
+   CUBE NET
+=========================== */
+
+.cubeNet {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, max-content);
+
+    grid-template-rows:
+        repeat(3, max-content);
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: auto;
+
+}
+
+.faceContainer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    position: relative;
+
+}
+
+.faceContainer[data-face="U"] {
+
+    grid-column: 2;
+    grid-row: 1;
+
+}
+
+.faceContainer[data-face="L"] {
+
+    grid-column: 1;
+    grid-row: 2;
+
+}
+
+.faceContainer[data-face="F"] {
+
+    grid-column: 2;
+    grid-row: 2;
+
+}
+
+.faceContainer[data-face="R"] {
+
+    grid-column: 3;
+    grid-row: 2;
+
+}
+
+.faceContainer[data-face="B"] {
+
+    grid-column: 4;
+    grid-row: 2;
+
+}
+
+.faceContainer[data-face="D"] {
+
+    grid-column: 2;
+    grid-row: 3;
+
+}
+
+.faceTitle {
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: rgba(255, 255, 255, .7);
+
+    letter-spacing: .08em;
+
+}
+
+/* ===========================
+   FACE GRID
+=========================== */
+
+.faceGrid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 42px);
+
+    grid-template-rows:
+        repeat(3, 42px);
+
+    gap: 3px;
+
+}
+
+.netSticker {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    background: rgba(255, 255, 255, .08);
+
+}
+
+.netSticker:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .35);
+
+}
+
+.selectedSticker {
+
+    outline: 3px solid #7C5CFF;
+
+    outline-offset: 2px;
+
+}
+
+.centerSticker {
+
+    cursor: default;
+
+}
+
+/* ===========================
+   PALETTE
+=========================== */
+
+.palette {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 58px);
+
+    justify-content: center;
+
+    gap: 16px;
+
+}
+
+.paletteColor {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 50%;
+
+    border: 3px solid transparent;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.paletteColor:hover {
+
+    transform: scale(1.1);
+
+}
+
+.activePalette {
+
+    border-color: white;
+
+    box-shadow:
+
+        0 0 0 4px rgba(255, 255, 255, .12),
+
+        0 0 18px rgba(124, 92, 255, .45);
+
+}
+
+/* ===========================
+   VALIDATION
+=========================== */
+
+.validationMessage {
+
+    min-height: 24px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+}
+
+.successValidation {
+
+    color: #18C964;
+
+}
+
+.errorValidation {
+
+    color: #FF4D4D;
+
+}
+
+.emptyValidation {
+
+    visibility: hidden;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.verifyButtons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 16px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:900px) {
+
+    .verifyLeft,
+    .verifyRight {
+
+        width: 100%;
+
+        flex: none;
+
+    }
+
+    .cubeNet {
+
+        transform: scale(.92);
+
+    }
+
+}
+
+@media (max-width:650px) {
+
+    .faceGrid {
+
+        grid-template-columns:
+            repeat(3, 32px);
+
+        grid-template-rows:
+            repeat(3, 32px);
+
+    }
+
+    .netSticker {
+
+        width: 32px;
+        height: 32px;
+
+    }
+
+    .palette {
+
+        grid-template-columns:
+            repeat(3, 48px);
+
+    }
+
+    .paletteColor {
+
+        width: 48px;
+        height: 48px;
+
+    }
+
+}
+
+/* ============================================================
+   SOLVE PHASE
+============================================================ */
+
+.solveContainer {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+.solveStatus {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+}
+
+.progressWrapper {
+
+    width: 100%;
+
+    height: 12px;
+
+    border-radius: 100px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .08);
+
+}
+
+.progressBar {
+
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: inherit;
+
+    background:
+
+        linear-gradient(90deg,
+            #7C5CFF,
+            #4EA5FF);
+
+    transition: width .35s ease;
+
+}
+
+.progressText {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, .75);
+
+}
+
+.solutionBox {
+
+    width: 100%;
+
+    padding: 26px;
+
+    border-radius: 18px;
+
+    background:
+
+        rgba(255, 255, 255, .05);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(18px);
+
+}
+
+.solutionMoves {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+}
+
+.solutionMove {
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    background:
+
+        rgba(255, 255, 255, .08);
+
+    transition: .25s;
+
+}
+
+.solutionMove:hover {
+
+    transform: translateY(-2px);
+
+    background:
+
+        rgba(255, 255, 255, .12);
+
+}
+
+.moveCount {
+
+    margin-top: 22px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+/* ============================================================
+MOVE LIST
+============================================================ */
+
+.moveList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    max-height: 520px;
+
+    overflow-y: auto;
+
+    padding-right: 6px;
+
+}
+
+.moveList::-webkit-scrollbar {
+
+    width: 5px;
+
+}
+
+.moveList::-webkit-scrollbar-thumb {
+
+    background:
+
+        rgba(124, 92, 255, .45);
+
+    border-radius: 10px;
+
+}
+
+.moveList::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+.moveItem {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+
+        55px 70px 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+
+        rgba(255, 255, 255, .05);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.moveItem:hover {
+
+    transform: translateX(6px);
+
+    background:
+
+        rgba(255, 255, 255, .08);
+
+}
+
+.activeMove {
+
+    background:
+
+        linear-gradient(90deg,
+            rgba(124, 92, 255, .45),
+            rgba(78, 165, 255, .18));
+
+    border-left:
+
+        4px solid #7C5CFF;
+
+}
+
+.completedMove {
+
+    opacity: .45;
+
+}
+
+.moveNumber {
+
+    font-weight: 700;
+
+    opacity: .7;
+
+}
+
+.moveNotation {
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+}
+
+.moveDescription {
+
+    font-size: 14px;
+
+    opacity: .75;
+
+}
+
+.emptyMoveList {
+
+    padding: 40px;
+
+    text-align: center;
+
+    color:
+
+        rgba(255, 255, 255, .55);
+
+}
+
+/* ============================================================
+   ANIMATE PHASE
+============================================================ */
+
+.animateLeft {
+
+    flex: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+.animateRight {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+/* ============================================================
+3D CUBE
+============================================================ */
+
+.cube3DContainer {
+
+    width: 100%;
+
+    height: 600px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #111827;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .35);
+
+}
+
+/* ============================================================
+CURRENT MOVE
+============================================================ */
+
+.currentMoveCard {
+
+    padding: 24px;
+
+    border-radius: 16px;
+
+    background:
+
+        rgba(255, 255, 255, .05);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .08);
+
+    text-align: center;
+
+}
+
+.currentMoveTitle {
+
+    color: rgba(255, 255, 255, .65);
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+
+}
+
+.currentMoveNotation {
+
+    font-size: 54px;
+
+    font-weight: 800;
+
+    background:
+
+        linear-gradient(135deg,
+            #7C5CFF,
+            #4EA5FF);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+/* ============================================================
+PLAYBACK CONTROLS
+============================================================ */
+
+.playbackContainer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+.moveCounter {
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+.controlButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+.controlButton {
+
+    width: 56px;
+
+    height: 56px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    cursor: pointer;
+
+    background:
+
+        rgba(255, 255, 255, .06);
+
+    color: white;
+
+    font-size: 22px;
+
+    transition: .25s;
+
+}
+
+.controlButton:hover:not(:disabled) {
+
+    transform: scale(1.08);
+
+    background:
+
+        rgba(255, 255, 255, .1);
+
+}
+
+.controlButton:disabled {
+
+    opacity: .3;
+
+    cursor: not-allowed;
+
+}
+
+.playButton {
+
+    width: 70px;
+
+    height: 70px;
+
+    background:
+
+        linear-gradient(135deg,
+            #7C5CFF,
+            #4EA5FF);
+
+    font-size: 30px;
+
+    box-shadow:
+
+        0 0 20px rgba(124, 92, 255, .4);
+
+}
+
+.playButton:hover:not(:disabled) {
+
+    box-shadow:
+
+        0 0 28px rgba(124, 92, 255, .65);
+
+}
+
+/* ============================================================
+SPEED CONTROL
+============================================================ */
+
+.speedControl {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+}
+
+.speedControl input {
+
+    width: 240px;
+
+}
+
+.speedValue {
+
+    width: 40px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+}
+
+/* ============================================================
+COMMON TITLES
+============================================================ */
+
+.sectionTitle {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin-bottom: 16px;
+
+}
+
+.sectionSubtitle {
+
+    color: rgba(255, 255, 255, .65);
+
+    margin-bottom: 18px;
+
+}
+
+/* ============================================================
+RESPONSIVE
+============================================================ */
+
+@media (max-width:1100px) {
+
+    .animateLeft {
+
+        flex: 1.5;
+
+    }
+
+    .animateRight {
+
+        flex: 1;
+
+    }
+
+}
+
+@media (max-width:900px) {
+
+    .phase {
+
+        flex-direction: column;
+
+    }
+
+    .animateLeft,
+
+    .animateRight,
+
+    .verifyLeft,
+
+    .verifyRight,
+
+    .scanLeft,
+
+    .scanRight {
+
+        width: 100%;
+
+        flex: none;
+
+    }
+
+    .cube3DContainer {
+
+        height: 420px;
+
+    }
+
+}
+
+@media (max-width:700px) {
+
+    .progressHeader {
+
+        transform: scale(.9);
+
+    }
+
+    .stepLine {
+
+        width: 45px;
+
+    }
+
+    .cube3DContainer {
+
+        height: 320px;
+
+    }
+
+    .faceGrid {
+
+        grid-template-columns: repeat(3, 30px);
+
+        grid-template-rows: repeat(3, 30px);
+
+    }
+
+    .netSticker {
+
+        width: 30px;
+
+        height: 30px;
+
+    }
+
+}
+
+@media (max-width:500px) {
+
+    .page {
+
+        padding: 20px;
+
+    }
+
+    .header h1 {
+
+        font-size: 30px;
+
+    }
+
+    .previewGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .controlButtons {
+
+        gap: 8px;
+
+    }
+
+    .controlButton {
+
+        width: 46px;
+
+        height: 46px;
+
+        font-size: 18px;
+
+    }
+
+    .playButton {
+
+        width: 58px;
+
+        height: 58px;
+
+        font-size: 24px;
+
+    }
+
+}
+
+/* ============================================================
+UTILITY
+============================================================ */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+.center {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.glow {
+
+    box-shadow:
+
+        0 0 20px rgba(124, 92, 255, .35);
+
+}
+
+.success {
+
+    color: #18C964;
+
+}
+
+.error {
+
+    color: #FF4D4D;
+
+}
+
+.muted {
+
+    color: rgba(255, 255, 255, .6);
+
+}
+
+.stickerWrapper {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.centerSticker {
+
+    cursor: default;
+
+    box-shadow:
+
+        inset 0 0 0 2px rgba(255, 255, 255, .18);
+
+}
+
+.netSticker {
+
+    transition: .2s;
+
+}
+
+.netSticker:hover:not(:disabled) {
+
+    transform: scale(1.08);
+
+    box-shadow:
+
+        0 8px 16px rgba(0, 0, 0, .35);
+
+}
+
+.emptyMoveList {
+
+    height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, .7);
+
+}
+
+.emptyMoveList h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 22px;
+
+}
+
+.emptyMoveList p {
+
+    opacity: .7;
+
+    max-width: 250px;
+
+}
+
+.currentMove {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+.separator {
+
+    margin: 0 8px;
+
+    color: rgba(255, 255, 255, .45);
+
+}
+
+.totalMoves {
+
+    color: rgba(255, 255, 255, .65);
+
+}
+
+.speedLabel {
+
+    width: 55px;
+
+    text-align: right;
+
+    font-weight: 600;
+
+}
+
+.speedValue {
+
+    width: 52px;
+
+    text-align: left;
+
+    font-weight: 700;
+
+}
+
+.buttonGroup {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+.buttonGroup button {
+
+    flex: 1;
+
+}
+
+.faceIndicator small {
+
+    color: rgba(255, 255, 255, .55);
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+
+}
+
+.scanRight .card {
+
+    height: 100%;
+
+}
+
+.scanLeft .card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.solveContainer {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+
+}
+
+.solveContainer .card {
+
+    text-align: center;
+
+}
+
+.solveContainer h1 {
+
+    margin-bottom: 16px;
+
+}
+
+.progressWrapper {
+
+    margin-top: 18px;
+
+    margin-bottom: 14px;
+
+}
+
+.solutionBox h2 {
+
+    margin-bottom: 18px;
+
+}
+
+.solutionMove {
+
+    min-width: 52px;
+
+    text-align: center;
+
+}
+
+.validationMessage {
+
+    margin-top: 18px;
+
+    min-height: 24px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+}
+
+.verifyRight .card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+.palette button {
+
+    position: relative;
+
+}
+
+.palette button:hover {
+
+    transform: scale(1.08);
+
+}
+
+.verifyButtons {
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.verifyButtons button {
+
+    flex: 1;
+
+}
+
+.phaseHeader {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+.phaseHeader h2 {
+
+    font-size: 34px;
+
+    margin-bottom: 10px;
+
+}
+
+.phaseHeader p {
+
+    color: rgba(255, 255, 255, .65);
+
+}
+
+.phaseWrapper {
+
+    animation: fadeIn .35s ease;
+
+}
+
+.completedStep {
+
+    opacity: 1;
+
+}
+
+.completedStep .stepCircle {
+
+    background: #18C964;
+
+}
+
+.facePreview {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: #2a2f3c;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    transition: .25s;
+
+}
+
+.facePreview:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.miniSticker {
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 4px;
+
+    background: #474C59;
+
+    border: 1px solid rgba(255, 255, 255, .06);
+
+    transition: .25s;
+
+}
+
+.scanned {
+
+    border-color: #16c784;
+
+    box-shadow: 0 0 20px rgba(22, 199, 132, .15);
+
+}
+
+.previewGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+.previewTitle {
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+}
+
+.previewGridFace {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 24px);
+
+    grid-template-rows: repeat(3, 24px);
+
+    gap: 5px;
+
+    justify-content: center;
+
+}
