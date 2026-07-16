@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styles from "./sudokuBoard.module.css";
-import { isSafe, generateInitialBoard, isValid } from "./helperFunctions";
+import {
+  isSafe,
+  generateInitialBoard,
+  isValid,
+} from "./helperFunctionsOptimized";
 import Modal from "./Modal";
 import Buttons from "./sudokuButtons";
 import FooterButtons from "./FooterButton";

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Modal.module.css";
 import { useNavigate } from "react-router-dom";
-import { generateInitialBoard } from "./helperFunctions";
+import { generateInitialBoard } from "./helperFunctionsOptimized";
 
 function Modal({
   timer,

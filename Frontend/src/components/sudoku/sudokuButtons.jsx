@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./sudokuBoard.module.css";
 import { useNavigate } from "react-router-dom";
-import { generateInitialBoard } from "./helperFunctions";
+import { generateInitialBoard, solveSudoku } from "./helperFunctionsOptimized";
 function Buttons({
   initialBoard,
   isValid,
@@ -26,8 +26,9 @@ function Buttons({
   }
 
   function handleSolve() {
-    const solvedBoard = initialBoard.map((row) => row.slice());
-    if (isValid(solvedBoard)) {
+    const solvedBoard = solveSudoku(gameBoard);
+
+    if (solvedBoard) {
       setSolvedSudoku(solvedBoard);
     } else {
       alert("Sudoku puzzle is unsolvable.");
@@ -40,16 +41,19 @@ function Buttons({
         if (gameBoard[row][col] === null) {
           setWin(false);
           setNote(true);
-          setTimeout(() => {
-            setNote(false);
-          }, 3000);
+          setTimeout(() => setNote(false), 3000);
           return;
         }
       }
     }
-    setWin(true);
-    setIsPlay(false);
-    setModal(true);
+
+    if (isValid(gameBoard)) {
+      setWin(true);
+      setIsPlay(false);
+      setModal(true);
+    } else {
+      alert("Incorrect Sudoku!");
+    }
   }
   const navigate = useNavigate();
   function handleHome() {

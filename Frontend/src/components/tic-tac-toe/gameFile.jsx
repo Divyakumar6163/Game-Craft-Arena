@@ -1,10 +1,11 @@
 import Player from "./Player.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GameBoard from "./GameBoard.jsx";
 import Log from "./Log.jsx";
 import { WINNING_COMBINATIONS } from "../../data/winning-combinations.js";
 import GameOver from "./GameOver.jsx";
+import { findBestMove } from "./alphabeta.jsx";
 import style from "./gameFile.module.css";
 const PLAYERS = {
   X: "Player 1",
@@ -68,9 +69,28 @@ function TicTacToe() {
   const [viewLog, setViewLog] = useState(false);
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns);
-
+  const [playWithAI, setPlayWithAI] = useState(false);
   const winner = deriveWinner(gameBoard, players);
   const hasDraw = gameTurns.length === 9 && !winner;
+  useEffect(() => {
+    if (!playWithAI) return;
+
+    if (winner) return;
+
+    if (gameTurns.length === 9) return;
+
+    if (activePlayer !== "O") return;
+
+    const move = findBestMove(gameBoard);
+
+    if (!move) return;
+
+    const timer = setTimeout(() => {
+      handleEntry(move.row, move.col);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [gameTurns, playWithAI]);
 
   function handleEntry(rowInt, colInt) {
     // setActivePlayer((activePlayer)=> activePlayer==='X' ? 'O':"X");
@@ -113,6 +133,14 @@ function TicTacToe() {
   return (
     <main className={style.main}>
       <h1 className={style.h1}>Tic Tac Toe</h1>
+      <div className={style.buttonContainer}>
+        <button
+          onClick={() => setPlayWithAI((prev) => !prev)}
+          className={style.modeButton}
+        >
+          {playWithAI ? "Play With Friend" : "Play With AI"}
+        </button>
+      </div>
       <div className={style.gameContainer}>
         <ol className={style.players}>
           <Player
