@@ -2,7 +2,11 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.5-lite"];
+const MODELS = [
+  "gemini-2.5-flash",
+  "gemini-2.5-flash-lite",
+  "gemini-2.0-flash",
+];
 
 const generateAIQuiz = async (prompt) => {
   let lastError;
