@@ -1,31 +1,27 @@
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
 dotenv.config({ path: "./config.env" });
-const app = require("./app.js");
 
-// MongoDB credentials
+const mongoose = require("mongoose");
+const http = require("http");
 
-const DB = process.env.DATABASE;
-// Connect to MongoDB
+const app = require("./app");
+const { initSocket } = require("./socket/socket");
+require("./queue/worker");
+
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then((con) => {
-    console.log(con.connections);
-  });
+  .connect(process.env.DATABASE)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error(err));
 
-const port = 8000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const port = process.env.PORT || 8000;
+
+// Create HTTP server
+const server = http.createServer(app);
+
+// Initialize Socket.IO
+initSocket(server);
+
+// Start HTTP server
+server.listen(port, () => {
+  console.log(`🚀 Server is running on port ${port}`);
 });
-// process.on("unhandledRejection", (err) => {
-//   console.log("UNHANDLED REJECTION! 💥 Shutting down...");
-//   console.log(err.name, err.message);
-//   server.close(() => {
-//     process.exit(1);
-//   });
-// });
