@@ -20,11 +20,11 @@ function QnsAns() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // "http://localhost:8000/quiz/playQuiz"
-          "https://game-craft-arena.onrender.com/quiz/playQuiz"
+          // "http://localhost:8000/quiz/playQuiz",
+          "https://game-craft-arena.onrender.com/quiz/playQuiz",
         );
         setQuizData(
-          response.data[Math.floor(Math.random() * response.data.length)].quiz
+          response.data[Math.floor(Math.random() * response.data.length)].quiz,
         );
       } catch (error) {
         console.log(error);
@@ -113,7 +113,7 @@ function QnsAns() {
                   currentQuestion,
                   setIsCorrect,
                   correctAns,
-                  setSelectedOption
+                  setSelectedOption,
                 )
               }
             >
