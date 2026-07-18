@@ -1,44 +1,39 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenAI } = require("@google/genai");
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+});
 
 const MODELS = [
-  "gemini-2.5-flash",
-  "gemini-2.5-flash-lite",
-  "gemini-2.0-flash",
+  "gemini-3.5-flash",
+  "gemini-3.1-flash-lite",
+  "gemini-3-flash-preview",
+  "gemini-flash-latest",
+  "gemini-flash-lite-latest",
+  "gemini-pro-latest",
 ];
 
-const generateAIQuiz = async (prompt) => {
+async function generateAIQuiz(prompt) {
   let lastError;
 
-  for (const modelName of MODELS) {
+  for (const model of MODELS) {
     try {
-      console.log(`Trying Gemini model: ${modelName}`);
+      console.log(`Trying model: ${model}`);
 
-      const model = genAI.getGenerativeModel({
-        model: modelName,
+      const response = await ai.models.generateContent({
+        model,
+        contents: prompt,
       });
 
-      const result = await model.generateContent(prompt);
-
-      const response = await result.response;
-
-      const text = response.text();
-
-      if (!text) {
-        throw new Error("Empty Gemini response");
-      }
-
-      return text;
-    } catch (error) {
-      console.error(`Gemini failed (${modelName})`, error.message);
-
-      lastError = error;
+      return response.text;
+    } catch (err) {
+      console.error(err);
+      lastError = err;
     }
   }
 
   throw lastError;
-};
+}
 
 module.exports = {
   generateAIQuiz,

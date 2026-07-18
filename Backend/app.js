@@ -12,6 +12,7 @@ const allowedOrigins = [
   "https://game-craft-arena.vercel.app",
   "https://game-craft-arena.onrender.com",
   "https://game-craft-arena.onrender.com/socket.io",
+  "https://game-craft-arena.onrender.com/socket.io/:id",
 ];
 
 app.use(
