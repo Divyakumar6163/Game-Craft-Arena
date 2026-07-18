@@ -9,7 +9,6 @@ import GameChoice from "./components/Landing Page/gameChoice.jsx";
 import Quiz from "./components/quiz/homeQuiz.jsx";
 import QuizPlay from "./components/quiz/quiz.jsx";
 import CreateQuiz from "./components/quiz/createQuiz";
-import CreateAIQuiz from "./components/quiz/CreateAIQuiz.jsx";
 import Sudoku from "./components/sudoku/sudokuBoard.jsx";
 import RubikCubeSolver from "./components/rubiks-cube-solver/RubiksCube.jsx";
 import { useState } from "react";
@@ -68,7 +67,6 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/quiz/playQuiz" element={<QuizPlay />} />
           <Route path="/quiz/createQuiz" element={<CreateQuiz />} />
-          <Route path="/quiz/createAIQuiz" element={<CreateAIQuiz />} />
           <Route path="/sudoku" element={<Sudoku />} />
           <Route path="/rubiks-cube-solver" element={<RubikCubeSolver />} />
           <Route path="/guess-the-object" element={<GameRules />} />

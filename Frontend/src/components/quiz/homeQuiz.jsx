@@ -10,12 +10,6 @@ function HomeQuiz() {
       <h1 className={styles.h1}>Quiz Quest</h1>
       <div className={styles.buttonContainer}>
         <button
-          onClick={() => handleHome(navigate, "/quiz/createAIQuiz")}
-          className={styles.button}
-        >
-          Create Quiz with AI
-        </button>
-        <button
           onClick={() => handleHome(navigate, "/quiz/createQuiz")}
           className={styles.button}
         >

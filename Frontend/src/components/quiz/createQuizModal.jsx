@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import styles from "./createQuizModal.module.css";
 import { useNavigate } from "react-router-dom";
-
 function CreateQuizModal({
   quiz,
   setQuiz,
@@ -11,19 +10,11 @@ function CreateQuizModal({
   setNumberOfQuestions,
   setCurrentQuestion,
 }) {
+  let data = { quiz: quiz };
   const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-
-  const data = { quiz };
-
   const handleSave = async () => {
     try {
-      setLoading(true);
-      setMessage("Saving quiz...");
-
-      await axios.post(
+      const response = await axios.post(
         // "http://localhost:8000/quiz/createQuiz",
         "https://game-craft-arena.onrender.com/quiz/createQuiz",
         data,
@@ -31,24 +22,17 @@ function CreateQuizModal({
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
-
-      setMessage("Quiz saved!");
-
       setTimeout(() => {
         navigate("/quiz");
-      }, 1000);
+      }, 0);
+      return response.data;
     } catch (error) {
-      console.error(error);
-      setLoading(false);
-      setMessage("❌ Failed to save quiz. Please try again.");
+      console.log(error);
     }
   };
-
   function handleRetake() {
-    if (loading) return;
-
     setShowModal(false);
     setNumberOfQuestions(1);
     setCurrentQuestion({
@@ -59,44 +43,15 @@ function CreateQuizModal({
     setQuiz([]);
     setIsSubmitted(false);
   }
-
   return (
     <div className={styles.modal}>
-      <h1 className={styles.h1}>Are you sure you want to save this quiz?</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          marginTop: "20px",
-        }}
-      >
-        <button
-          className={styles.button}
-          onClick={handleRetake}
-          disabled={loading}
-        >
-          Retake
-        </button>
-
-        <button
-          className={styles.button}
-          onClick={handleSave}
-          disabled={loading}
-          style={{
-            minWidth: "140px",
-          }}
-        >
-          {loading ? (
-            <>
-              <span className={styles.spinner}></span>
-              {message}
-            </>
-          ) : (
-            "Save"
-          )}
-        </button>
-      </div>
+      <h1 className={styles.h1}>Are you sure to Save your Data?</h1>
+      <button className={styles.button} onClick={handleRetake}>
+        Retake
+      </button>
+      <button onClick={handleSave} className={styles.button}>
+        Save
+      </button>
     </div>
   );
 }
